@@ -10,6 +10,7 @@ package hattmakarenteam2;
  */
 public class HattmakarenTeam2 {
 //Alex was here hahahhahahah
+    String bruh;
     /**
      * @param args the command line arguments
      */
