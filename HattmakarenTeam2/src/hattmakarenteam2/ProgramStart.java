@@ -16,7 +16,7 @@ public class ProgramStart extends javax.swing.JFrame {
           } 
         catch (InfException e){
                 Logger.getLogger(ProgramStart.class.getName()).log(Level.SEVERE, null, e);
-                System.out.println("Anslutningen gick åt helvete");
+                System.out.println("Anslutningen gick åt helvete, forsok igen!");
           }
      }
         
@@ -116,9 +116,6 @@ public class ProgramStart extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_regOrderBtn1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

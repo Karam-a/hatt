@@ -1,9 +1,22 @@
+<<<<<<< Updated upstream
 /HattmakarenTeam2/build/
 *.properties
 HattmakarenTeam2/nbproject/private/private.properties
 *.properties
 *.xml
+<<<<<<< HEAD
+=======
+/HattmakarenTeam2/nbproject/private/
+>>>>>>> Stashed changes
+=======
 *.properties
 HattmakarenTeam2/nbproject/private/private.properties
+HattmakarenTeam2/nbproject/private/private.properties
+<<<<<<< HEAD
+=======
+>>>>>>> a36dcd739de32678d7664e58fb240d846fd8a1b7
+HattmakarenTeam2/nbproject/private/private.properties
+HattmakarenTeam2/nbproject/private/private.properties
+>>>>>>> 056f7ab161627a6d794a17e33d4669079c0b992f
 HattmakarenTeam2/nbproject/private/private.properties
 HattmakarenTeam2/nbproject/private/private.properties
