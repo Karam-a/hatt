@@ -36,7 +36,10 @@ public class ProgramStart extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         kassaBtn = new javax.swing.JButton();
         regOrderBtn = new javax.swing.JButton();
-        regOrderBtn1 = new javax.swing.JButton();
+        orderMenyBtn = new javax.swing.JButton();
+        kundMenyBtn = new javax.swing.JButton();
+        materialBestBtn = new javax.swing.JButton();
+        loggaInBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,11 +62,35 @@ public class ProgramStart extends javax.swing.JFrame {
             }
         });
 
-        regOrderBtn1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        regOrderBtn1.setText("Registrera Order");
-        regOrderBtn1.addActionListener(new java.awt.event.ActionListener() {
+        orderMenyBtn.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        orderMenyBtn.setText("Ordermeny");
+        orderMenyBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                regOrderBtn1ActionPerformed(evt);
+                orderMenyBtnActionPerformed(evt);
+            }
+        });
+
+        kundMenyBtn.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        kundMenyBtn.setText("Kundmeny");
+        kundMenyBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kundMenyBtnActionPerformed(evt);
+            }
+        });
+
+        materialBestBtn.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        materialBestBtn.setText("Skapa Materialbeställning");
+        materialBestBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                materialBestBtnActionPerformed(evt);
+            }
+        });
+
+        loggaInBtn.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        loggaInBtn.setText("Logga In");
+        loggaInBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loggaInBtnActionPerformed(evt);
             }
         });
 
@@ -80,10 +107,15 @@ public class ProgramStart extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(kassaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(kassaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 207, Short.MAX_VALUE)
+                                .addComponent(loggaInBtn))
                             .addComponent(regOrderBtn)
-                            .addComponent(regOrderBtn1))))
-                .addContainerGap(168, Short.MAX_VALUE))
+                            .addComponent(orderMenyBtn)
+                            .addComponent(kundMenyBtn)
+                            .addComponent(materialBestBtn))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,28 +125,47 @@ public class ProgramStart extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(kassaBtn)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(kassaBtn)
+                    .addComponent(loggaInBtn))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(regOrderBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(regOrderBtn1)
-                .addContainerGap(141, Short.MAX_VALUE))
+                .addComponent(orderMenyBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(kundMenyBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(materialBestBtn)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void kassaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kassaBtnActionPerformed
-        // TODO add your handling code here:
+        new KassajFrame().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_kassaBtnActionPerformed
 
     private void regOrderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regOrderBtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_regOrderBtnActionPerformed
 
-    private void regOrderBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regOrderBtn1ActionPerformed
+    private void orderMenyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderMenyBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_regOrderBtn1ActionPerformed
+    }//GEN-LAST:event_orderMenyBtnActionPerformed
+
+    private void kundMenyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kundMenyBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kundMenyBtnActionPerformed
+
+    private void materialBestBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_materialBestBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_materialBestBtnActionPerformed
+
+    private void loggaInBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loggaInBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_loggaInBtnActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -152,7 +203,10 @@ public class ProgramStart extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton kassaBtn;
+    private javax.swing.JButton kundMenyBtn;
+    private javax.swing.JButton loggaInBtn;
+    private javax.swing.JButton materialBestBtn;
+    private javax.swing.JButton orderMenyBtn;
     private javax.swing.JButton regOrderBtn;
-    private javax.swing.JButton regOrderBtn1;
     // End of variables declaration//GEN-END:variables
 }
