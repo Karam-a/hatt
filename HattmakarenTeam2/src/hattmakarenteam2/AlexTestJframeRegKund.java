@@ -38,7 +38,6 @@ public class AlexTestJframeRegKund extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         Nummer = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        Svar = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         ID = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -66,8 +65,6 @@ public class AlexTestJframeRegKund extends javax.swing.JFrame {
         jLabel4.setText("Epost");
 
         jLabel5.setText("Nummer");
-
-        Svar.setText("Svar:");
 
         jButton1.setText("Rega");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -109,14 +106,12 @@ public class AlexTestJframeRegKund extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(ID, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
                                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(169, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Epost, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
-                        .addComponent(Svar, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(96, 96, 96))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,12 +131,9 @@ public class AlexTestJframeRegKund extends javax.swing.JFrame {
                 .addGap(2, 2, 2)
                 .addComponent(Adress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(13, 13, 13)
-                        .addComponent(Epost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(Svar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel4)
+                .addGap(13, 13, 13)
+                .addComponent(Epost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -168,11 +160,11 @@ public class AlexTestJframeRegKund extends javax.swing.JFrame {
 
             String KundId = ID.getText();
 
-           // String query = "Select * from agent where Agent_ID ='" + AgentId + "'";
+           // String query = "Select * from kund where id ='" + KundId + "'";
             //String result = idb.fetchSingle(query);
 
-            //Kontroll för att agenten inte redan existerar.
-           // validations.isNullValue(result, "Agent");
+           
+           
             
             String telefon = Nummer.getText();
             String namn = Namn.getText();
@@ -180,13 +172,13 @@ public class AlexTestJframeRegKund extends javax.swing.JFrame {
             String epost = Epost.getText();
            String id = ID.getText();
             
-           // String nyKund = "insert into kund (Agent_ID, Namn, Telefon, Anstallningsdatum, Administrator, Losenord, Omrade) values ('" + AgentId + "' , '" + namn + "' , '" + telefon + "','" + datum + "', '" + admin + "', '" + losenord + "', '" + omrade + "' )";
+           // String nyKund = "insert into kund (Telefon, Namn, Adress, Epost, Id) values ('" + telefon + "' , '" + namn + "' , '" + adress + "','" + epost + "', '" + id + "' )";
             //idb.insert(nyAgent);
 
             JOptionPane.showMessageDialog(null, "Ny kund registrerad ");
-        } catch (AlienException a) {
-            JOptionPane.showMessageDialog(null, a.getMessage());
-        }
+        } catch ( Exception) {
+            JOptionPane.showMessageDialog(null, "Bruh");
+       }
         catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Felaktigt inskrivet");
         }
@@ -239,7 +231,6 @@ public class AlexTestJframeRegKund extends javax.swing.JFrame {
     private javax.swing.JTextField ID;
     private javax.swing.JTextField Namn;
     private javax.swing.JTextField Nummer;
-    private javax.swing.JLabel Svar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
