@@ -9,5 +9,7 @@ package hattmakarenteam2;
  * @author alexm
  */
 public class AlexTest {
+   // String bruh;
     
+   // String bruh = "baba";
 }
