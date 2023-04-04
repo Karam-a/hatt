@@ -160,7 +160,7 @@ public class AlexTestJframeRegKund extends javax.swing.JFrame {
 
             String KundId = ID.getText();
 
-           // String query = "Select * from kund where id ='" + KundId + "'";
+           // String query = "Select * from kund where id ='" + ID + "'";
             //String result = idb.fetchSingle(query);
 
            
@@ -173,7 +173,7 @@ public class AlexTestJframeRegKund extends javax.swing.JFrame {
            String id = ID.getText();
             
            // String nyKund = "insert into kund (Telefon, Namn, Adress, Epost, Id) values ('" + telefon + "' , '" + namn + "' , '" + adress + "','" + epost + "', '" + id + "' )";
-            //idb.insert(nyAgent);
+            //idb.insert(nyKund);
 
             JOptionPane.showMessageDialog(null, "Ny kund registrerad ");
         } catch ( Exception) {
