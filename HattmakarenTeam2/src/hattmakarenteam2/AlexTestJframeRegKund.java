@@ -168,11 +168,11 @@ public class AlexTestJframeRegKund extends javax.swing.JFrame {
 
             String KundId = ID.getText();
 
-           // String query = "Select * from agent where Agent_ID ='" + AgentId + "'";
+           // String query = "Select * from kund where id ='" + KundId + "'";
             //String result = idb.fetchSingle(query);
 
-            //Kontroll för att agenten inte redan existerar.
-           // validations.isNullValue(result, "Agent");
+           
+           
             
             String telefon = Nummer.getText();
             String namn = Namn.getText();
@@ -180,13 +180,13 @@ public class AlexTestJframeRegKund extends javax.swing.JFrame {
             String epost = Epost.getText();
            String id = ID.getText();
             
-           // String nyKund = "insert into kund (Agent_ID, Namn, Telefon, Anstallningsdatum, Administrator, Losenord, Omrade) values ('" + AgentId + "' , '" + namn + "' , '" + telefon + "','" + datum + "', '" + admin + "', '" + losenord + "', '" + omrade + "' )";
+           // String nyKund = "insert into kund (Telefon, Namn, Adress, Epost, Id) values ('" + telefon + "' , '" + namn + "' , '" + adress + "','" + epost + "', '" + id + "' )";
             //idb.insert(nyAgent);
 
             JOptionPane.showMessageDialog(null, "Ny kund registrerad ");
-        } catch (AlienException a) {
-            JOptionPane.showMessageDialog(null, a.getMessage());
-        }
+        } catch ( Exception) {
+            JOptionPane.showMessageDialog(null, "Bruh");
+       }
         catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Felaktigt inskrivet");
         }
