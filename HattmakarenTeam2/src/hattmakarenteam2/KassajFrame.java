@@ -1,11 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package hattmakarenteam2;
 
-public class KassajFrame extends javax.swing.JFrame {
+import oru.inf.InfDB;
+import oru.inf.InfException;
 
+public class KassajFrame extends javax.swing.JFrame {
+    private InfDB idb;
     public KassajFrame() {
         initComponents();
     }
@@ -19,7 +18,7 @@ public class KassajFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         prisField = new javax.swing.JTextField();
-        hattNamnField1 = new javax.swing.JTextField();
+        hattNamnField = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         hattnamnLabel = new javax.swing.JLabel();
@@ -32,17 +31,22 @@ public class KassajFrame extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel1.setText("Kassa");
 
-        hattNamnField1.addFocusListener(new java.awt.event.FocusAdapter() {
+        hattNamnField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                hattNamnField1FocusGained(evt);
+                hattNamnFieldFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                hattNamnField1FocusLost(evt);
+                hattNamnFieldFocusLost(evt);
             }
         });
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton1.setText("Genomför Köp");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton2.setText("Tillbaka");
@@ -76,7 +80,7 @@ public class KassajFrame extends javax.swing.JFrame {
                                 .addComponent(prisLabel)
                                 .addGap(18, 18, 18)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(hattNamnField1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(hattNamnField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(prisField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(99, 99, 99)
@@ -92,7 +96,7 @@ public class KassajFrame extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(hattNamnField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hattNamnField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(hattnamnLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,19 +112,28 @@ public class KassajFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void hattNamnField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_hattNamnField1FocusGained
+    private void hattNamnFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_hattNamnFieldFocusGained
         // TODO add your handling code here:
-    }//GEN-LAST:event_hattNamnField1FocusGained
+    }//GEN-LAST:event_hattNamnFieldFocusGained
 
-    private void hattNamnField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_hattNamnField1FocusLost
+    private void hattNamnFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_hattNamnFieldFocusLost
        //TODO
-    }//GEN-LAST:event_hattNamnField1FocusLost
+    }//GEN-LAST:event_hattNamnFieldFocusLost
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try{
+            String prodNamn = hattNamnField.getText().toString();
+            String 
+        idb.insert("INSERT INTO kop VALUES(" + );
+        }
+        catch{}
+    }//GEN-LAST:event_jButton1ActionPerformed
 
  
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField hattNamnField1;
+    private javax.swing.JTextField hattNamnField;
     private javax.swing.JLabel hattnamnLabel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
