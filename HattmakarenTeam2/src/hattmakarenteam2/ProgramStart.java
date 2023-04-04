@@ -1,5 +1,5 @@
 package hattmakarenteam2;
-
+/**a*/
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import oru.inf.InfDB;
