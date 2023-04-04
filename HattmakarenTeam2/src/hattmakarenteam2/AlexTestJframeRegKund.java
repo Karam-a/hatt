@@ -190,7 +190,7 @@ private InfDB idb;
             String epost = Epost.getText();
            
             
-            String nyKund = "insert intohattprojektet.kund (kundNamn, adress, telefonNummer,hedersKund, epost) values ('" + id + "' , '" + namn + "' , '" + adress + "','" + telefon + "', '" + hederskund +"', '" + epost + "' )";
+            String nyKund = "insert into hattprojektet.kund (kundNamn, adress, telefonNummer,hedersKund, epost) values ('" + id + "' , '" + namn + "' , '" + adress + "','" + telefon + "', '" + hederskund +"', '" + epost + "' )";
             idb.insert(nyKund);
 
             JOptionPane.showMessageDialog(null, "Ny kund registrerad ");
