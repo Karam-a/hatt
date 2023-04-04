@@ -4,15 +4,19 @@
  */
 package hattmakarenteam2;
 
+import javax.swing.JTextField;
+
 /**
  *
  * @author alexm
  */
 public class ValideringsKlass {
-   //Använde den här i mitt MIB
-    public static void isNullValue(String result, String typeObject) throws IDException{
-        if(result != null && result != ""){
-            throw new IDException("This " +typeObject + "Id already exists ");
+     public static boolean värdeExisterar(JTextField varde) {
+        //metoden kontrollerar JTextField inte är tom
+        if(varde.getText().isEmpty()) {
+            return false;
         }
-    }
+        
+        
+}
 }
