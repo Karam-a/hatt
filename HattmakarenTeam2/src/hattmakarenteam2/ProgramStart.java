@@ -157,6 +157,9 @@ public class ProgramStart extends javax.swing.JFrame {
 
     private void kundMenyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kundMenyBtnActionPerformed
         // TODO add your handling code here:
+         new AlexTestJframeRegKund(idb).setVisible(true);
+        this.dispose();
+        
     }//GEN-LAST:event_kundMenyBtnActionPerformed
 
     private void materialBestBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_materialBestBtnActionPerformed

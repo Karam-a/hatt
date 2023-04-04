@@ -5,19 +5,23 @@
 package hattmakarenteam2;
 
 import javax.swing.JOptionPane;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import oru.inf.InfDB;
+import oru.inf.InfException;
+
+        
+        
 /**
  *
  * @author alexm
  */
 public class AlexTestJframeRegKund extends javax.swing.JFrame {
-
+private InfDB idb;
     /**
      * Creates new form AlexTestJframe
      */
-    public AlexTestJframeRegKund() {
+    public AlexTestJframeRegKund(InfDB idb) {
         initComponents();
+        this.idb= idb;
     }
 
     /**
@@ -171,7 +175,7 @@ public class AlexTestJframeRegKund extends javax.swing.JFrame {
          try {
             //Lägger in ny agent i systemet.
 
-            String KundId = ID.getText();
+          
 
            // String query = "Select * from kund where id ='" + ID + "'";
             //String result = idb.fetchSingle(query);
@@ -186,7 +190,7 @@ public class AlexTestJframeRegKund extends javax.swing.JFrame {
             String epost = Epost.getText();
            
             
-            String nyKund = "insert into kund (kundNamn, adress, telefonNummer,hedersKund, epost) values ('" + id + "' , '" + namn + "' , '" + adress + "','" + telefon + "', '" + hederskund +"', '" + epost + "' )";
+            String nyKund = "insert intohattprojektet.kund (kundNamn, adress, telefonNummer,hedersKund, epost) values ('" + id + "' , '" + namn + "' , '" + adress + "','" + telefon + "', '" + hederskund +"', '" + epost + "' )";
             idb.insert(nyKund);
 
             JOptionPane.showMessageDialog(null, "Ny kund registrerad ");
