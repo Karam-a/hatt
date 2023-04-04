@@ -1,5 +1,9 @@
+<<<<<<< Updated upstream
 /HattmakarenTeam2/build/
 *.properties
 HattmakarenTeam2/nbproject/private/private.properties
 *.properties
 *.xml
+=======
+/HattmakarenTeam2/nbproject/private/
+>>>>>>> Stashed changes
