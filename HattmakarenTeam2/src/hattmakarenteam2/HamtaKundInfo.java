@@ -4,16 +4,27 @@
  */
 package hattmakarenteam2;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+import oru.inf.InfDB;
+import oru.inf.InfException; 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Pedro
  */
 public class HamtaKundInfo extends javax.swing.JFrame {
-
+private InfDB idb;
     /**
      * Creates new form HamtaKundInfo
      */
-    public HamtaKundInfo() {
+    public HamtaKundInfo(InfDB idb) {
+        this.idb = idb;
         initComponents();
     }
 
@@ -111,7 +122,56 @@ public class HamtaKundInfo extends javax.swing.JFrame {
 
     private void okKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okKnappActionPerformed
         // TODO add your handling code here:
+        //valideringen:
         
+        if(ValideringKlass.finnsVarde(jTextFieldKundID)){
+            
+            try {
+        
+        //Inmatning av kund id som man vill ha data från     
+        String kundID = jTextFieldKundID.getText();
+        //Omvandla inmatning som sträng till en int för att hämta ut ID:et från databasen.
+        int intID = Integer.parseInt(kundID);
+        
+        String sqlFraga = "Select kundID, kundNamn, adress, telefonNummer, hedersKund, epost from Kund where kundID = " +  intID + "";
+        
+        DefaultTableModel dTM = (DefaultTableModel) jTableKundData.getModel();
+        dTM.setRowCount(0);
+        
+         //Skapande av  hashmap för att lista kundID:en och respektive namn.
+        ArrayList<HashMap<String, String>> allInfoLista; 
+        allInfoLista = idb.fetchRows(sqlFraga);
+        
+ 
+            //
+            //Loopa igenom allInfoLista för att sedan adda dessa rader som visas i J-framen. 
+            for(HashMap enKund : allInfoLista){
+                Vector nyLista = new Vector(); //Vector rekommenderades istället för arraylist därav valet.
+                nyLista.add(enKund.get("kundID"));
+                nyLista.add(enKund.get("kundNamn"));
+                nyLista.add(enKund.get("adress"));
+                nyLista.add(enKund.get("telefonNummer"));
+                nyLista.add(enKund.get("hedersKund"));
+                nyLista.add(enKund.get("epost"));
+                dTM.addRow(nyLista);
+                      
+            }
+        
+      
+        } catch (InfException ex){
+            JOptionPane.showMessageDialog(null, "Något gick fel");
+            System.out.println("Error: " + ex);
+        }
+            
+            
+            
+            
+            
+            
+            
+        } else {
+            JOptionPane.showMessageDialog(null, "KundID måste fyllas i");
+        }
     }//GEN-LAST:event_okKnappActionPerformed
 
     /**
@@ -144,7 +204,7 @@ public class HamtaKundInfo extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HamtaKundInfo().setVisible(true);
+                
             }
         });
     }

@@ -40,6 +40,7 @@ public class ProgramStart extends javax.swing.JFrame {
         kundMenyBtn = new javax.swing.JButton();
         materialBestBtn = new javax.swing.JButton();
         loggaInBtn = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,6 +95,13 @@ public class ProgramStart extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Hämta kundinformation");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -108,14 +116,15 @@ public class ProgramStart extends javax.swing.JFrame {
                         .addGap(15, 15, 15)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(kassaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 207, Short.MAX_VALUE)
+                                .addComponent(kassaBtn)
+                                .addGap(198, 198, 198)
                                 .addComponent(loggaInBtn))
                             .addComponent(regOrderBtn)
                             .addComponent(orderMenyBtn)
                             .addComponent(kundMenyBtn)
-                            .addComponent(materialBestBtn))))
-                .addContainerGap())
+                            .addComponent(materialBestBtn)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(409, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,7 +145,9 @@ public class ProgramStart extends javax.swing.JFrame {
                 .addComponent(kundMenyBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(materialBestBtn)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(404, Short.MAX_VALUE))
         );
 
         pack();
@@ -169,6 +180,13 @@ public class ProgramStart extends javax.swing.JFrame {
     private void loggaInBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loggaInBtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_loggaInBtnActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // hämta kundinfo
+        HamtaKundInfo nyRuta= new HamtaKundInfo(idb);
+        nyRuta.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -203,6 +221,7 @@ public class ProgramStart extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton kassaBtn;
