@@ -14,12 +14,12 @@ import oru.inf.InfException;
  *
  * @author alexm
  */
-public class AlexTestJframeRegKund extends javax.swing.JFrame {
+public class RegistreraNyKund extends javax.swing.JFrame {
 private InfDB idb;
     /**
      * Creates new form AlexTestJframe
      */
-    public AlexTestJframeRegKund(InfDB idb) {
+    public RegistreraNyKund(InfDB idb) {
         initComponents();
         this.idb= idb;
     }
@@ -172,16 +172,7 @@ private InfDB idb;
     }//GEN-LAST:event_AdressActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         try {
-            //Lägger in ny agent i systemet.
-
-          
-
-           // String query = "Select * from kund where id ='" + ID + "'";
-            //String result = idb.fetchSingle(query);
-
-           
-           
+         try { 
             String id = ID.getText();
             String namn = Namn.getText();
             String adress = Adress.getText();
@@ -190,17 +181,14 @@ private InfDB idb;
             String epost = Epost.getText();
            
             
-            String nyKund = "insert into hattprojektet.kund (kundNamn, adress, telefonNummer,hedersKund, epost) values ('" + id + "' , '" + namn + "' , '" + adress + "','" + telefon + "', '" + hederskund +"', '" + epost + "' )";
+            String nyKund = "insert into kund values ('" + id + "' , '" + namn + "' , '" + adress + "','" + telefon + "', '" + hederskund +"', '" + epost + "' )";
             idb.insert(nyKund);
 
             JOptionPane.showMessageDialog(null, "Ny kund registrerad ");
-        } catch ( Exception) {
+        } catch ( InfException e) {
             JOptionPane.showMessageDialog(null, "Bruh");
        }
-        catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Felaktigt inskrivet");
-        }
-                                            
+                                          
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDActionPerformed
@@ -224,21 +212,23 @@ private InfDB idb;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AlexTestJframeRegKund.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistreraNyKund.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AlexTestJframeRegKund.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistreraNyKund.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AlexTestJframeRegKund.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistreraNyKund.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AlexTestJframeRegKund.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistreraNyKund.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AlexTestJframeRegKund().setVisible(true);
+                new RegistreraNyKund().setVisible(true);
             }
         });
     }
