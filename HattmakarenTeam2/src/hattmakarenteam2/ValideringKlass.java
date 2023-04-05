@@ -12,7 +12,7 @@ import oru.inf.InfException;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-
+/** hej **/
    
 public class ValideringKlass {
     //Klass som kontrollerar inmatning av textfälten
