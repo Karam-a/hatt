@@ -42,6 +42,7 @@ public class ProgramStart extends javax.swing.JFrame {
         loggaInBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Ottos Hattar");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Ottos Hattar");
@@ -143,7 +144,7 @@ public class ProgramStart extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void kassaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kassaBtnActionPerformed
-        new KassajFrame().setVisible(true);
+        new KassajFrame(idb).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_kassaBtnActionPerformed
 
