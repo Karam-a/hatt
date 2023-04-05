@@ -11,7 +11,6 @@ public class ProgramStart extends javax.swing.JFrame {
  
     public ProgramStart() {
          {   
-             String ignore = "";
         try { idb=new InfDB("hattProjektet", "3306","hattProjektet","hattkey");
 
           } 
