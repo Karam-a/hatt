@@ -256,3 +256,4 @@ public class RegisteraSpecialhatt extends javax.swing.JFrame {
     private javax.swing.JTextField storlekTxt;
     private javax.swing.JTextField tygTxt;
     // End of variables declaration//GEN-END:variables
+}
