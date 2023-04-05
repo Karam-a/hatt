@@ -1,5 +1,3 @@
 /HattmakarenTeam2/build/
-*.properties
+private.properties
 *.xml
-HattmakarenTeam2/nbproject/private/private.properties
-HattmakarenTeam2/nbproject/private/private.properties
