@@ -67,18 +67,19 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                                  <Component id="NamnLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                                  <Component id="TygLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="TygLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="NamnLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="namnTxt" min="-2" max="-2" attributes="0"/>
-                              <Component id="tygTxt" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="tygTxt" pref="101" max="32767" attributes="0"/>
+                              <Component id="namnTxt" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
@@ -86,7 +87,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="FärgLabel" min="-2" max="-2" attributes="0"/>
+                                      <Component id="FargLabel" min="-2" max="-2" attributes="0"/>
                                       <Component id="ModellLabel" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -97,30 +98,32 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="storlekTxt" min="-2" max="-2" attributes="0"/>
-                              <Component id="modellTxt" min="-2" max="-2" attributes="0"/>
-                              <Component id="färgTxt" min="-2" max="-2" attributes="0"/>
-                              <Component id="dekorationTxt" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="storlekTxt" alignment="0" pref="103" max="32767" attributes="0"/>
+                                  <Component id="modellTxt" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="fargTxt" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="dekorationTxt" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="beskrivningTxt" alignment="0" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="170" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="TextLabel" min="-2" max="-2" attributes="0"/>
-                                  <Component id="DekorationLabel" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="hattKnapp" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="beskrivningLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="DekorationLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="OvrigtLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="70" max="32767" attributes="0"/>
+              <EmptySpace pref="28" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <Component id="hattKnapp" min="-2" pref="146" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -139,44 +142,39 @@
                   <Component id="TygLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="tygTxt" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="StorlekLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="storlekTxt" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  </Group>
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="storlekTxt" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="StorlekLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="ModellLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="modellTxt" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="FärgLabel" min="-2" max="-2" attributes="0"/>
-                  <Component id="färgTxt" min="-2" max="-2" attributes="0"/>
+                  <Component id="FargLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="fargTxt" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="DekorationLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="dekorationTxt" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="beskrivningTxt" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="beskrivningLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="TextLabel" max="32767" attributes="0"/>
-                      <EmptySpace min="-2" pref="145" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
+                  <Component id="OvrigtLabel" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Component id="hattKnapp" min="-2" pref="42" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+              <EmptySpace pref="52" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -210,7 +208,7 @@
         <Property name="text" type="java.lang.String" value="Modell:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="F&#xe4;rgLabel">
+    <Component class="javax.swing.JLabel" name="FargLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="F&#xe4;rg: "/>
       </Properties>
@@ -220,7 +218,7 @@
         <Property name="text" type="java.lang.String" value="Dekoration:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="TextLabel">
+    <Component class="javax.swing.JLabel" name="OvrigtLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#xd6;vrigt:"/>
       </Properties>
@@ -236,7 +234,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="modellTxt">
     </Component>
-    <Component class="javax.swing.JTextField" name="f&#xe4;rgTxt">
+    <Component class="javax.swing.JTextField" name="fargTxt">
     </Component>
     <Component class="javax.swing.JTextField" name="dekorationTxt">
     </Component>
@@ -247,7 +245,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextArea" name="&#xf6;vrigtArea">
+        <Component class="javax.swing.JTextArea" name="ovrigtArea">
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
@@ -258,6 +256,13 @@
     <Component class="javax.swing.JButton" name="hattKnapp">
       <Properties>
         <Property name="text" type="java.lang.String" value="Registrera hatt"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="beskrivningTxt">
+    </Component>
+    <Component class="javax.swing.JLabel" name="beskrivningLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Beskrivning:"/>
       </Properties>
     </Component>
   </SubComponents>
