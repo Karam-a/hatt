@@ -4,12 +4,16 @@
  */
 package hattmakarenteam2;
 
+import javax.swing.JOptionPane;
+import oru.inf.InfDB;
+import oru.inf.InfException;
 /**
  *
  * @author axelbrave
  */
 public class RegisteraSpecialhatt extends javax.swing.JFrame {
 
+    private InfDB idb;
     /**
      * Creates new form RegisteraSpecialbeställning
      */
@@ -37,18 +41,20 @@ public class RegisteraSpecialhatt extends javax.swing.JFrame {
         TygLabel = new javax.swing.JLabel();
         StorlekLabel = new javax.swing.JLabel();
         ModellLabel = new javax.swing.JLabel();
-        FärgLabel = new javax.swing.JLabel();
+        FargLabel = new javax.swing.JLabel();
         DekorationLabel = new javax.swing.JLabel();
-        TextLabel = new javax.swing.JLabel();
+        OvrigtLabel = new javax.swing.JLabel();
         namnTxt = new javax.swing.JTextField();
         tygTxt = new javax.swing.JTextField();
         storlekTxt = new javax.swing.JTextField();
         modellTxt = new javax.swing.JTextField();
-        färgTxt = new javax.swing.JTextField();
+        fargTxt = new javax.swing.JTextField();
         dekorationTxt = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        övrigtArea = new javax.swing.JTextArea();
+        ovrigtArea = new javax.swing.JTextArea();
         hattKnapp = new javax.swing.JButton();
+        beskrivningTxt = new javax.swing.JTextField();
+        beskrivningLabel = new javax.swing.JLabel();
 
         jTextField5.setText("jTextField1");
 
@@ -73,11 +79,11 @@ public class RegisteraSpecialhatt extends javax.swing.JFrame {
 
         ModellLabel.setText("Modell:");
 
-        FärgLabel.setText("Färg: ");
+        FargLabel.setText("Färg: ");
 
         DekorationLabel.setText("Dekoration:");
 
-        TextLabel.setText("Övrigt:");
+        OvrigtLabel.setText("Övrigt:");
 
         namnTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,11 +91,13 @@ public class RegisteraSpecialhatt extends javax.swing.JFrame {
             }
         });
 
-        övrigtArea.setColumns(20);
-        övrigtArea.setRows(5);
-        jScrollPane2.setViewportView(övrigtArea);
+        ovrigtArea.setColumns(20);
+        ovrigtArea.setRows(5);
+        jScrollPane2.setViewportView(ovrigtArea);
 
         hattKnapp.setText("Registrera hatt");
+
+        beskrivningLabel.setText("Beskrivning:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -104,43 +112,46 @@ public class RegisteraSpecialhatt extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addGap(45, 45, 45)
-                                    .addComponent(NamnLabel))
+                                    .addGap(44, 44, 44)
+                                    .addComponent(TygLabel)
+                                    .addGap(20, 20, 20))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addContainerGap()
-                                    .addComponent(TygLabel)))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(namnTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(tygTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(NamnLabel)
+                                    .addGap(18, 18, 18)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(tygTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                                .addComponent(namnTxt)))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(26, 26, 26)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(FärgLabel)
+                                        .addComponent(FargLabel)
                                         .addComponent(ModellLabel)))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addContainerGap()
                                     .addComponent(StorlekLabel)))
                             .addGap(18, 18, 18)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(storlekTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(modellTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(färgTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(dekorationTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(170, 170, 170)))
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(storlekTxt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
+                                    .addComponent(modellTxt, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(fargTxt, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(dekorationTxt, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(beskrivningTxt, javax.swing.GroupLayout.Alignment.LEADING)))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(TextLabel)
-                                    .addComponent(DekorationLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(hattKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(70, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(beskrivningLabel)
+                            .addComponent(DekorationLabel)
+                            .addComponent(OvrigtLabel))))
+                .addContainerGap(28, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(hattKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(88, 88, 88))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,35 +166,33 @@ public class RegisteraSpecialhatt extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TygLabel)
                     .addComponent(tygTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(StorlekLabel)
-                        .addGap(24, 24, 24))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(storlekTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(storlekTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(StorlekLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ModellLabel)
                     .addComponent(modellTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(FärgLabel)
-                    .addComponent(färgTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(FargLabel)
+                    .addComponent(fargTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(DekorationLabel)
                     .addComponent(dekorationTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(13, 13, 13)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(beskrivningTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(beskrivningLabel))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(TextLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(145, 145, 145))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(OvrigtLabel))
+                .addGap(28, 28, 28)
                 .addComponent(hattKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         pack();
@@ -191,20 +200,48 @@ public class RegisteraSpecialhatt extends javax.swing.JFrame {
 
     private void namnTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namnTxtActionPerformed
         // TODO add your handling code here:
+        
+        try {
+            idb=new InfDB("hattProjektet", "3306","hattProjektet","hattkey");
+        
+        String namn = namnTxt.getText();
+        String tyg = tygTxt.getText();
+        String storlek = storlekTxt.getText();
+        String modell = modellTxt.getText();
+        String farg = fargTxt.getText();
+        String dekoration = dekorationTxt.getText();
+        String beskrivning = beskrivningTxt.getText();
+        String ovrigt = ovrigtArea.getText();
+        String fraga = "insert into specialHattar values('"+namn+"', '"+tyg+"', '"+storlek+"', '"+modell+"', '"+farg+"', '"+dekoration+"', '"+beskrivning+"', '"+ovrigt+"')";
+                
+         
+        if (ValideringsKlass.värdeExisterar(namnTxt) || ValideringsKlass.värdeExisterar(tygTxt) || ValideringsKlass.värdeExisterar(storlekTxt) || ValideringsKlass.värdeExisterar(modellTxt) || ValideringsKlass.värdeExisterar(fargTxt) || ValideringsKlass.värdeExisterar(dekorationTxt) || ValideringsKlass.värdeExisterar(beskrivningTxt))
+        {}
+            
+        idb.insert(fraga);
+                
+        JOptionPane.showMessageDialog(null, "Ny specialhatt har registrerats!");        
+            }
+        catch(InfException ettUndantag){
+               JOptionPane.showMessageDialog(null, "Något gick fel!");
+        }
+        
     }//GEN-LAST:event_namnTxtActionPerformed
 
  
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel DekorationLabel;
-    private javax.swing.JLabel FärgLabel;
+    private javax.swing.JLabel FargLabel;
     private javax.swing.JLabel ModellLabel;
     private javax.swing.JLabel NamnLabel;
+    private javax.swing.JLabel OvrigtLabel;
     private javax.swing.JLabel SpecialhattLabel;
     private javax.swing.JLabel StorlekLabel;
-    private javax.swing.JLabel TextLabel;
     private javax.swing.JLabel TygLabel;
+    private javax.swing.JLabel beskrivningLabel;
+    private javax.swing.JTextField beskrivningTxt;
     private javax.swing.JTextField dekorationTxt;
-    private javax.swing.JTextField färgTxt;
+    private javax.swing.JTextField fargTxt;
     private javax.swing.JButton hattKnapp;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -215,8 +252,8 @@ public class RegisteraSpecialhatt extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField9;
     private javax.swing.JTextField modellTxt;
     private javax.swing.JTextField namnTxt;
+    private javax.swing.JTextArea ovrigtArea;
     private javax.swing.JTextField storlekTxt;
     private javax.swing.JTextField tygTxt;
-    private javax.swing.JTextArea övrigtArea;
     // End of variables declaration//GEN-END:variables
 }
