@@ -2,11 +2,15 @@ package hattmakarenteam2;
 
 import oru.inf.InfDB;
 import oru.inf.InfException;
+import java.time.LocalDate;
+import javax.swing.JOptionPane;
 
 public class KassajFrame extends javax.swing.JFrame {
     private InfDB idb;
-    public KassajFrame() {
+    
+    public KassajFrame(InfDB idb) {
         initComponents();
+        this.idb= idb;
     }
 
   
@@ -19,14 +23,15 @@ public class KassajFrame extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         prisField = new javax.swing.JTextField();
         hattNamnField = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        genomforKopBtn = new javax.swing.JButton();
+        tillbakaBtn = new javax.swing.JButton();
         hattnamnLabel = new javax.swing.JLabel();
         prisLabel = new javax.swing.JLabel();
 
         jToggleButton1.setText("jToggleButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Kassa");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel1.setText("Kassa");
@@ -40,16 +45,21 @@ public class KassajFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton1.setText("Genomför Köp");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        genomforKopBtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        genomforKopBtn.setText("Genomför Köp");
+        genomforKopBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                genomforKopBtnActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton2.setText("Tillbaka");
+        tillbakaBtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        tillbakaBtn.setText("Tillbaka");
+        tillbakaBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tillbakaBtnActionPerformed(evt);
+            }
+        });
 
         hattnamnLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         hattnamnLabel.setText("Produktnamn:");
@@ -64,9 +74,9 @@ public class KassajFrame extends javax.swing.JFrame {
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(27, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(tillbakaBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(genomforKopBtn)
                 .addGap(25, 25, 25))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,8 +114,8 @@ public class KassajFrame extends javax.swing.JFrame {
                     .addComponent(prisLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(genomforKopBtn)
+                    .addComponent(tillbakaBtn))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -120,27 +130,41 @@ public class KassajFrame extends javax.swing.JFrame {
        //TODO
     }//GEN-LAST:event_hattNamnFieldFocusLost
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void genomforKopBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genomforKopBtnActionPerformed
         try{
-            String prodNamn = hattNamnField.getText().toString();
-            String 
-        idb.insert("INSERT INTO kop VALUES(" + );
+            int ID = Integer.parseInt(idb.getAutoIncrement("kop", "kopID"));
+            String prodNamn = hattNamnField.getText();
+            double pris = Double.parseDouble(prisField.getText());
+            LocalDate kopDatum = LocalDate.now();
+            String fraga = "INSERT INTO hattprojektet.kop VALUES (" + ID + "," + "'" + prodNamn + "'" + "," + pris + "," + "'" + kopDatum+ "'"+");";
+
+            idb.insert(fraga);
+            JOptionPane.showMessageDialog(null, prodNamn + " har registrerats!");
         }
-        catch{}
-    }//GEN-LAST:event_jButton1ActionPerformed
+        catch(InfException e){
+            JOptionPane.showMessageDialog(null, "Databasfel");
+        }
+        
+    }//GEN-LAST:event_genomforKopBtnActionPerformed
+
+    private void tillbakaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tillbakaBtnActionPerformed
+
+        new ProgramStart().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_tillbakaBtnActionPerformed
 
  
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton genomforKopBtn;
     private javax.swing.JTextField hattNamnField;
     private javax.swing.JLabel hattnamnLabel;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JTextField prisField;
     private javax.swing.JLabel prisLabel;
+    private javax.swing.JButton tillbakaBtn;
     // End of variables declaration//GEN-END:variables
 }
