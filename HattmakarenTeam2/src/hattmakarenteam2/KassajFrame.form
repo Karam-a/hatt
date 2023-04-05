@@ -53,7 +53,7 @@
                           </Group>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="hattNamnField1" min="-2" pref="112" max="-2" attributes="0"/>
+                          <Component id="hattNamnField" min="-2" pref="112" max="-2" attributes="0"/>
                           <Component id="prisField" min="-2" pref="112" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -75,7 +75,7 @@
               <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="hattNamnField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="hattNamnField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="hattnamnLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -106,10 +106,10 @@
     </Component>
     <Component class="javax.swing.JTextField" name="prisField">
     </Component>
-    <Component class="javax.swing.JTextField" name="hattNamnField1">
+    <Component class="javax.swing.JTextField" name="hattNamnField">
       <Events>
-        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="hattNamnField1FocusGained"/>
-        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="hattNamnField1FocusLost"/>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="hattNamnFieldFocusGained"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="hattNamnFieldFocusLost"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">
@@ -119,6 +119,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Genomf&#xf6;r K&#xf6;p"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>

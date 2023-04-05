@@ -15,8 +15,8 @@ public class ValideringsKlass {
         //metoden kontrollerar JTextField inte är tom
         if(varde.getText().isEmpty()) {
             return false;
-        }
-        
-        
-}
+        }  
+    }
+     
+     public static 
 }
