@@ -3,7 +3,6 @@ package hattmakarenteam2;
 import javax.swing.table.DefaultTableModel;
 import oru.inf.InfDB;
 import oru.inf.InfException;
-import javax.swing.JOptionPane;
 import java.util.ArrayList;
 
 public class Orderhantering extends javax.swing.JFrame {
@@ -13,9 +12,10 @@ private DefaultTableModel avslutadHattMod;
 private ArrayList<String> ejPabHatt;
 private ArrayList<String> pabHatt;
 private ArrayList<String> avslutadHatt;
+private InfDB idb;
 
-    public Orderhantering() {
-        
+    public Orderhantering(InfDB idb) {
+        this.idb=idb;
         ejPabHatt = new ArrayList<>();
         pabHatt = new ArrayList<>();
         avslutadHatt = new ArrayList<>();
@@ -166,10 +166,16 @@ private ArrayList<String> avslutadHatt;
     }// </editor-fold>//GEN-END:initComponents
 
   private void hamtaData(){
-  ejPabHatt = idb.fetchColumn("SELECT orderID FROM ordrar WHERE orderStatus = 'Ej Påbörjad'");
-  pabHatt = idb.fetchColumn("SELECT orderID FROM ordrar WHERE orderStatus = 'Påbörjad'");
-  avslutadHatt = idb.fetchColumn("SELECT orderID FROM ordrar WHERE orderStatus = 'Avslutad'");
+      try{
+  ejPabHatt = idb.fetchColumn("Select kundNamn from kund where kundID in(Select kundID from ordrar where orderStatus='Ej Påbörjad')");
+  pabHatt = idb.fetchColumn("Select kundNamn from kund where kundID in(Select kundID from ordrar where orderStatus='Påbörjad')");
+  avslutadHatt = idb.fetchColumn("Select kundNamn from kund where kundID in(Select kundID from ordrar where orderStatus='Avslutad')");
   }
+      catch(InfException e){
+            System.out.println("Något gick fel!");
+        }
+  }
+      
     private void fyllTabeller(){
     hamtaData();
     ejPabHattMod = (DefaultTableModel) ejPabTable.getModel();
@@ -185,7 +191,11 @@ private ArrayList<String> avslutadHatt;
     for(String namn : avslutadHatt){
             avslutadHattMod.addRow(new Object[]{namn});
         }
-}
+    }
+
+    
+    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable avslutTable;
