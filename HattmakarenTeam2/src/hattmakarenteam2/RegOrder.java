@@ -16,7 +16,8 @@ public class RegOrder extends javax.swing.JFrame {
 
       private InfDB idb;
 
-    public RegOrder() {
+    public RegOrder(InfDB idb) {
+        this.idb= idb;
         initComponents();
         hamtaHatt ();
         

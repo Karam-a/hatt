@@ -1,13 +1,13 @@
 package hattmakarenteam2;
 
-import javax.swing.DefaultTableModel;
+import javax.swing.table.DefaultTableModel;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
 
 public class Orderhantering extends javax.swing.JFrame {
-private DefaultTableModel ejPadHattMod;
+private DefaultTableModel ejPabHattMod;
 private DefaultTableModel pabHattMod;
 private DefaultTableModel avslutadHattMod;
 private ArrayList<String> ejPabHatt;
@@ -32,13 +32,13 @@ private ArrayList<String> avslutadHatt;
         ejPaborjadLabel = new javax.swing.JLabel();
         paborjadLabel = new javax.swing.JLabel();
         avslutadLabel = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        ejPaborjadList = new javax.swing.JList<>();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        avslutadList = new javax.swing.JList<>();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        paborjadList = new javax.swing.JList<>();
         hanteraOrderBtn = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        avslutTable = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        ejPabTable = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        pabTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,45 +54,86 @@ private ArrayList<String> avslutadHatt;
         avslutadLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         avslutadLabel.setText("Avslutad");
 
-        jScrollPane2.setViewportView(ejPaborjadList);
-
-        jScrollPane3.setViewportView(avslutadList);
-
-        jScrollPane4.setViewportView(paborjadList);
-
         hanteraOrderBtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         hanteraOrderBtn.setText("Hantera vald order");
+
+        avslutTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Avslutade ordrar"
+            }
+        ));
+        jScrollPane1.setViewportView(avslutTable);
+        if (avslutTable.getColumnModel().getColumnCount() > 0) {
+            avslutTable.getColumnModel().getColumn(0).setResizable(false);
+        }
+
+        ejPabTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Ej påbörjade ordrar"
+            }
+        ));
+        jScrollPane2.setViewportView(ejPabTable);
+        if (ejPabTable.getColumnModel().getColumnCount() > 0) {
+            ejPabTable.getColumnModel().getColumn(0).setResizable(false);
+        }
+
+        pabTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Påbörjade ordrar"
+            }
+        ));
+        jScrollPane3.setViewportView(pabTable);
+        if (pabTable.getColumnModel().getColumnCount() > 0) {
+            pabTable.getColumnModel().getColumn(0).setResizable(false);
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(49, 49, 49)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(70, 70, 70)
                 .addComponent(ejPaborjadLabel)
-                .addGap(134, 134, 134)
+                .addGap(172, 172, 172)
                 .addComponent(paborjadLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(avslutadLabel)
-                .addGap(77, 77, 77))
+                .addGap(108, 108, 108))
+            .addComponent(jSeparator1)
             .addGroup(layout.createSequentialGroup()
-                .addGap(235, 235, 235)
-                .addComponent(orderhanteringLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(hanteraOrderBtn))
+                        .addGap(14, 14, 14)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(hanteraOrderBtn)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(29, 29, 29)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(43, 43, 43)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(22, 22, 22))
+                        .addGap(292, 292, 292)
+                        .addComponent(orderhanteringLabel)))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,40 +149,55 @@ private ArrayList<String> avslutadHatt;
                     .addComponent(avslutadLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(hanteraOrderBtn)
-                .addContainerGap(13, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(hanteraOrderBtn)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
   private void hamtaData(){
-  ejPabHatt = idb.fetchColumn("SELECT Namn FROM Alien WHERE Alien_ID IN(SELECT Alien_ID FROM Boglodite)");
+  ejPabHatt = idb.fetchColumn("SELECT orderID FROM ordrar WHERE orderStatus = 'Ej Påbörjad'");
   pabHatt = idb.fetchColumn("SELECT Namn FROM Alien WHERE Alien_ID IN(SELECT Alien_ID FROM Boglodite)");
   avslutadHatt = idb.fetchColumn();
   }
-    private void fyllListor(){
+    private void fyllTabeller(){
     hamtaData();
-    ejPabHattMod = (DefaultListModel) ejPaborjadList.get
-
+    ejPabHattMod = (DefaultTableModel) ejPabTable.getModel();
+    pabHattMod = (DefaultTableModel) pabTable.getModel();
+    avslutadHattMod = (DefaultTableModel) avslutTable.getModel();
+    
+    for(String namn : ejPabHatt){
+            ejPabHattMod.addRow(new Object[]{namn});
+        }
+    for(String namn : pabHatt){
+            pabHattMod.addRow(new Object[]{namn});
+        }
+    for(String namn : avslutadHatt){
+            avslutadHattMod.addRow(new Object[]{namn});
+        }
 }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable avslutTable;
     private javax.swing.JLabel avslutadLabel;
-    private javax.swing.JList<String> avslutadList;
+    private javax.swing.JTable ejPabTable;
     private javax.swing.JLabel ejPaborjadLabel;
-    private javax.swing.JList<String> ejPaborjadList;
     private javax.swing.JButton hanteraOrderBtn;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel orderhanteringLabel;
+    private javax.swing.JTable pabTable;
     private javax.swing.JLabel paborjadLabel;
-    private javax.swing.JList<String> paborjadList;
     // End of variables declaration//GEN-END:variables
 }

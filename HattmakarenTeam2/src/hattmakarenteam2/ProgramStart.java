@@ -172,7 +172,7 @@ public class ProgramStart extends javax.swing.JFrame {
     }//GEN-LAST:event_kassaBtnActionPerformed
 
     private void regOrderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regOrderBtnActionPerformed
-        new RegistreraOrder(idb).setVisible(true);
+        new RegOrder(idb).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_regOrderBtnActionPerformed
 
