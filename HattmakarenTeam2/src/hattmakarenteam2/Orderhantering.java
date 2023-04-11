@@ -20,6 +20,7 @@ private ArrayList<String> avslutadHatt;
         pabHatt = new ArrayList<>();
         avslutadHatt = new ArrayList<>();
         initComponents();
+        fyllTabeller();
     }
 
    
@@ -166,8 +167,8 @@ private ArrayList<String> avslutadHatt;
 
   private void hamtaData(){
   ejPabHatt = idb.fetchColumn("SELECT orderID FROM ordrar WHERE orderStatus = 'Ej Påbörjad'");
-  pabHatt = idb.fetchColumn("SELECT Namn FROM Alien WHERE Alien_ID IN(SELECT Alien_ID FROM Boglodite)");
-  avslutadHatt = idb.fetchColumn();
+  pabHatt = idb.fetchColumn("SELECT orderID FROM ordrar WHERE orderStatus = 'Påbörjad'");
+  avslutadHatt = idb.fetchColumn("SELECT orderID FROM ordrar WHERE orderStatus = 'Avslutad'");
   }
     private void fyllTabeller(){
     hamtaData();
