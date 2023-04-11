@@ -168,11 +168,12 @@ public class ProgramStart extends javax.swing.JFrame {
 
     private void kassaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kassaBtnActionPerformed
         new KassajFrame(idb).setVisible(true);
-        this.dispose();
+        
     }//GEN-LAST:event_kassaBtnActionPerformed
 
     private void regOrderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regOrderBtnActionPerformed
-        // TODO add your handling code here:
+        new RegistreraOrder(idb).setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_regOrderBtnActionPerformed
 
     private void orderMenyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderMenyBtnActionPerformed

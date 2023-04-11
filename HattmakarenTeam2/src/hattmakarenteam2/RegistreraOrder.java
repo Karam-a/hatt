@@ -20,8 +20,9 @@ public class RegistreraOrder extends javax.swing.JFrame {
     /**
      * Creates new form RegistreraOrder
      */
-    public RegistreraOrder() {
+    public RegistreraOrder(InfDB idb) {
         initComponents();
+        this.idb= idb;
     }
 
     /**
@@ -172,7 +173,6 @@ public class RegistreraOrder extends javax.swing.JFrame {
     private void SkapaOrderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SkapaOrderBtnActionPerformed
         // TODO add your handling code here:
         try{
-            idb = new InfDB("hattProjektet", "3306","hattProjektet","hattkey");
             
             String kundID = KIDTxt.getText();
             String idHatt1 = IDHatt1Txt.getText();
