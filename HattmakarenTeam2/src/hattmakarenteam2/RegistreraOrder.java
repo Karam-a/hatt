@@ -185,7 +185,7 @@ public class RegistreraOrder extends javax.swing.JFrame {
             //Hur blir det vid flera hatt ID på ett OrderID i databas? 
             // går det att hämta ut text från combobox med getText()? parse? []? fetch i array
             
-            if (ValideringsKlass.värdeExisterar(KIDTxt) || ValideringsKlass.värdeExisterar(IDHatt1Txt) || ValideringsKlass.värdeExisterar(IDHatt2Txt) || ValideringsKlass.värdeExisterar(IDHatt3Txt) || ValideringsKlass.värdeExisterar(OrderDatumTxt) || ValideringsKlass.värdeExisterar(OStatusComboBox))
+            if (ValideringKlass.finnsVarde(KIDTxt) || ValideringKlass.finnsVarde(IDHatt1Txt) || ValideringKlass.finnsVarde(IDHatt2Txt) || ValideringKlass.finnsVarde(IDHatt3Txt) || ValideringKlass.finnsVarde(OrderDatumTxt) || ValideringKlass.finnsVarde(OStatusComboBox))
         {}
             
         idb.insert(fraga);
