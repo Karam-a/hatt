@@ -168,11 +168,11 @@ public class ProgramStart extends javax.swing.JFrame {
 
     private void kassaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kassaBtnActionPerformed
         new KassajFrame(idb).setVisible(true);
-        this.dispose();
+        
     }//GEN-LAST:event_kassaBtnActionPerformed
 
     private void regOrderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regOrderBtnActionPerformed
-        // TODO add your handling code here:
+       //jsjfdjfjsdjf
     }//GEN-LAST:event_regOrderBtnActionPerformed
 
     private void orderMenyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderMenyBtnActionPerformed
@@ -188,6 +188,8 @@ public class ProgramStart extends javax.swing.JFrame {
 
     private void materialBestBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_materialBestBtnActionPerformed
         // TODO add your handling code here:
+        new Materialbeställningslista(idb).setVisible(true);
+         this.dispose();
     }//GEN-LAST:event_materialBestBtnActionPerformed
 
     private void loggaInBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loggaInBtnActionPerformed

@@ -20,8 +20,10 @@ public class RegistreraOrder extends javax.swing.JFrame {
     /**
      * Creates new form RegistreraOrder
      */
-    public RegistreraOrder() {
+    public RegistreraOrder(InfDB idb) {
         initComponents();
+        this.idb= idb;
+        System.out.println("test");
     }
 
     /**
@@ -172,7 +174,6 @@ public class RegistreraOrder extends javax.swing.JFrame {
     private void SkapaOrderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SkapaOrderBtnActionPerformed
         // TODO add your handling code here:
         try{
-            idb = new InfDB("hattProjektet", "3306","hattProjektet","hattkey");
             
             String kundID = KIDTxt.getText();
             String idHatt1 = IDHatt1Txt.getText();
@@ -185,7 +186,7 @@ public class RegistreraOrder extends javax.swing.JFrame {
             //Hur blir det vid flera hatt ID på ett OrderID i databas? 
             // går det att hämta ut text från combobox med getText()? parse? []? fetch i array
             
-            if (ValideringsKlass.värdeExisterar(KIDTxt) || ValideringsKlass.värdeExisterar(IDHatt1Txt) || ValideringsKlass.värdeExisterar(IDHatt2Txt) || ValideringsKlass.värdeExisterar(IDHatt3Txt) || ValideringsKlass.värdeExisterar(OrderDatumTxt) || ValideringsKlass.värdeExisterar(OStatusComboBox))
+            if (ValideringKlass.finnsVarde(KIDTxt) || ValideringKlass.finnsVarde(IDHatt1Txt) || ValideringKlass.finnsVarde(IDHatt2Txt) || ValideringKlass.finnsVarde(IDHatt3Txt) || ValideringKlass.finnsVarde(OrderDatumTxt) || ValideringKlass.finnsVarde(OStatusComboBox))
         {}
             
         idb.insert(fraga);
