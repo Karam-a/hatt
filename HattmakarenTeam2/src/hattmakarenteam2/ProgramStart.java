@@ -42,6 +42,7 @@ public class ProgramStart extends javax.swing.JFrame {
         loggaInBtn = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButtonBestallningar = new javax.swing.JButton();
+        regSpecHattBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ottos Hattar");
@@ -111,6 +112,14 @@ public class ProgramStart extends javax.swing.JFrame {
             }
         });
 
+        regSpecHattBtn.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        regSpecHattBtn.setText("Registrera Specialhatt");
+        regSpecHattBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regSpecHattBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -134,7 +143,8 @@ public class ProgramStart extends javax.swing.JFrame {
                             .addComponent(materialBestBtn)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jButtonBestallningar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)))))
+                                .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE))
+                            .addComponent(regSpecHattBtn))))
                 .addContainerGap(409, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -160,7 +170,9 @@ public class ProgramStart extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addGap(26, 26, 26)
                 .addComponent(jButtonBestallningar)
-                .addContainerGap(355, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(regSpecHattBtn)
+                .addContainerGap(310, Short.MAX_VALUE))
         );
 
         pack();
@@ -210,6 +222,11 @@ public class ProgramStart extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButtonBestallningarActionPerformed
 
+    private void regSpecHattBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regSpecHattBtnActionPerformed
+        new RegisteraSpecialhatt(idb).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_regSpecHattBtnActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -253,5 +270,6 @@ public class ProgramStart extends javax.swing.JFrame {
     private javax.swing.JButton materialBestBtn;
     private javax.swing.JButton orderMenyBtn;
     private javax.swing.JButton regOrderBtn;
+    private javax.swing.JButton regSpecHattBtn;
     // End of variables declaration//GEN-END:variables
 }

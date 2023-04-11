@@ -47,6 +47,7 @@
                               <Component id="jButtonBestallningar" alignment="0" max="32767" attributes="0"/>
                               <Component id="jButton1" alignment="0" pref="233" max="32767" attributes="0"/>
                           </Group>
+                          <Component id="regSpecHattBtn" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -78,7 +79,9 @@
               <Component id="jButton1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               <Component id="jButtonBestallningar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="355" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="regSpecHattBtn" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="310" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -174,6 +177,17 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonBestallningarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="regSpecHattBtn">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="24" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Registrera Specialhatt"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="regSpecHattBtnActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
