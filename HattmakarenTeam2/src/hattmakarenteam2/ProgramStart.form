@@ -43,9 +43,9 @@
                           <Component id="orderMenyBtn" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="kundMenyBtn" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="materialBestBtn" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                              <Component id="jButton2" alignment="1" min="-2" pref="225" max="-2" attributes="0"/>
-                              <Component id="jButton1" alignment="0" min="-2" pref="233" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="jButtonBestallningar" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jButton1" alignment="0" pref="233" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -76,9 +76,9 @@
               <Component id="materialBestBtn" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jButton2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="363" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+              <Component id="jButtonBestallningar" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="355" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -168,12 +168,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="jButtonBestallningar">
       <Properties>
         <Property name="text" type="java.lang.String" value="H&#xe4;mta best&#xe4;llningsinfo"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonBestallningarActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
