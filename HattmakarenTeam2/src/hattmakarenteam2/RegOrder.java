@@ -169,7 +169,7 @@ public class RegOrder extends javax.swing.JFrame {
     
     private void hamtaHatt () {
  
-        String fraga = " Select namn from specialhatt" ; 
+        String fraga = " Select namn from specialHattar" ; 
         
             ArrayList<String> hattar;
         
@@ -192,6 +192,18 @@ public class RegOrder extends javax.swing.JFrame {
         
         
 }
+    
+    
+    
+   private void hamtaKund () 
+   {
+      String fraga = "Select namn from Kund"; 
+      
+       
+       
+   }
+    
+    
     
     
     
