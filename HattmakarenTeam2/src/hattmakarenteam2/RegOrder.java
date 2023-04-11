@@ -44,19 +44,7 @@ public class RegOrder extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        comboHatt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboHattActionPerformed(evt);
-            }
-        });
-
         jLabel1.setText("Hatt:");
-
-        boxKund.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boxKundActionPerformed(evt);
-            }
-        });
 
         NyOrderLabel.setFont(new java.awt.Font("Hiragino Maru Gothic ProN", 1, 24)); // NOI18N
         NyOrderLabel.setText("Ny Order");
@@ -69,11 +57,6 @@ public class RegOrder extends javax.swing.JFrame {
 
         OStatusComboBox.setFont(new java.awt.Font("Hiragino Maru Gothic ProN", 0, 13)); // NOI18N
         OStatusComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ej påbörjad" }));
-        OStatusComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OStatusComboBoxActionPerformed(evt);
-            }
-        });
 
         ODatumLabel.setFont(new java.awt.Font("Hiragino Maru Gothic ProN", 0, 13)); // NOI18N
         ODatumLabel.setText("Order Datum: ");
@@ -147,18 +130,6 @@ public class RegOrder extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void comboHattActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboHattActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comboHattActionPerformed
-
-    private void boxKundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxKundActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boxKundActionPerformed
-
-    private void OStatusComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OStatusComboBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_OStatusComboBoxActionPerformed
 
     private void SkapaOrderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SkapaOrderBtnActionPerformed
         // TODO add your handling code here:
