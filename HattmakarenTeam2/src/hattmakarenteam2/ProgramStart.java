@@ -40,8 +40,9 @@ public class ProgramStart extends javax.swing.JFrame {
         kundMenyBtn = new javax.swing.JButton();
         materialBestBtn = new javax.swing.JButton();
         loggaInBtn = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        getKundinfoBtn = new javax.swing.JButton();
+        getBestInfoBtn = new javax.swing.JButton();
+        regSpecHattBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ottos Hattar");
@@ -97,17 +98,25 @@ public class ProgramStart extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Hämta kundinformation");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        getKundinfoBtn.setText("Hämta kundinformation");
+        getKundinfoBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                getKundinfoBtnActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Hämta beställningsinfo");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        getBestInfoBtn.setText("Hämta beställningsinfo");
+        getBestInfoBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                getBestInfoBtnActionPerformed(evt);
+            }
+        });
+
+        regSpecHattBtn.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        regSpecHattBtn.setText("Registrera Specialhatt");
+        regSpecHattBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regSpecHattBtnActionPerformed(evt);
             }
         });
 
@@ -133,8 +142,9 @@ public class ProgramStart extends javax.swing.JFrame {
                             .addComponent(kundMenyBtn)
                             .addComponent(materialBestBtn)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(getBestInfoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(getKundinfoBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(regSpecHattBtn))))
                 .addContainerGap(409, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -157,10 +167,12 @@ public class ProgramStart extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(materialBestBtn)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(getKundinfoBtn)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addContainerGap(363, Short.MAX_VALUE))
+                .addComponent(getBestInfoBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(regSpecHattBtn)
+                .addContainerGap(312, Short.MAX_VALUE))
         );
 
         pack();
@@ -197,19 +209,24 @@ public class ProgramStart extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_loggaInBtnActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void getKundinfoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getKundinfoBtnActionPerformed
         // hämta kundinfo
         HamtaKundInfo nyRuta= new HamtaKundInfo(idb);
         nyRuta.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_getKundinfoBtnActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void getBestInfoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getBestInfoBtnActionPerformed
         // hämta beställningsinfo
         HamtaBestallningInfo nyRuta= new HamtaBestallning(idb);
         nyRuta.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_getBestInfoBtnActionPerformed
+
+    private void regSpecHattBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regSpecHattBtnActionPerformed
+        new RegisteraSpecialhatt(idb).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_regSpecHattBtnActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -244,8 +261,8 @@ public class ProgramStart extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton getBestInfoBtn;
+    private javax.swing.JButton getKundinfoBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton kassaBtn;
@@ -254,5 +271,6 @@ public class ProgramStart extends javax.swing.JFrame {
     private javax.swing.JButton materialBestBtn;
     private javax.swing.JButton orderMenyBtn;
     private javax.swing.JButton regOrderBtn;
+    private javax.swing.JButton regSpecHattBtn;
     // End of variables declaration//GEN-END:variables
 }

@@ -17,7 +17,8 @@ public class RegisteraSpecialhatt extends javax.swing.JFrame {
     /**
      * Creates new form RegisteraSpecialbeställning
      */
-    public RegisteraSpecialhatt() {
+    public RegisteraSpecialhatt(InfDB idb) {
+        this.idb=idb;
         initComponents();
     }
     /**
