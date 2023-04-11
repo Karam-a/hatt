@@ -111,7 +111,7 @@ public class RegisteraSpecialhatt extends javax.swing.JFrame {
         HattStatusLabel.setText("Hatt Status: ");
 
         HattStatusComboBox.setFont(new java.awt.Font("Hiragino Maru Gothic ProN", 0, 13)); // NOI18N
-        HattStatusComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        HattStatusComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "start" }));
 
         jLabel1.setText("jLabel1");
 
@@ -243,7 +243,6 @@ public class RegisteraSpecialhatt extends javax.swing.JFrame {
      // TODO add your handling code here:
         
         try {
-            idb=new InfDB("hattProjektet", "3306","hattProjektet","hattkey");
             
         String id = IDTxt.getText();
         String namn = namnTxt.getText();
@@ -254,11 +253,13 @@ public class RegisteraSpecialhatt extends javax.swing.JFrame {
         String dekoration = dekorationTxt.getText();
         String beskrivning = beskrivningTxt.getText();
         String ovrigt = ovrigtTxt.getText();
-        String fraga = "insert into specialHattar values('"+id+"', '"+namn+"', '"+tyg+"', '"+storlek+"', '"+modell+"', '"+farg+"', '"+dekoration+"', '"+beskrivning+"', '"+ovrigt+"')";
+        String status = HattStatusComboBox.getSelectedItem().toString();
+        String fraga = ("insert into specialHattar values('"+id+"', '"+namn+"', '"+tyg+"', '"+storlek+"', '"+modell+"', '"+farg+"', '"+dekoration+"', '"+beskrivning+"', '"+ovrigt+"', '"+status+"')");
                 
-         
-        if (ValideringKlass.finnsVarde(namnTxt) || ValideringKlass.finnsVarde(tygTxt) || ValideringKlass.finnsVarde(storlekTxt) || ValideringKlass.finnsVarde(modellTxt) || ValideringKlass.finnsVarde(fargTxt) || ValideringKlass.finnsVarde(dekorationTxt) || ValideringKlass.finnsVarde(beskrivningTxt) || ValideringKlass.finnsVarde(ovrigtTxt))
-        {}
+           JOptionPane.showMessageDialog(null, fraga);
+
+       // if (ValideringKlass.finnsVarde(namnTxt) || ValideringKlass.finnsVarde(tygTxt) || ValideringKlass.finnsVarde(storlekTxt) || ValideringKlass.finnsVarde(modellTxt) || ValideringKlass.finnsVarde(fargTxt) || ValideringKlass.finnsVarde(dekorationTxt) || ValideringKlass.finnsVarde(beskrivningTxt) || ValideringKlass.finnsVarde(ovrigtTxt))
+        //{}
             
         idb.insert(fraga);
                 
