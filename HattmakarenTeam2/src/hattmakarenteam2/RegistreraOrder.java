@@ -23,6 +23,7 @@ public class RegistreraOrder extends javax.swing.JFrame {
     public RegistreraOrder(InfDB idb) {
         initComponents();
         this.idb= idb;
+        System.out.println("test");
     }
 
     /**
