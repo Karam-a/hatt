@@ -228,7 +228,7 @@ private InfDB idb;
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistreraNyKund().setVisible(true);
+                
             }
         });
     }
