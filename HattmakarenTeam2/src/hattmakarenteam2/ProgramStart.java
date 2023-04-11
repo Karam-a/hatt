@@ -188,6 +188,8 @@ public class ProgramStart extends javax.swing.JFrame {
 
     private void materialBestBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_materialBestBtnActionPerformed
         // TODO add your handling code here:
+        new Materialbeställningslista(idb).setVisible(true);
+         this.dispose();
     }//GEN-LAST:event_materialBestBtnActionPerformed
 
     private void loggaInBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loggaInBtnActionPerformed
