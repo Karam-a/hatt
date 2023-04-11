@@ -237,8 +237,10 @@ public class RegisteraSpecialhatt extends javax.swing.JFrame {
         String fraga = "insert into specialHattar values('"+namn+"', '"+tyg+"', '"+storlek+"', '"+modell+"', '"+farg+"', '"+dekoration+"', '"+beskrivning+"', '"+ovrigt+"')";
                 
          
-        if (ValideringsKlass.värdeExisterar(namnTxt) || ValideringsKlass.värdeExisterar(tygTxt) || ValideringsKlass.värdeExisterar(storlekTxt) || ValideringsKlass.värdeExisterar(modellTxt) || ValideringsKlass.värdeExisterar(fargTxt) || ValideringsKlass.värdeExisterar(dekorationTxt) || ValideringsKlass.värdeExisterar(beskrivningTxt) || ValideringsKlass.värdeExisterar(ovrigtTxt))
-        {}
+        if (ValideringKlass.finnsVarde(namnTxt) || ValideringKlass.finnsVarde(tygTxt) || ValideringKlass.finnsVarde(storlekTxt) || ValideringKlass.finnsVarde(modellTxt) || ValideringKlass.finnsVarde(fargTxt) || ValideringKlass.finnsVarde(dekorationTxt) || ValideringKlass.finnsVarde(beskrivningTxt) || ValideringKlass.finnsVarde(ovrigtTxt))
+        {
+        
+        }
             
         idb.insert(fraga);
                 
