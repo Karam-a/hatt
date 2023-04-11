@@ -184,11 +184,12 @@ public class ProgramStart extends javax.swing.JFrame {
     }//GEN-LAST:event_kassaBtnActionPerformed
 
     private void regOrderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regOrderBtnActionPerformed
-       //jsjfdjfjsdjf
+        new RegOrder(idb).setVisible(true);
     }//GEN-LAST:event_regOrderBtnActionPerformed
 
     private void orderMenyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderMenyBtnActionPerformed
-        // TODO add your handling code here:
+        new Orderhantering(idb).setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_orderMenyBtnActionPerformed
 
     private void kundMenyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kundMenyBtnActionPerformed
