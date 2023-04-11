@@ -43,11 +43,11 @@
                           <Component id="orderMenyBtn" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="kundMenyBtn" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="materialBestBtn" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                              <Component id="getBestInfoBtn" alignment="1" min="-2" pref="225" max="-2" attributes="0"/>
-                              <Component id="getKundinfoBtn" alignment="0" min="-2" pref="233" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="jButtonBestallningar" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jButton1" alignment="0" pref="233" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="regSpecHattBtn" min="-2" max="-2" attributes="0"/>
+                          <Component id="regSpecHattBtn" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -76,12 +76,12 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="materialBestBtn" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="getKundinfoBtn" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="getBestInfoBtn" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+              <Component id="jButtonBestallningar" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="regSpecHattBtn" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="312" max="32767" attributes="0"/>
+              <EmptySpace pref="310" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -163,20 +163,20 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="loggaInBtnActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="getKundinfoBtn">
+    <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
         <Property name="text" type="java.lang.String" value="H&#xe4;mta kundinformation"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="getKundinfoBtnActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="getBestInfoBtn">
+    <Component class="javax.swing.JButton" name="jButtonBestallningar">
       <Properties>
         <Property name="text" type="java.lang.String" value="H&#xe4;mta best&#xe4;llningsinfo"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="getBestInfoBtnActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonBestallningarActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="regSpecHattBtn">

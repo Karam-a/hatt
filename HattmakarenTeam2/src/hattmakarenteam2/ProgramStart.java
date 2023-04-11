@@ -40,8 +40,8 @@ public class ProgramStart extends javax.swing.JFrame {
         kundMenyBtn = new javax.swing.JButton();
         materialBestBtn = new javax.swing.JButton();
         loggaInBtn = new javax.swing.JButton();
-        getKundinfoBtn = new javax.swing.JButton();
-        getBestInfoBtn = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButtonBestallningar = new javax.swing.JButton();
         regSpecHattBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -98,17 +98,17 @@ public class ProgramStart extends javax.swing.JFrame {
             }
         });
 
-        getKundinfoBtn.setText("Hämta kundinformation");
-        getKundinfoBtn.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("Hämta kundinformation");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                getKundinfoBtnActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
-        getBestInfoBtn.setText("Hämta beställningsinfo");
-        getBestInfoBtn.addActionListener(new java.awt.event.ActionListener() {
+        jButtonBestallningar.setText("Hämta beställningsinfo");
+        jButtonBestallningar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                getBestInfoBtnActionPerformed(evt);
+                jButtonBestallningarActionPerformed(evt);
             }
         });
 
@@ -141,9 +141,9 @@ public class ProgramStart extends javax.swing.JFrame {
                             .addComponent(orderMenyBtn)
                             .addComponent(kundMenyBtn)
                             .addComponent(materialBestBtn)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(getBestInfoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(getKundinfoBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jButtonBestallningar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE))
                             .addComponent(regSpecHattBtn))))
                 .addContainerGap(409, Short.MAX_VALUE))
         );
@@ -167,12 +167,12 @@ public class ProgramStart extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(materialBestBtn)
                 .addGap(18, 18, 18)
-                .addComponent(getKundinfoBtn)
-                .addGap(18, 18, 18)
-                .addComponent(getBestInfoBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1)
+                .addGap(26, 26, 26)
+                .addComponent(jButtonBestallningar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(regSpecHattBtn)
-                .addContainerGap(312, Short.MAX_VALUE))
+                .addContainerGap(310, Short.MAX_VALUE))
         );
 
         pack();
@@ -184,8 +184,7 @@ public class ProgramStart extends javax.swing.JFrame {
     }//GEN-LAST:event_kassaBtnActionPerformed
 
     private void regOrderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regOrderBtnActionPerformed
-        new RegOrder(idb).setVisible(true);
-        this.dispose();
+       //jsjfdjfjsdjf
     }//GEN-LAST:event_regOrderBtnActionPerformed
 
     private void orderMenyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderMenyBtnActionPerformed
@@ -209,19 +208,19 @@ public class ProgramStart extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_loggaInBtnActionPerformed
 
-    private void getKundinfoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getKundinfoBtnActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // hämta kundinfo
         HamtaKundInfo nyRuta= new HamtaKundInfo(idb);
         nyRuta.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_getKundinfoBtnActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void getBestInfoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getBestInfoBtnActionPerformed
-        // hämta beställningsinfo
-        HamtaBestallningInfo nyRuta= new HamtaBestallning(idb);
+    private void jButtonBestallningarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBestallningarActionPerformed
+        // öppna upp hamtaBestallningar
+        HamtaBestallningsInfo nyRuta = new HamtaBestallningsInfo(idb);
         nyRuta.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_getBestInfoBtnActionPerformed
+    }//GEN-LAST:event_jButtonBestallningarActionPerformed
 
     private void regSpecHattBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regSpecHattBtnActionPerformed
         new RegisteraSpecialhatt(idb).setVisible(true);
@@ -261,8 +260,8 @@ public class ProgramStart extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton getBestInfoBtn;
-    private javax.swing.JButton getKundinfoBtn;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonBestallningar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton kassaBtn;
