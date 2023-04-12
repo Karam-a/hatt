@@ -23,7 +23,7 @@ Document doc = new Document();
 try  
 {  
 //generate a PDF at the specified location  
-PdfWriter writer = PdfWriter.getInstance(doc, new FileOutputStream("C:\\Motivation.pdf"));  
+PdfWriter writer = PdfWriter.getInstance(doc, new FileOutputStream("C:\\Testfiles\\Motivation.pdf"));  
 System.out.println("PDF created.");  
 //opens the PDF  
 doc.open();  
