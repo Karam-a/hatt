@@ -240,11 +240,10 @@ public class RegisteraSpecialhatt extends javax.swing.JFrame {
         String status = HattStatusComboBox.getSelectedItem().toString();
         String fraga = "insert into specialhattar values(" + id + ",'" + namn + "','" + tyg + "','" + storlek + "','" + modell + "','" + farg + "','" + dekoration + "','" + beskrivning +"','" + ovrigt + "','" + status + "');";
                 
-          JOptionPane.showMessageDialog(null, fraga);
-
        // if (ValideringKlass.finnsVarde(namnTxt) || ValideringKlass.finnsVarde(tygTxt) || ValideringKlass.finnsVarde(storlekTxt) || ValideringKlass.finnsVarde(modellTxt) || ValideringKlass.finnsVarde(fargTxt) || ValideringKlass.finnsVarde(dekorationTxt) || ValideringKlass.finnsVarde(beskrivningTxt) || ValideringKlass.finnsVarde(ovrigtTxt))
         //{}
             
+        // String id = idb.getAutoIncrement(specialHattar, SpecialhattID);
         idb.insert(fraga);
                 
         JOptionPane.showMessageDialog(null, "Ny specialhatt har registrerats!");        
