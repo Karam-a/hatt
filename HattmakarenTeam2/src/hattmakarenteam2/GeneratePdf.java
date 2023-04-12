@@ -22,7 +22,7 @@ public static void main(String args[])
 Document doc = new Document();  
 try  
 {  
-//generate a PDF at the specified location  
+//generate a PDF at the specified location 
 PdfWriter writer = PdfWriter.getInstance(doc, new FileOutputStream("C:\\Testfiles\\Motivation.pdf"));  
 System.out.println("PDF created.");  
 //opens the PDF  
