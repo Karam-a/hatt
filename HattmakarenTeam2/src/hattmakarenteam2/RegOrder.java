@@ -21,6 +21,7 @@ public class RegOrder extends javax.swing.JFrame {
         this.idb= idb;
         initComponents();
         hamtaHatt ();
+        hamtaKund ();
         
     }
 
@@ -46,6 +47,8 @@ public class RegOrder extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        OrderDatumTxt.setText("20XX-XX-XX");
+
         jLabel1.setText("Hatt:");
 
         NyOrderLabel.setFont(new java.awt.Font("Hiragino Maru Gothic ProN", 1, 24)); // NOI18N
@@ -58,7 +61,7 @@ public class RegOrder extends javax.swing.JFrame {
         OStatusLabel.setText("Order Status:");
 
         OStatusComboBox.setFont(new java.awt.Font("Hiragino Maru Gothic ProN", 0, 13)); // NOI18N
-        OStatusComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ej påbörjad" }));
+        OStatusComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ej påbörjad", "påbörjad", "avslutad" }));
 
         ODatumLabel.setFont(new java.awt.Font("Hiragino Maru Gothic ProN", 0, 13)); // NOI18N
         ODatumLabel.setText("Order Datum: ");
@@ -193,7 +196,7 @@ public class RegOrder extends javax.swing.JFrame {
     
    private void hamtaKund () 
    {
-      String hamtakund = "Select namn from Kund"; 
+      String hamtakund = "Select kundNamn from Kund"; 
       
                   ArrayList<String> Kunder;
 
