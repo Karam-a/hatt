@@ -138,12 +138,12 @@ public class RegOrder extends javax.swing.JFrame {
         // TODO add your handling code here:
         try{
             idb=new InfDB("hattProjektet", "3306","hattProjektet","hattkey");
-
+            String OrderID = idb.getAutoIncrement("ordrar", "orderID") ;
             String kundID = boxKund.getSelectedItem().toString();
             String hattID = comboHatt.getSelectedItem().toString();
             String orderStatus = OStatusComboBox.getSelectedItem().toString();
             String orderDatum = OrderDatumTxt.getText();         
-            String fraga = "insert into ordrar values(" + kundID + "," + hattID + ",'" + orderStatus + "','" + orderDatum + "');";
+            String fraga = "insert into ordrar values(" +OrderID+"," + kundID + "," + hattID + ",'" + orderStatus + "','" + orderDatum + "');";
 
             idb.insert(fraga);
             
@@ -193,9 +193,26 @@ public class RegOrder extends javax.swing.JFrame {
     
    private void hamtaKund () 
    {
-      String fraga = "Select namn from Kund"; 
+      String hamtakund = "Select namn from Kund"; 
       
-       
+                  ArrayList<String> Kunder;
+
+       try {
+             
+                 Kunder = idb.fetchColumn(hamtakund);
+                
+           for (String enKund : Kunder){
+                                 
+                     boxKund.addItem(enKund);
+                             }
+
+
+            }
+        
+        
+        catch (Exception e) {
+            
+        }
        
    }
     
