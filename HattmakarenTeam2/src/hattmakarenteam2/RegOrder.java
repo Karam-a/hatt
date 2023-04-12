@@ -21,6 +21,7 @@ public class RegOrder extends javax.swing.JFrame {
         this.idb= idb;
         initComponents();
         hamtaHatt ();
+        hamtaKund ();
         
     }
 
@@ -46,6 +47,8 @@ public class RegOrder extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        OrderDatumTxt.setText("20XX-XX-XX");
+
         jLabel1.setText("Hatt:");
 
         NyOrderLabel.setFont(new java.awt.Font("Hiragino Maru Gothic ProN", 1, 24)); // NOI18N
@@ -58,7 +61,7 @@ public class RegOrder extends javax.swing.JFrame {
         OStatusLabel.setText("Order Status:");
 
         OStatusComboBox.setFont(new java.awt.Font("Hiragino Maru Gothic ProN", 0, 13)); // NOI18N
-        OStatusComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ej påbörjad" }));
+        OStatusComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ej påbörjad", "påbörjad", "avslutad" }));
 
         ODatumLabel.setFont(new java.awt.Font("Hiragino Maru Gothic ProN", 0, 13)); // NOI18N
         ODatumLabel.setText("Order Datum: ");
@@ -138,12 +141,12 @@ public class RegOrder extends javax.swing.JFrame {
         // TODO add your handling code here:
         try{
             idb=new InfDB("hattProjektet", "3306","hattProjektet","hattkey");
-
+            String OrderID = idb.getAutoIncrement("ordrar", "orderID") ;
             String kundID = boxKund.getSelectedItem().toString();
             String hattID = comboHatt.getSelectedItem().toString();
             String orderStatus = OStatusComboBox.getSelectedItem().toString();
             String orderDatum = OrderDatumTxt.getText();         
-            String fraga = "insert into ordrar values(" + kundID + "," + hattID + ",'" + orderStatus + "','" + orderDatum + "');";
+            String fraga = "insert into ordrar values(" +OrderID+"," + kundID + "," + hattID + ",'" + orderStatus + "','" + orderDatum + "');";
 
             idb.insert(fraga);
             
@@ -193,9 +196,26 @@ public class RegOrder extends javax.swing.JFrame {
     
    private void hamtaKund () 
    {
-      String fraga = "Select namn from Kund"; 
+      String hamtakund = "Select kundNamn from Kund"; 
       
-       
+                  ArrayList<String> Kunder;
+
+       try {
+             
+                 Kunder = idb.fetchColumn(hamtakund);
+                
+           for (String enKund : Kunder){
+                                 
+                     boxKund.addItem(enKund);
+                             }
+
+
+            }
+        
+        
+        catch (Exception e) {
+            
+        }
        
    }
     
