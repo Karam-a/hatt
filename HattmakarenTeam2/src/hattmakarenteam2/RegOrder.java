@@ -4,6 +4,8 @@
  */
 package hattmakarenteam2;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
@@ -34,7 +36,9 @@ public class RegOrder extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        OrderDatumTxt = new javax.swing.JTextField();
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
         comboHatt = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         boxKund = new javax.swing.JComboBox<>();
@@ -42,12 +46,10 @@ public class RegOrder extends javax.swing.JFrame {
         KIDLabel = new javax.swing.JLabel();
         OStatusLabel = new javax.swing.JLabel();
         OStatusComboBox = new javax.swing.JComboBox<>();
-        ODatumLabel = new javax.swing.JLabel();
         SkapaOrderBtn = new javax.swing.JButton();
+        SkapaHattBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        OrderDatumTxt.setText("20XX-XX-XX");
 
         jLabel1.setText("Hatt:");
 
@@ -63,9 +65,6 @@ public class RegOrder extends javax.swing.JFrame {
         OStatusComboBox.setFont(new java.awt.Font("Hiragino Maru Gothic ProN", 0, 13)); // NOI18N
         OStatusComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ej påbörjad", "påbörjad", "avslutad" }));
 
-        ODatumLabel.setFont(new java.awt.Font("Hiragino Maru Gothic ProN", 0, 13)); // NOI18N
-        ODatumLabel.setText("Order Datum: ");
-
         SkapaOrderBtn.setFont(new java.awt.Font("Hiragino Maru Gothic ProN", 0, 18)); // NOI18N
         SkapaOrderBtn.setText("Skapa Order");
         SkapaOrderBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -74,39 +73,43 @@ public class RegOrder extends javax.swing.JFrame {
             }
         });
 
+        SkapaHattBtn.setFont(new java.awt.Font("Hiragino Maru Gothic ProN", 0, 18)); // NOI18N
+        SkapaHattBtn.setText("Skapa ny Hatt");
+        SkapaHattBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SkapaHattBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(141, 141, 141)
-                            .addComponent(NyOrderLabel))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(40, 40, 40)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(KIDLabel)
-                                .addComponent(jLabel1))
-                            .addGap(26, 26, 26)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(comboHatt, 0, 168, Short.MAX_VALUE)
-                                .addComponent(boxKund, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(OStatusLabel)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(OStatusComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGap(34, 34, 34)
-                            .addComponent(ODatumLabel)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(OrderDatumTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(122, 122, 122)
-                        .addComponent(SkapaOrderBtn)))
-                .addContainerGap(104, Short.MAX_VALUE))
+                        .addGap(141, 141, 141)
+                        .addComponent(NyOrderLabel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(SkapaOrderBtn)
+                        .addGap(184, 184, 184)
+                        .addComponent(SkapaHattBtn))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(KIDLabel)
+                            .addComponent(jLabel1))
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(comboHatt, 0, 168, Short.MAX_VALUE)
+                            .addComponent(boxKund, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(OStatusLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(OStatusComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(276, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,13 +128,15 @@ public class RegOrder extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(OStatusLabel)
                     .addComponent(OStatusComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(OrderDatumTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ODatumLabel))
-                .addGap(35, 35, 35)
-                .addComponent(SkapaOrderBtn)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(SkapaOrderBtn)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                        .addComponent(SkapaHattBtn)
+                        .addGap(193, 193, 193))))
         );
 
         pack();
@@ -145,16 +150,16 @@ public class RegOrder extends javax.swing.JFrame {
             String kundID = boxKund.getSelectedItem().toString();
             String hattID = comboHatt.getSelectedItem().toString();
             String orderStatus = OStatusComboBox.getSelectedItem().toString();
-            String orderDatum = OrderDatumTxt.getText();         
-            String fraga = "insert into ordrar values(" +OrderID+"," + kundID + "," + hattID + ",'" + orderStatus + "','" + orderDatum + "');";
+            String orderDatum = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            String fraga = "insert into ordrar values(" +OrderID+"," + kundID + "," + hattID + ", ('" + orderStatus + "'),'" + orderDatum + "');";
 
-            idb.insert(fraga);
+           // idb.insert(fraga);
             
-            //  JOptionPane.showMessageDialog(null, fraga);
+             JOptionPane.showMessageDialog(null, fraga);
             
             //if (ValideringKlass.finnsVarde(KIDTxt) || ValideringKlass.finnsVarde(IDHatt1Txt) || ValideringKlass.finnsVarde(IDHatt2Txt) || ValideringKlass.finnsVarde(IDHatt3Txt) || ValideringKlass.finnsVarde(OrderDatumTxt) || ValideringKlass.finnsVarde(OStatusComboBox))
             //{}
-
+            
 
             JOptionPane.showMessageDialog(null, "Ny specialhatt har registrerats!");
 
@@ -164,6 +169,11 @@ public class RegOrder extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_SkapaOrderBtnActionPerformed
+
+    private void SkapaHattBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SkapaHattBtnActionPerformed
+  nyttFonster();
+
+    }//GEN-LAST:event_SkapaHattBtnActionPerformed
 
     
     private void hamtaHatt () {
@@ -222,6 +232,14 @@ public class RegOrder extends javax.swing.JFrame {
     
     
     
+    private void nyttFonster()
+    {
+      new RegisteraSpecialhatt(idb).setVisible(true);
+
+    }
+  
+    
+    
     
     /**
      * @param args the command line arguments
@@ -231,12 +249,14 @@ public class RegOrder extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel KIDLabel;
     private javax.swing.JLabel NyOrderLabel;
-    private javax.swing.JLabel ODatumLabel;
     private javax.swing.JComboBox<String> OStatusComboBox;
     private javax.swing.JLabel OStatusLabel;
-    private javax.swing.JTextField OrderDatumTxt;
+    private javax.swing.JButton SkapaHattBtn;
     private javax.swing.JButton SkapaOrderBtn;
     private javax.swing.JComboBox<String> boxKund;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.JComboBox<String> comboHatt;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables

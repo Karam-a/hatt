@@ -57,6 +57,11 @@ private InfDB idb;
 
         hanteraOrderBtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         hanteraOrderBtn.setText("Hantera vald order");
+        hanteraOrderBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hanteraOrderBtnActionPerformed(evt);
+            }
+        });
 
         avslutTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -164,6 +169,10 @@ private InfDB idb;
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void hanteraOrderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hanteraOrderBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_hanteraOrderBtnActionPerformed
 
   private void hamtaData(){
       try{
