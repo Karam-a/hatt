@@ -158,12 +158,12 @@ public class RedigeraKunduppgifter extends javax.swing.JFrame {
     private void btnSparaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaActionPerformed
         // TODO add your handling code here:
         
-        String hamtakund = "Select Namn from Kund"; 
-      
-                  ArrayList<String> Kunder;
+       
 
        try {
              
+               String hamtakund = "Select Namn from Kund"; 
+                 ArrayList<String> Kunder;
                  Kunder = idb.fetchColumn(hamtakund);
                 
            for (String enKund : Kunder){
@@ -190,9 +190,14 @@ public class RedigeraKunduppgifter extends javax.swing.JFrame {
               
               
               
-          }catch(InfException e){
-            JOptionPane.showMessageDialog(null, "Ändringen misslyckades, försök igen.");
-            System.out.println("Internt felmeddeland" + ex.getMessage());
+          }catch(){
+              
+          }
+
+
+           //(InfException e){
+            //JOptionPane.showMessageDialog(null, "Ändringen misslyckades, försök igen.");
+           // System.out.println("Internt felmeddeland" + ex.getMessage());
             
           
         
