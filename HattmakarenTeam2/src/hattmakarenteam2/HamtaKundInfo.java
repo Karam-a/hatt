@@ -39,7 +39,7 @@ private InfDB idb;
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextFieldKundID = new javax.swing.JTextField();
+        jTextFieldTelefon = new javax.swing.JTextField();
         okKnapp = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableKundData = new javax.swing.JTable();
@@ -48,11 +48,11 @@ private InfDB idb;
 
         jLabel1.setText("Hämta kunddata");
 
-        jLabel2.setText("Kund ID: ");
+        jLabel2.setText("Tel.nr");
 
-        jTextFieldKundID.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldTelefon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldKundIDActionPerformed(evt);
+                jTextFieldTelefonActionPerformed(evt);
             }
         });
 
@@ -89,7 +89,7 @@ private InfDB idb;
                         .addContainerGap()
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextFieldKundID, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextFieldTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(73, 73, 73)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,7 +105,7 @@ private InfDB idb;
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextFieldKundID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(okKnapp)
                 .addGap(18, 18, 18)
@@ -116,24 +116,24 @@ private InfDB idb;
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldKundIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldKundIDActionPerformed
+    private void jTextFieldTelefonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTelefonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldKundIDActionPerformed
+    }//GEN-LAST:event_jTextFieldTelefonActionPerformed
 
     private void okKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okKnappActionPerformed
         // TODO add your handling code here:
         //valideringen:
         
-        if(ValideringKlass.finnsVarde(jTextFieldKundID)){
+        if(ValideringKlass.finnsVarde(jTextFieldTelefon)){
             
             try {
         
         //Inmatning av kund id som man vill ha data från     
-        String kundID = jTextFieldKundID.getText();
+        String telefonNr = jTextFieldTelefon.getText();
         //Omvandla inmatning som sträng till en int för att hämta ut ID:et från databasen.
-        int intID = Integer.parseInt(kundID);
+        int intID = Integer.parseInt(telefonNr);
         
-        String sqlFraga = "Select kundID, kundNamn, adress, telefonNummer, hedersKund, epost from Kund where kundID = " +  intID + "";
+        String sqlFraga = "Select kundID, kundNamn, adress, telefonNummer, hedersKund, epost from Kund where telefonNummer = " +  intID + "";
         
         DefaultTableModel dTM = (DefaultTableModel) jTableKundData.getModel();
         dTM.setRowCount(0);
@@ -214,7 +214,7 @@ private InfDB idb;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableKundData;
-    private javax.swing.JTextField jTextFieldKundID;
+    private javax.swing.JTextField jTextFieldTelefon;
     private javax.swing.JButton okKnapp;
     // End of variables declaration//GEN-END:variables
 }

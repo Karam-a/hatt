@@ -33,7 +33,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jTextFieldKundID" min="-2" pref="71" max="-2" attributes="0"/>
+                      <Component id="jTextFieldTelefon" min="-2" pref="71" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
@@ -55,7 +55,7 @@
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldKundID" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextFieldTelefon" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="okKnapp" min="-2" max="-2" attributes="0"/>
@@ -74,12 +74,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Kund ID: "/>
+        <Property name="text" type="java.lang.String" value="Tel.nr"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldKundID">
+    <Component class="javax.swing.JTextField" name="jTextFieldTelefon">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldKundIDActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldTelefonActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="okKnapp">

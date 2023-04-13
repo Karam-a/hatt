@@ -22,6 +22,7 @@ public class FraktsedelFöljdedelUtskrift extends javax.swing.JFrame {
      */
     public FraktsedelFöljdedelUtskrift() {
         initComponents();
+        
     }
 
     /**
@@ -56,6 +57,12 @@ public class FraktsedelFöljdedelUtskrift extends javax.swing.JFrame {
 
         jLabel1.setText("Skapa Fraktsedel/Följdsedel");
 
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
         jButton2.setText("Skriv ut som pdf");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,6 +91,11 @@ public class FraktsedelFöljdedelUtskrift extends javax.swing.JFrame {
         jLabel7.setText("Beskrivning");
 
         jButton3.setText("Visa Sedel");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         Resultat.setColumns(20);
         Resultat.setRows(5);
@@ -100,12 +112,9 @@ public class FraktsedelFöljdedelUtskrift extends javax.swing.JFrame {
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(124, 124, 124)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton3)
-                        .addGap(58, 58, 58))))
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3))
+                .addGap(38, 38, 38))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -198,7 +207,8 @@ public class FraktsedelFöljdedelUtskrift extends javax.swing.JFrame {
         String vikt = Vikt.getText();
         String porto = Porto.getText();
         String beskrivning = Beskrivning.getText();
-       Resultat.setText( avsandare+mottagare+vikt+porto+beskrivning);
+      
+        Resultat.setText( "Avsändare:" +avsandare+"\n"+"Mottagare:" +mottagare+"\n"+"Vikt:"+vikt+"\n"+"Porto:"+porto+"\n"+"Beskrivning:"+beskrivning);
         String utskrift = Resultat.getText();
 try  
 {  
@@ -208,7 +218,7 @@ System.out.println("PDF created.");
 //opens the PDF  
 doc.open();  
 //adds paragraph to the PDF file  
-doc.add(new Paragraph(avsandare+mottagare+vikt+porto+beskrivning));   
+doc.add(new Paragraph(utskrift));   
 //close the PDF file  
 doc.close();  
 //closes the writer  
@@ -223,6 +233,22 @@ catch (FileNotFoundException e)
 e.printStackTrace();  
 }  
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        //visar hattarna och de man skrivit in i textboxen till höger. 
+        String sqlsvar = "";
+        String avsandare = Avsandare.getText();
+        String mottagare = Mottagare.getText();
+        String vikt = Vikt.getText();
+        String porto = Porto.getText();
+        String beskrivning = Beskrivning.getText();
+        Resultat.setText( "Avsändare:" +avsandare+"\n"+"Mottagare:" +mottagare+"\n"+"Vikt:"+vikt+"\n"+"Porto:"+porto+"\n"+"Beskrivning:"+beskrivning);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -248,6 +248,7 @@ public class ProgramStart extends javax.swing.JFrame {
     }//GEN-LAST:event_materialBestBtnActionPerformed
 
     private void loggaInBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loggaInBtnActionPerformed
+<<<<<<< HEAD
 
    String Namn = NamnTXT.getText();
    String inskrivetLosen = losenordTXT.getText();
@@ -271,6 +272,10 @@ public class ProgramStart extends javax.swing.JFrame {
 
 
 
+=======
+        // TODO add your handling code here:
+      
+>>>>>>> 43992d7be0d1e4818c64120ef6be2808454c4e42
     }//GEN-LAST:event_loggaInBtnActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
