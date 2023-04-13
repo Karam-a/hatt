@@ -4,12 +4,17 @@
  */
 package hattmakarenteam2;
 
+import javax.swing.JOptionPane;
+import oru.inf.InfDB;
+import oru.inf.InfException;
+
 /**
  *
  * @author axelbrave
  */
 public class AdminHantering extends javax.swing.JFrame {
 
+    private InfDB idb;
     /**
      * Creates new form AdminHantering
      */
@@ -45,24 +50,6 @@ public class AdminHantering extends javax.swing.JFrame {
         losenLabel.setText("Lösenord:");
 
         repLosenLabel.setText("Repetera lösenord: ");
-
-        anvNamnTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                anvNamnTxtActionPerformed(evt);
-            }
-        });
-
-        losenTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                losenTxtActionPerformed(evt);
-            }
-        });
-
-        repLosenTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                repLosenTxtActionPerformed(evt);
-            }
-        });
 
         skapaAdminBtn.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         skapaAdminBtn.setText("Skapa admin");
@@ -121,56 +108,38 @@ public class AdminHantering extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void anvNamnTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anvNamnTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_anvNamnTxtActionPerformed
-
-    private void losenTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_losenTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_losenTxtActionPerformed
-
-    private void repLosenTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repLosenTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_repLosenTxtActionPerformed
-
     private void skapaAdminBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skapaAdminBtnActionPerformed
-        // TODO add your handling code here:
+       try {
+        String namn = anvNamnTxt.getText();
+        String losen = losenTxt.getText();
+        String repLosen = repLosenTxt.getText();
+        
+        
+        if (losen.equals(repLosen)){
+        String fraga = "insert into admin values('" + namn + "','" + losen +"');";
+        
+        idb.insert(fraga);
+        
+        JOptionPane.showMessageDialog(null, "Ny admin har registrerats!");
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Lösenord överensstämmer inte!");
+        }
+        
+        }
+        catch (InfException ettUndantag){
+            JOptionPane.showMessageDialog(null, "Något gick fel!");
+        }
+        
+        
+        
+        
     }//GEN-LAST:event_skapaAdminBtnActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdminHantering.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdminHantering.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdminHantering.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdminHantering.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AdminHantering().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel anvNamnLabel;

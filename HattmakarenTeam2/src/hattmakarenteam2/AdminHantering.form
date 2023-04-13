@@ -103,19 +103,10 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="anvNamnTxt">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="anvNamnTxtActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="losenTxt">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="losenTxtActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="repLosenTxt">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="repLosenTxtActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="skapaAdminBtn">
       <Properties>
