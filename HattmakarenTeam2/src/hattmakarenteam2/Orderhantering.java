@@ -1,9 +1,10 @@
 package hattmakarenteam2;
-
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class Orderhantering extends javax.swing.JFrame {
 private DefaultTableModel ejPabHattMod;
@@ -12,6 +13,8 @@ private DefaultTableModel avslutadHattMod;
 private ArrayList<String> ejPabHatt;
 private ArrayList<String> pabHatt;
 private ArrayList<String> avslutadHatt;
+private int valdOrderID;
+Object valtObjekt;
 private InfDB idb;
 
     public Orderhantering(InfDB idb) {
@@ -73,8 +76,19 @@ private InfDB idb;
             new String [] {
                 "Avslutade ordrar"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        avslutTable.setColumnSelectionAllowed(true);
+        avslutTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(avslutTable);
+        avslutTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         if (avslutTable.getColumnModel().getColumnCount() > 0) {
             avslutTable.getColumnModel().getColumn(0).setResizable(false);
         }
@@ -89,8 +103,19 @@ private InfDB idb;
             new String [] {
                 "Ej påbörjade ordrar"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        ejPabTable.setColumnSelectionAllowed(true);
+        ejPabTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(ejPabTable);
+        ejPabTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         if (ejPabTable.getColumnModel().getColumnCount() > 0) {
             ejPabTable.getColumnModel().getColumn(0).setResizable(false);
         }
@@ -105,8 +130,19 @@ private InfDB idb;
             new String [] {
                 "Påbörjade ordrar"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        pabTable.setColumnSelectionAllowed(true);
+        pabTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane3.setViewportView(pabTable);
+        pabTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         if (pabTable.getColumnModel().getColumnCount() > 0) {
             pabTable.getColumnModel().getColumn(0).setResizable(false);
         }
@@ -157,7 +193,7 @@ private InfDB idb;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(54, 56, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
@@ -171,7 +207,35 @@ private InfDB idb;
     }// </editor-fold>//GEN-END:initComponents
 
     private void hanteraOrderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hanteraOrderBtnActionPerformed
-        // TODO add your handling code here:
+     JTable valdTable;
+     int radIndex;
+     
+     if(ejPabTable.isFocusOwner() == true){
+        radIndex = ejPabTable.getSelectedRow();
+        valtObjekt = ejPabTable.getValueAt(radIndex,0);
+        valdTable = ejPabTable;
+        System.out.println(valtObjekt);
+     }
+     else if(pabTable.isFocusOwner() == true){
+         radIndex = pabTable.getSelectedRow();
+         valtObjekt = pabTable.getValueAt(radIndex,0);
+         valdTable = pabTable;
+     }
+     else if(avslutTable.isFocusOwner() == true){
+         radIndex = avslutTable.getSelectedRow();
+         valtObjekt = pabTable.getValueAt(radIndex, 0);
+         valdTable = avslutTable;
+     }
+     
+     try{
+        valdOrderID = Integer.parseInt(idb.fetchSingle("SELECT orderID FROM ordrar WHERE kundID IN(SELECT kundID WHERE kundNamn=" +"'"+ valtObjekt.toString() + "'"+ ")" ));
+        new HanteraEnskildOrder(idb).setVisible(true);
+     }
+     catch(InfException e){
+     JOptionPane.showMessageDialog(null, "Gick ej att hämta innehållet i databasen. Vänligen försök igen!");
+     }
+       
+        
     }//GEN-LAST:event_hanteraOrderBtnActionPerformed
 
   private void hamtaData(){
@@ -181,12 +245,12 @@ private InfDB idb;
   avslutadHatt = idb.fetchColumn("Select kundNamn from kund where kundID in(Select kundID from ordrar where orderStatus='Avslutad')");
   }
       catch(InfException e){
-            System.out.println("Något gick fel!");
+            System.out.println("Gick ej att hämta innehållet i databasen.");
         }
   }
       
     private void fyllTabeller(){
-    hamtaData();
+        hamtaData();
     ejPabHattMod = (DefaultTableModel) ejPabTable.getModel();
     pabHattMod = (DefaultTableModel) pabTable.getModel();
     avslutadHattMod = (DefaultTableModel) avslutTable.getModel();
