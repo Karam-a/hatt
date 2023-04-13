@@ -220,7 +220,7 @@ try
 {  
  // kod ifall  ja behöver skapa en map File f = new File("C:\\Testfiles");
 //generate a PDF at the specified location  
-    String filePath = System.getProperty("user.home") + "\\Downloads\\example.pdf";
+    String filePath = System.getProperty("user.home") + "\\Downloads\\HattFraktSedel.pdf";
 PdfWriter writer = PdfWriter.getInstance(doc, new FileOutputStream(filePath));  
 //"C:\\Testfiles\\Motivation.pdf"
 System.out.println("PDF created.");  
@@ -264,8 +264,25 @@ e.printStackTrace();
         //knappen som söker på telefonnummer för att hitta alla hattar som en kund beställt, sen ska den här koden plussa ihop summorna för att få en
         //totalsumma. 
         String nummer = Nummer.getText();
-        
-       
+        String fraga = "Select kundID from kund where telefonNummer ="+ nummer+"";
+        String fraga2= "Select * from ordrar where kundID ="+fraga+" ";
+        //ej klar
+       //strängen som ja sparar totalpriset i
+      String totalprisQuery = "SELECT SUM(pris) AS totalprice FROM kop WHERE kopID = " + fraga;
+double totalpris = 0;
+
+try (Statement stmt = idb.createStatement()) {
+    ResultSet rs = stmt.executeQuery(totalprisQuery);
+
+    if (rs.next()) {
+        totalpris = rs.getDouble("totalprice");
+    }
+} catch (SQLException ex) {
+    ex.printStackTrace();
+}
+
+totalpris *= 1.25; // multiply by 1.25
+      
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
