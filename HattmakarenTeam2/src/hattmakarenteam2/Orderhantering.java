@@ -207,28 +207,34 @@ private InfDB idb;
     }// </editor-fold>//GEN-END:initComponents
 
     private void hanteraOrderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hanteraOrderBtnActionPerformed
+     //instansiering av valdTable samt RadIndex (Position på ett objekt i en table)
      JTable valdTable;
      int radIndex;
      
-     if(ejPabTable.isFocusOwner() == true){
+     //om ett objekt i en table är valt
+     if(ejPabTable.isFocusOwner()){
+         //ange radIndex som värdet på objektets position i tabellen
         radIndex = ejPabTable.getSelectedRow();
+        //anger valtObjekt som [Tabellnamn] och hämtar värdet på den valda positionen. column är angivet som 0 då vi enbart har en kolumn i varje tabell.
         valtObjekt = ejPabTable.getValueAt(radIndex,0);
+        //anger valdTable till namnet på den valda tabellen
         valdTable = ejPabTable;
-        System.out.println(valtObjekt);
      }
-     else if(pabTable.isFocusOwner() == true){
+     else if(pabTable.isFocusOwner()){
          radIndex = pabTable.getSelectedRow();
          valtObjekt = pabTable.getValueAt(radIndex,0);
          valdTable = pabTable;
      }
-     else if(avslutTable.isFocusOwner() == true){
+     else if(avslutTable.isFocusOwner()){
          radIndex = avslutTable.getSelectedRow();
          valtObjekt = pabTable.getValueAt(radIndex, 0);
          valdTable = avslutTable;
      }
      
      try{
+         //hämtar ut ID på det kundnamn som är valt. Sätter även det valda objektets värde till en sträng för att kunna hitta i databasen.
         valdOrderID = Integer.parseInt(idb.fetchSingle("SELECT orderID FROM ordrar WHERE kundID IN(SELECT kundID WHERE kundNamn=" +"'"+ valtObjekt.toString() + "'"+ ")" ));
+        //öppnar orderhanteringsfönstret för den valda ordern. obs att det är långt ifrån klart dock. 
         new HanteraEnskildOrder(idb).setVisible(true);
      }
      catch(InfException e){
