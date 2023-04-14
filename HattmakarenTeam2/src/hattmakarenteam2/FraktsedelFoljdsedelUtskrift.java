@@ -16,12 +16,12 @@ import java.io.FileOutputStream;
  *
  * @author alexm
  */
-public class FraktsedelFöljdedelUtskrift extends javax.swing.JFrame {
+public class FraktsedelFoljdsedelUtskrift extends javax.swing.JFrame {
 
     /**
      * Creates new form FraktsedelFöljdedelUtskrift
      */
-    public FraktsedelFöljdedelUtskrift() {
+    public FraktsedelFoljdsedelUtskrift() {
         initComponents();
         
     }
@@ -302,20 +302,21 @@ totalpris *= 1.25; // multiply by 1.25
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FraktsedelFöljdedelUtskrift.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FraktsedelFoljdsedelUtskrift.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FraktsedelFöljdedelUtskrift.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FraktsedelFoljdsedelUtskrift.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FraktsedelFöljdedelUtskrift.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FraktsedelFoljdsedelUtskrift.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FraktsedelFöljdedelUtskrift.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FraktsedelFoljdsedelUtskrift.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FraktsedelFöljdedelUtskrift().setVisible(true);
+                new FraktsedelFoljdsedelUtskrift().setVisible(true);
             }
         });
     }
