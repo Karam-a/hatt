@@ -14,7 +14,7 @@ import java.io.FileOutputStream;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
-
+import java.sql.Statement;//kanske inte behövs
 /**
  *
  * @author alexm
@@ -309,7 +309,7 @@ totalpris *= 1.25; // multiply by 1.25
         }
         catch (Exception e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Nått gick fel");
+            JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
