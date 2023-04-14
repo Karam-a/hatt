@@ -8,6 +8,7 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
@@ -15,13 +16,14 @@ import java.io.FileOutputStream;
  *
  * @author alexm
  */
-public class FraktsedelFöljdedelUtskrift extends javax.swing.JFrame {
+public class FraktsedelFoljdsedelUtskrift extends javax.swing.JFrame {
 
     /**
      * Creates new form FraktsedelFöljdedelUtskrift
      */
-    public FraktsedelFöljdedelUtskrift() {
+    public FraktsedelFoljdsedelUtskrift() {
         initComponents();
+        
     }
 
     /**
@@ -34,7 +36,7 @@ public class FraktsedelFöljdedelUtskrift extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        Nummer = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         Avsandare = new javax.swing.JTextField();
@@ -56,6 +58,12 @@ public class FraktsedelFöljdedelUtskrift extends javax.swing.JFrame {
 
         jLabel1.setText("Skapa Fraktsedel/Följdsedel");
 
+        Nummer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NummerActionPerformed(evt);
+            }
+        });
+
         jButton2.setText("Skriv ut som pdf");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,7 +71,7 @@ public class FraktsedelFöljdedelUtskrift extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("KundID");
+        jLabel2.setText("Sök på Telefonnummer");
 
         Avsandare.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,6 +84,11 @@ public class FraktsedelFöljdedelUtskrift extends javax.swing.JFrame {
         jLabel4.setText("Mottagare");
 
         jButton1.setText("Add hatt");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Vikt");
 
@@ -83,7 +96,12 @@ public class FraktsedelFöljdedelUtskrift extends javax.swing.JFrame {
 
         jLabel7.setText("Beskrivning");
 
-        jButton3.setText("Visa Sedel");
+        jButton3.setText("Sedel Preview");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         Resultat.setColumns(20);
         Resultat.setRows(5);
@@ -100,12 +118,9 @@ public class FraktsedelFöljdedelUtskrift extends javax.swing.JFrame {
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(124, 124, 124)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton3)
-                        .addGap(58, 58, 58))))
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3))
+                .addGap(38, 38, 38))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -125,13 +140,13 @@ public class FraktsedelFöljdedelUtskrift extends javax.swing.JFrame {
                             .addComponent(Vikt, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Mottagare, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Avsandare, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(Nummer, javax.swing.GroupLayout.Alignment.LEADING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel2))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -143,7 +158,7 @@ public class FraktsedelFöljdedelUtskrift extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Nummer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(5, 5, 5)
                 .addComponent(jButton1)
@@ -198,17 +213,21 @@ public class FraktsedelFöljdedelUtskrift extends javax.swing.JFrame {
         String vikt = Vikt.getText();
         String porto = Porto.getText();
         String beskrivning = Beskrivning.getText();
-       Resultat.setText( avsandare+mottagare+vikt+porto+beskrivning);
+      
+        Resultat.setText( "Avsändare:" +avsandare+"\n"+"Mottagare:" +mottagare+"\n"+"Vikt:"+vikt+"\n"+"Porto:"+porto+"\n"+"Beskrivning:"+beskrivning);
         String utskrift = Resultat.getText();
 try  
 {  
+ // kod ifall  ja behöver skapa en map File f = new File("C:\\Testfiles");
 //generate a PDF at the specified location  
-PdfWriter writer = PdfWriter.getInstance(doc, new FileOutputStream("C:\\Testfiles\\Motivation.pdf"));  
+    String filePath = System.getProperty("user.home") + "\\Downloads\\HattFraktSedel.pdf";
+PdfWriter writer = PdfWriter.getInstance(doc, new FileOutputStream(filePath));  
+//"C:\\Testfiles\\Motivation.pdf"
 System.out.println("PDF created.");  
 //opens the PDF  
 doc.open();  
 //adds paragraph to the PDF file  
-doc.add(new Paragraph(avsandare+mottagare+vikt+porto+beskrivning));   
+doc.add(new Paragraph(utskrift));   
 //close the PDF file  
 doc.close();  
 //closes the writer  
@@ -223,6 +242,48 @@ catch (FileNotFoundException e)
 e.printStackTrace();  
 }  
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void NummerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NummerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NummerActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        //visar hattarna och de man skrivit in i textboxen till höger. 
+        String sqlsvar = "";
+        String avsandare = Avsandare.getText();
+        String mottagare = Mottagare.getText();
+        String vikt = Vikt.getText();
+        String porto = Porto.getText();
+        String beskrivning = Beskrivning.getText();
+        Resultat.setText( "Avsändare:" +avsandare+"\n"+"Mottagare:" +mottagare+"\n"+"Vikt:"+vikt+"\n"+"Porto:"+porto+"\n"+"Beskrivning:"+beskrivning);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        //knappen som söker på telefonnummer för att hitta alla hattar som en kund beställt, sen ska den här koden plussa ihop summorna för att få en
+        //totalsumma. 
+        String nummer = Nummer.getText();
+        String fraga = "Select kundID from kund where telefonNummer ="+ nummer+"";
+        String fraga2= "Select * from ordrar where kundID ="+fraga+" ";
+        //ej klar
+       //strängen som ja sparar totalpriset i
+      String totalprisQuery = "SELECT SUM(pris) AS totalprice FROM kop WHERE kopID = " + fraga;
+double totalpris = 0;
+
+try (Statement stmt = idb.createStatement()) {
+    ResultSet rs = stmt.executeQuery(totalprisQuery);
+
+    if (rs.next()) {
+        totalpris = rs.getDouble("totalprice");
+    }
+} catch (SQLException ex) {
+    ex.printStackTrace();
+}
+
+totalpris *= 1.25; // multiply by 1.25
+      
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -241,20 +302,21 @@ e.printStackTrace();
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FraktsedelFöljdedelUtskrift.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FraktsedelFoljdsedelUtskrift.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FraktsedelFöljdedelUtskrift.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FraktsedelFoljdsedelUtskrift.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FraktsedelFöljdedelUtskrift.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FraktsedelFoljdsedelUtskrift.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FraktsedelFöljdedelUtskrift.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FraktsedelFoljdsedelUtskrift.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FraktsedelFöljdedelUtskrift().setVisible(true);
+                new FraktsedelFoljdsedelUtskrift().setVisible(true);
             }
         });
     }
@@ -263,6 +325,7 @@ e.printStackTrace();
     private javax.swing.JTextField Avsandare;
     private javax.swing.JTextField Beskrivning;
     private javax.swing.JTextField Mottagare;
+    private javax.swing.JTextField Nummer;
     private javax.swing.JTextField Porto;
     private javax.swing.JTextArea Resultat;
     private javax.swing.JTextField Vikt;
@@ -277,6 +340,5 @@ e.printStackTrace();
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
