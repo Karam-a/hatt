@@ -4,16 +4,26 @@
  */
 package hattmakarenteam2;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+import oru.inf.InfDB;
+import oru.inf.InfException; 
+import javax.swing.JOptionPane;
 /**
  *
  * @author Pedro
  */
 public class GenomforKopLagerfordHatt extends javax.swing.JFrame {
-
+private InfDB idb;
     /**
      * Creates new form GenomforKopLagerfordHatt
      */
-    public GenomforKopLagerfordHatt() {
+    public GenomforKopLagerfordHatt(InfDB idb) {
+        this.idb = idb;
         initComponents();
     }
 
@@ -27,30 +37,35 @@ public class GenomforKopLagerfordHatt extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jComboBoxHattar = new javax.swing.JComboBox<>();
+        jButtonGenomfor = new javax.swing.JButton();
+        jButtonLagerHattar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableLagerHattar = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("Hatt:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Filthatt", "Panamahatt", "Stråhatt", "Tyghatt", "Läderhatt" }));
+        jComboBoxHattar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Filthatt", "Panamahatt", "Stråhatt", "Tyghatt", "Läderhatt" }));
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton1.setText("Genomför köp");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonGenomfor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButtonGenomfor.setText("Genomför köp");
+        jButtonGenomfor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonGenomforActionPerformed(evt);
             }
         });
 
-        jButton2.setText("OK");
+        jButtonLagerHattar.setText("Visa info");
+        jButtonLagerHattar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLagerHattarActionPerformed(evt);
+            }
+        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableLagerHattar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -58,29 +73,27 @@ public class GenomforKopLagerfordHatt extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Lagerhatt ID", "Tyg", "Beskrivning", "Pris"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableLagerHattar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(306, 306, 306)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34))
+                    .addComponent(jButtonLagerHattar)
+                    .addComponent(jComboBoxHattar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(133, 133, 133)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonGenomfor))
+                .addContainerGap(277, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -90,23 +103,53 @@ public class GenomforKopLagerfordHatt extends javax.swing.JFrame {
                         .addGap(80, 80, 80)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jComboBoxHattar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2))
+                        .addComponent(jButtonLagerHattar))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
+                        .addGap(25, 25, 25)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addComponent(jButtonGenomfor)
                 .addGap(39, 39, 39))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonGenomforActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGenomforActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonGenomforActionPerformed
+
+    private void jButtonLagerHattarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLagerHattarActionPerformed
+        // Koda här: 
+        try {
+            //Hämta info vald hatt
+            String hattTypen = jComboBoxHattar.getSelectedItem().toString();
+            
+            DefaultTableModel dTM = (DefaultTableModel) jTableLagerHattar.getModel();
+        dTM.setRowCount(0);
+        
+         String sqlFraga = "Select lagerHattID, tyg, ovrigBeskrivning, Pris from lagerfordahattar where typ = '" + hattTypen + "'";
+        
+        
+        ArrayList<HashMap<String, String>> hattLista;
+        hattLista = idb.fetchRows(sqlFraga);
+        
+        for(HashMap enHatt : hattLista){
+                Vector nyLista = new Vector(); 
+                nyLista.add(enHatt.get("lagerHattID"));
+                nyLista.add(enHatt.get("tyg"));
+                nyLista.add(enHatt.get("ovrigBeskrivning"));
+                nyLista.add(enHatt.get("Pris"));
+                dTM.addRow(nyLista);
+                    
+        } 
+        } catch(InfException ex){
+            JOptionPane.showMessageDialog(null, "Något gick fel");
+            System.out.println("Error: " + ex);
+        }
+    }//GEN-LAST:event_jButtonLagerHattarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -138,17 +181,17 @@ public class GenomforKopLagerfordHatt extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GenomforKopLagerfordHatt().setVisible(true);
+               
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton jButtonGenomfor;
+    private javax.swing.JButton jButtonLagerHattar;
+    private javax.swing.JComboBox<String> jComboBoxHattar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableLagerHattar;
     // End of variables declaration//GEN-END:variables
 }
