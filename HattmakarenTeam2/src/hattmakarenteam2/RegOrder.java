@@ -22,7 +22,6 @@ public class RegOrder extends javax.swing.JFrame {
     public RegOrder(InfDB idb) {
         this.idb= idb;
         initComponents();
-        hamtaHatt ();
         hamtaKund ();
         
     }
@@ -40,19 +39,15 @@ public class RegOrder extends javax.swing.JFrame {
         buttonGroup2 = new javax.swing.ButtonGroup();
         buttonGroup3 = new javax.swing.ButtonGroup();
         buttonGroup4 = new javax.swing.ButtonGroup();
-        comboHatt = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
         boxKund = new javax.swing.JComboBox<>();
         NyOrderLabel = new javax.swing.JLabel();
         KIDLabel = new javax.swing.JLabel();
-        OStatusLabel = new javax.swing.JLabel();
-        OStatusComboBox = new javax.swing.JComboBox<>();
         SkapaOrderBtn = new javax.swing.JButton();
-        SkapaHattBtn = new javax.swing.JButton();
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setText("Hatt:");
 
         NyOrderLabel.setFont(new java.awt.Font("Hiragino Maru Gothic ProN", 1, 24)); // NOI18N
         NyOrderLabel.setText("Ny Order");
@@ -60,25 +55,11 @@ public class RegOrder extends javax.swing.JFrame {
         KIDLabel.setFont(new java.awt.Font("Hiragino Maru Gothic ProN", 0, 13)); // NOI18N
         KIDLabel.setText("Kund:");
 
-        OStatusLabel.setFont(new java.awt.Font("Hiragino Maru Gothic ProN", 0, 13)); // NOI18N
-        OStatusLabel.setText("Order Status:");
-
-        OStatusComboBox.setFont(new java.awt.Font("Hiragino Maru Gothic ProN", 0, 13)); // NOI18N
-        OStatusComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ej påbörjad", "påbörjad", "avslutad" }));
-
         SkapaOrderBtn.setFont(new java.awt.Font("Hiragino Maru Gothic ProN", 0, 18)); // NOI18N
         SkapaOrderBtn.setText("Skapa Order");
         SkapaOrderBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SkapaOrderBtnActionPerformed(evt);
-            }
-        });
-
-        SkapaHattBtn.setFont(new java.awt.Font("Hiragino Maru Gothic ProN", 0, 18)); // NOI18N
-        SkapaHattBtn.setText("Skapa ny Hatt");
-        SkapaHattBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SkapaHattBtnActionPerformed(evt);
             }
         });
 
@@ -90,28 +71,16 @@ public class RegOrder extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(40, 40, 40)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(KIDLabel)
-                            .addComponent(jLabel1))
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(comboHatt, 0, 168, Short.MAX_VALUE)
-                            .addComponent(boxKund, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(KIDLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(boxKund, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(132, 132, 132)
-                        .addComponent(NyOrderLabel))
+                        .addGap(66, 66, 66)
+                        .addComponent(SkapaOrderBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(OStatusLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(OStatusComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(47, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(SkapaOrderBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SkapaHattBtn))
-                .addGap(452, 452, 452))
+                        .addGap(123, 123, 123)
+                        .addComponent(NyOrderLabel)))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,19 +91,9 @@ public class RegOrder extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(KIDLabel)
                     .addComponent(boxKund, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(comboHatt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(OStatusLabel)
-                    .addComponent(OStatusComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(SkapaHattBtn)
-                .addGap(45, 45, 45)
+                .addGap(66, 66, 66)
                 .addComponent(SkapaOrderBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
 
         pack();
@@ -145,21 +104,24 @@ public class RegOrder extends javax.swing.JFrame {
         try{
             idb=new InfDB("hattProjektet", "3306","hattProjektet","hattkey");
             String OrderID = idb.getAutoIncrement("ordrar", "orderID") ;
-            String kundID = boxKund.getSelectedItem().toString();
-            String hattID = comboHatt.getSelectedItem().toString();
-            String orderStatus = OStatusComboBox.getSelectedItem().toString();
+            String kundNamn = boxKund.getSelectedItem().toString();
+            String hamtaKundId = "Select kundiD from Kund where kundNamn = '" +kundNamn+"' ; " ;
+            String orderStatus = "Ej påbörjad";
             String orderDatum = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+           String kundID = idb.fetchSingle(hamtaKundId);
             String fraga = "insert into ordrar values(" +OrderID+"," + kundID + "," + hattID + ", ('" + orderStatus + "'),'" + orderDatum + "');";
-
-           // idb.insert(fraga);
+     
+         
+/           idb.insert(fraga);
             
-             JOptionPane.showMessageDialog(null, fraga);
+             //JOptionPane.showMessageDialog(null, fraga);
+            // JOptionPane.showMessageDialog(null, OrderID);
             
             //if (ValideringKlass.finnsVarde(KIDTxt) || ValideringKlass.finnsVarde(IDHatt1Txt) || ValideringKlass.finnsVarde(IDHatt2Txt) || ValideringKlass.finnsVarde(IDHatt3Txt) || ValideringKlass.finnsVarde(OrderDatumTxt) || ValideringKlass.finnsVarde(OStatusComboBox))
             //{}
             
 
-            JOptionPane.showMessageDialog(null, "Ny specialhatt har registrerats!");
+            nyttFonster();
 
         }
         catch(InfException ettUndantag){
@@ -168,37 +130,8 @@ public class RegOrder extends javax.swing.JFrame {
 
     }//GEN-LAST:event_SkapaOrderBtnActionPerformed
 
-    private void SkapaHattBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SkapaHattBtnActionPerformed
-  nyttFonster();
-
-    }//GEN-LAST:event_SkapaHattBtnActionPerformed
-
     
-    private void hamtaHatt () {
- 
-        String fraga = " Select namn from specialHattar" ; 
-        
-            ArrayList<String> hattar;
-        
-            try {
-             
-                 hattar = idb.fetchColumn(fraga);
-                
-           for (String enhatt : hattar){
-                                 
-                     comboHatt.addItem(enhatt);
-                             }
 
-
-            }
-        
-        
-        catch (Exception e) {
-            
-        }
-        
-        
-}
     
     
     
@@ -237,6 +170,16 @@ public class RegOrder extends javax.swing.JFrame {
     }
   
     
+       public static String getKund()
+    {
+     return boxKund.getSelectedItem().toString();
+    
+    
+    
+    }
+    
+    
+    
     
     
     /**
@@ -247,16 +190,12 @@ public class RegOrder extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel KIDLabel;
     private javax.swing.JLabel NyOrderLabel;
-    private javax.swing.JComboBox<String> OStatusComboBox;
-    private javax.swing.JLabel OStatusLabel;
-    private javax.swing.JButton SkapaHattBtn;
-    private javax.swing.JButton SkapaOrderBtn;
-    private javax.swing.JComboBox<String> boxKund;
+    public static javax.swing.JButton SkapaOrderBtn;
+    private static javax.swing.JComboBox<String> boxKund;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.ButtonGroup buttonGroup4;
-    private javax.swing.JComboBox<String> comboHatt;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JComboBox<String> jComboBox1;
     // End of variables declaration//GEN-END:variables
 }
