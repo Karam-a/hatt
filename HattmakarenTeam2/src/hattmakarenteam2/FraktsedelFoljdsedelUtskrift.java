@@ -11,6 +11,8 @@ import com.itextpdf.text.pdf.PdfWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
@@ -23,6 +25,7 @@ public class FraktsedelFoljdsedelUtskrift extends javax.swing.JFrame {
 private InfDB idb;
     /**
      * Creates new form FraktsedelFöljdedelUtskrift
+     * @param idb
      */
     public FraktsedelFoljdsedelUtskrift(InfDB idb) {
         this.idb = idb;
@@ -218,8 +221,13 @@ private InfDB idb;
         String porto = Porto.getText();
         String beskrivning = Beskrivning.getText();
       
-        Resultat.setText( "Avsändare:" +avsandare+"\n"+"Mottagare:" +mottagare+"\n"+"Vikt:"+vikt+"\n"+"Porto:"+porto+"\n"+"Beskrivning:"+beskrivning);
-        String utskrift = Resultat.getText();
+        String currentText = Resultat.getText();
+
+    // Append the new text to the current text
+    String newText = currentText + "Avsändare:" +avsandare+"\n"+"Mottagare:" +mottagare+"\n"+"Vikt:"+vikt+"\n"+"Porto:"+porto+"\n"+"Beskrivning:"+beskrivning + "\n";
+       Resultat.setText(newText);
+    String utskrift = Resultat.getText();
+        
 try  
 {  
  // kod ifall  ja behöver skapa en map File f = new File("C:\\Testfiles");
@@ -287,7 +295,7 @@ e.printStackTrace();
       String totalprisQuery = "SELECT SUM(pris) AS totalprice FROM kop WHERE kopID = " + fraga;
 double totalpris = 0;
 
-try (Statement stmt = idb.createStatement()) {
+/*try (Statement stmt = idb.createStatement()) {
     ResultSet rs = stmt.executeQuery(totalprisQuery);
 
     if (rs.next()) {
@@ -295,7 +303,7 @@ try (Statement stmt = idb.createStatement()) {
     }
 } catch (SQLException ex) {
     ex.printStackTrace();
-}
+}*/
 
 totalpris *= 1.25; // multiply by 1.25
  // Get the current text in the Resultat text box

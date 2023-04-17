@@ -20,9 +20,10 @@ public class RedigeraKunduppgifter extends javax.swing.JFrame {
      * Creates new form RedigeraKunduppgifter
      */
     public RedigeraKunduppgifter(InfDB idb) {
-                this.idb= idb;
-
+             this.idb= idb;
         initComponents();
+        hamtaKund ();
+
     }
 
     /**
@@ -40,11 +41,12 @@ public class RedigeraKunduppgifter extends javax.swing.JFrame {
         txtTelefonnummer = new javax.swing.JTextField();
         txtEpost = new javax.swing.JTextField();
         btnSpara = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        Namn = new javax.swing.JLabel();
+        Adress = new javax.swing.JLabel();
+        Telefon = new javax.swing.JLabel();
+        Epost = new javax.swing.JLabel();
         cbKund = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,79 +69,85 @@ public class RedigeraKunduppgifter extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Namn:");
+        Namn.setText("Namn:");
 
-        jLabel2.setText("Adress:");
+        Adress.setText("Adress:");
 
-        jLabel3.setText("Telefonnummer:");
+        Telefon.setText("Telefonnummer:");
 
-        jLabel5.setText("Epost:");
+        Epost.setText("Epost:");
 
-        cbKund.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jLabel1.setText("Fyll i ändringen nedan!");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(71, 71, 71)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(cbKund, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Adress)
+                            .addComponent(Telefon)
+                            .addComponent(Epost)
+                            .addComponent(Namn))
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtAdress, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+                                    .addComponent(txtTelefonnummer)
+                                    .addComponent(txtEpost))
+                                .addContainerGap(111, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(43, 43, 43)
                         .addComponent(jLabel4))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(155, 155, 155)
+                        .addGap(140, 140, 140)
                         .addComponent(btnSpara, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(71, 71, 71)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel1))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtAdress, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
-                            .addComponent(txtTelefonnummer)
-                            .addComponent(txtEpost))
-                        .addContainerGap(111, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(cbKund, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(111, 111, 111))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(119, 119, 119))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(cbKund, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
+                .addGap(34, 34, 34)
+                .addComponent(cbKund, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(jLabel1)
+                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(Namn)
                     .addComponent(txtNamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtAdress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Adress))
+                .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtAdress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
-                        .addGap(41, 41, 41)
-                        .addComponent(txtTelefonnummer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(txtTelefonnummer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Telefon))
                 .addGap(26, 26, 26)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtEpost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                    .addComponent(Epost))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addComponent(btnSpara, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36))
+                .addGap(42, 42, 42))
         );
 
         pack();
@@ -155,50 +163,74 @@ public class RedigeraKunduppgifter extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEpostActionPerformed
 
-    private void btnSparaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaActionPerformed
-        // TODO add your handling code here:
+      private void hamtaKund () 
+   {
+      String hamtakund = "Select kundNamn from Kund"; 
+      
+                  ArrayList<String> Kunder;
 
        try {
              
-               String hamtakund = "Select Namn from Kund"; 
-                 ArrayList<String> Kunder;
                  Kunder = idb.fetchColumn(hamtakund);
                 
            for (String enKund : Kunder){
                                  
                      cbKund.addItem(enKund);
                              }
+
+
             }
-                
+        
+        
         catch (Exception e) {
             
         }
-         
+       
+   }
+    
+    
+    private void btnSparaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaActionPerformed
+        // TODO add your handling code here:
+
           String kund = cbKund.getSelectedItem().toString();
-          String namn = txtNamn.getText();
-          String adress = txtAdress.getText();
-          String telefon = txtTelefonnummer.getText();
-          String epost = txtEpost.getText();
 
-          try {
-              
-              
-              
-              
-              
-              
-              
-          }catch(){
-              
-          }
-
-
-           //(InfException e){
-            //JOptionPane.showMessageDialog(null, "Ändringen misslyckades, försök igen.");
-           // System.out.println("Internt felmeddeland" + ex.getMessage());
+          String sql = "update kund set ";
+ 
+            if (!(txtNamn.getText().isEmpty())) {
+               String namn = txtNamn.getText();
+                sql = sql + "Kundnamn= '" + namn + "'";
+            } else {
+                sql = sql + "Kundnamn= '" + kund + "'";
+            }
+            if (!(txtEpost.getText().isEmpty())) {
+             String epost = txtEpost.getText();
+                sql = sql + ", Epost= '" + epost + "'";
+            }
+            if (!(txtTelefonnummer.getText().isEmpty())) {
+             String telefon = txtTelefonnummer.getText();
+                sql = sql + ", Telefon= '" + telefon + "'";
+                
+            }
+            if (!(txtAdress.getText().isEmpty())) {
+              String adress = txtAdress.getText();
+                sql = sql + ", Adress= '" + adress + "'";
+               
+            }
             
-          
-        
+             sql = sql + " where Kundnamn='" + kund + "'";
+            System.out.println(sql);
+
+            try {
+                idb.update(sql);
+                JOptionPane.showMessageDialog(null, "Ändringar har sparats");
+                
+            } catch (InfException ex) { 
+                JOptionPane.showMessageDialog(null, "Ändringen misslyckades, försök igen.");
+                System.out.println("Internt felmeddeland" + ex.getMessage());
+            }
+              
+            dispose();
+
         
     }//GEN-LAST:event_btnSparaActionPerformed
 
@@ -238,13 +270,14 @@ public class RedigeraKunduppgifter extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Adress;
+    private javax.swing.JLabel Epost;
+    private javax.swing.JLabel Namn;
+    private javax.swing.JLabel Telefon;
     private javax.swing.JButton btnSpara;
     private javax.swing.JComboBox<String> cbKund;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField txtAdress;
     private javax.swing.JTextField txtEpost;
     private javax.swing.JTextField txtNamn;
