@@ -71,7 +71,7 @@ private InfDB idb;
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Kund ID", "Namn", "Adress", "Telefonnummer", "Hederskund", "Epost"
+                "Kund ID", "Namn", "Adress", "Telefonnummer", "Epost", "Beskrivning"
             }
         ));
         jScrollPane1.setViewportView(jTableKundData);
@@ -133,7 +133,7 @@ private InfDB idb;
         //Omvandla inmatning som sträng till en int för att hämta ut ID:et från databasen.
         int intID = Integer.parseInt(telefonNr);
         
-        String sqlFraga = "Select kundID, kundNamn, adress, telefonNummer, hedersKund, epost from Kund where telefonNummer = " +  intID + "";
+        String sqlFraga = "Select kundID, kundNamn, adress, telefonNummer, epost, beskrivning from Kund where telefonNummer = " +  intID + "";
         
         DefaultTableModel dTM = (DefaultTableModel) jTableKundData.getModel();
         dTM.setRowCount(0);
@@ -151,8 +151,8 @@ private InfDB idb;
                 nyLista.add(enKund.get("kundNamn"));
                 nyLista.add(enKund.get("adress"));
                 nyLista.add(enKund.get("telefonNummer"));
-                nyLista.add(enKund.get("hedersKund"));
                 nyLista.add(enKund.get("epost"));
+                nyLista.add(enKund.get("beskrivning"));
                 dTM.addRow(nyLista);
                       
             }
