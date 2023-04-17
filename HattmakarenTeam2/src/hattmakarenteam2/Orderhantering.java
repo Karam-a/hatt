@@ -14,7 +14,10 @@ private ArrayList<String> ejPabHatt;
 private ArrayList<String> pabHatt;
 private ArrayList<String> avslutadHatt;
 private int valdOrderID;
-Object valtObjekt;
+private int radIndex;
+private Object valtObjekt;
+private JTable valdTable;
+private String valdString;
 private InfDB idb;
 
     public Orderhantering(InfDB idb) {
@@ -68,10 +71,7 @@ private InfDB idb;
 
         avslutTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
+
             },
             new String [] {
                 "Avslutade ordrar"
@@ -95,10 +95,7 @@ private InfDB idb;
 
         ejPabTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
+
             },
             new String [] {
                 "Ej påbörjade ordrar"
@@ -122,10 +119,7 @@ private InfDB idb;
 
         pabTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
+
             },
             new String [] {
                 "Påbörjade ordrar"
@@ -207,48 +201,79 @@ private InfDB idb;
     }// </editor-fold>//GEN-END:initComponents
 
     private void hanteraOrderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hanteraOrderBtnActionPerformed
-     //instansiering av valdTable samt RadIndex (Position på ett objekt i en table)
-     JTable valdTable;
-     int radIndex;
-     
+    
+    if(radIndex != -1){
      //om ett objekt i en table är valt
-     if(ejPabTable.isFocusOwner()){
-         //ange radIndex som värdet på objektets position i tabellen
-        radIndex = ejPabTable.getSelectedRow();
+        if(ejPabTable.isFocusOwner()){
+             //ange radIndex som värdet på objektets position i tabellen
+            radIndex = ejPabTable.getSelectedRow();
         //anger valtObjekt som [Tabellnamn] och hämtar värdet på den valda positionen. column är angivet som 0 då vi enbart har en kolumn i varje tabell.
-        valtObjekt = ejPabTable.getValueAt(radIndex,0);
+            valtObjekt = ejPabTable.getValueAt(radIndex,0);
         //anger valdTable till namnet på den valda tabellen
-        valdTable = ejPabTable;
+            valdTable = ejPabTable;
+            hamtaOrderID();
+            korFonster();
      }
      else if(pabTable.isFocusOwner()){
          radIndex = pabTable.getSelectedRow();
          valtObjekt = pabTable.getValueAt(radIndex,0);
          valdTable = pabTable;
+          hamtaOrderID();
+          korFonster();
      }
      else if(avslutTable.isFocusOwner()){
          radIndex = avslutTable.getSelectedRow();
          valtObjekt = pabTable.getValueAt(radIndex, 0);
          valdTable = avslutTable;
-     }
+            hamtaOrderID();
+            korFonster();
+     }}
+    else{
+        JOptionPane.showMessageDialog(null, "Välj en order för att fortsätta.");
+    }
      
-     try{
-         //hämtar ut ID på det kundnamn som är valt. Sätter även det valda objektets värde till en sträng för att kunna hitta i databasen.
-        valdOrderID = Integer.parseInt(idb.fetchSingle("SELECT orderID FROM ordrar WHERE kundID IN(SELECT kundID WHERE kundNamn=" +"'"+ valtObjekt.toString() + "'"+ ")" ));
-        //öppnar orderhanteringsfönstret för den valda ordern. obs att det är långt ifrån klart dock. 
-        new HanteraEnskildOrder(idb).setVisible(true);
-     }
-     catch(InfException e){
-     JOptionPane.showMessageDialog(null, "Gick ej att hämta innehållet i databasen. Vänligen försök igen!");
-     }
+  /* if(valtObjekt != null)  {
+       valdString = valtObjekt.toString();
        
-        
+       switch(valdTable.getName()){
+           case "ejPabTable":
+               System.out.println(valdTable.getName());
+               
+               
+           case "pabTable":
+               System.out.println(valdTable.getName());
+               hamtaOrderID();
+               new HanteraEnskildOrder(idb,valdOrderID).setVisible(true);
+           case "avslutTable":
+               System.out.println(valdTable.getName());
+               hamtaOrderID();
+               new HanteraEnskildOrder(idb,valdOrderID).setVisible(true);
+       }
+    }  
+   else {
+               System.out.println("fel");
+          }*/
     }//GEN-LAST:event_hanteraOrderBtnActionPerformed
 
+    private void hamtaOrderID(){
+        try{
+         //hämtar ut ID på det kundnamn som är valt. Sätter även det valda objektets värde till en sträng för att kunna hitta i databasen.
+        valdOrderID = Integer.parseInt(idb.fetchSingle("SELECT orderID FROM ordrar WHERE kundID IN(SELECT kundID FROM kund WHERE kundNamn=" +"'"+ valdString + "'"+ ");" ));
+        }
+     catch(InfException e){
+        JOptionPane.showMessageDialog(null, "Gick ej att hämta innehållet i databasen. Vänligen försök igen!");
+        }
+    }
+    
+    private void korFonster(){
+        new HanteraEnskildOrder(idb,valdOrderID).setVisible(true);
+    }
+    
   private void hamtaData(){
       try{
-  ejPabHatt = idb.fetchColumn("Select kundNamn from kund where kundID in(Select kundID from ordrar where orderStatus='Ej Påbörjad')");
-  pabHatt = idb.fetchColumn("Select kundNamn from kund where kundID in(Select kundID from ordrar where orderStatus='Påbörjad')");
-  avslutadHatt = idb.fetchColumn("Select kundNamn from kund where kundID in(Select kundID from ordrar where orderStatus='Avslutad')");
+            ejPabHatt = idb.fetchColumn("Select kundNamn from kund where kundID in(Select kundID from ordrar where orderStatus='Ej Påbörjad')");
+            pabHatt = idb.fetchColumn("Select kundNamn from kund where kundID in(Select kundID from ordrar where orderStatus='Påbörjad')");
+            avslutadHatt = idb.fetchColumn("Select kundNamn from kund where kundID in(Select kundID from ordrar where orderStatus='Avslutad')");
   }
       catch(InfException e){
             System.out.println("Gick ej att hämta innehållet i databasen.");
@@ -257,9 +282,9 @@ private InfDB idb;
       
     private void fyllTabeller(){
         hamtaData();
-    ejPabHattMod = (DefaultTableModel) ejPabTable.getModel();
-    pabHattMod = (DefaultTableModel) pabTable.getModel();
-    avslutadHattMod = (DefaultTableModel) avslutTable.getModel();
+        ejPabHattMod = (DefaultTableModel) ejPabTable.getModel();
+        pabHattMod = (DefaultTableModel) pabTable.getModel();
+        avslutadHattMod = (DefaultTableModel) avslutTable.getModel();
     
     for(String namn : ejPabHatt){
             ejPabHattMod.addRow(new Object[]{namn});
