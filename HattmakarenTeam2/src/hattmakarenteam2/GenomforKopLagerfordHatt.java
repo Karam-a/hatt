@@ -118,7 +118,33 @@ private InfDB idb;
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonGenomforActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGenomforActionPerformed
-        // TODO add your handling code here:
+        // Genomför hattköpet
+      try {
+        
+        String hattTypen = jComboBoxHattar.getSelectedItem().toString(); 
+          
+        ArrayList<String> hattTypLista;
+        hattTypLista = idb.fetchColumn("Select typ from lagerfordahattar"); 
+        
+        if(hattTypen.equals("Filthatt")){
+            JOptionPane.showMessageDialog(null, "Köp av: " + hattTypen + "har genomförts");
+        } else if(hattTypen.equals("Panamahatt")) {
+            JOptionPane.showMessageDialog(null, "Köp av: " + hattTypen + "har genomförts");
+        } else if(hattTypen.equals("Stråhatt")){
+            JOptionPane.showMessageDialog(null, "Köp av: " + hattTypen + "har genomförts");
+        } else if(hattTypen.equals("Tyghatt")) {
+            JOptionPane.showMessageDialog(null, "Köp av: " + hattTypen + "har genomförts");
+        } else if(hattTypen.equals("Tyghatt")) {
+            JOptionPane.showMessageDialog(null, "Köp av: " + hattTypen + "har genomförts");
+        } else if(hattTypen.equals("Läderhatt")) {
+            JOptionPane.showMessageDialog(null, "Köp av: " + hattTypen + "har genomförts");
+        }
+        
+        
+      } catch(InfException ex){
+            JOptionPane.showMessageDialog(null, "Något gick fel");
+            System.out.println("Error: " + ex); }
+        
     }//GEN-LAST:event_jButtonGenomforActionPerformed
 
     private void jButtonLagerHattarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLagerHattarActionPerformed
