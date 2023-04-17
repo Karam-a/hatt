@@ -11,17 +11,24 @@ import com.itextpdf.text.pdf.PdfWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import oru.inf.InfDB;
+import java.sql.Statement;//kanske inte behövs
 /**
  *
  * @author alexm
  */
 public class FraktsedelFoljdsedelUtskrift extends javax.swing.JFrame {
-
+private InfDB idb;
     /**
      * Creates new form FraktsedelFöljdedelUtskrift
+     * @param idb
      */
-    public FraktsedelFoljdsedelUtskrift() {
+    public FraktsedelFoljdsedelUtskrift(InfDB idb) {
+        this.idb = idb;
         initComponents();
         
     }
@@ -207,15 +214,20 @@ public class FraktsedelFoljdsedelUtskrift extends javax.swing.JFrame {
         
         Document doc = new Document();  
        
-        String sqlsvar = "";
+        
         String avsandare = Avsandare.getText();
         String mottagare = Mottagare.getText();
         String vikt = Vikt.getText();
         String porto = Porto.getText();
         String beskrivning = Beskrivning.getText();
       
-        Resultat.setText( "Avsändare:" +avsandare+"\n"+"Mottagare:" +mottagare+"\n"+"Vikt:"+vikt+"\n"+"Porto:"+porto+"\n"+"Beskrivning:"+beskrivning);
-        String utskrift = Resultat.getText();
+        String currentText = Resultat.getText();
+
+    // Append the new text to the current text
+    String newText = currentText + "Avsändare:" +avsandare+"\n"+"Mottagare:" +mottagare+"\n"+"Vikt:"+vikt+"\n"+"Porto:"+porto+"\n"+"Beskrivning:"+beskrivning + "\n";
+       Resultat.setText(newText);
+    String utskrift = Resultat.getText();
+        
 try  
 {  
  // kod ifall  ja behöver skapa en map File f = new File("C:\\Testfiles");
@@ -250,28 +262,40 @@ e.printStackTrace();
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         //visar hattarna och de man skrivit in i textboxen till höger. 
-        String sqlsvar = "";
+       
         String avsandare = Avsandare.getText();
         String mottagare = Mottagare.getText();
         String vikt = Vikt.getText();
         String porto = Porto.getText();
         String beskrivning = Beskrivning.getText();
-        Resultat.setText( "Avsändare:" +avsandare+"\n"+"Mottagare:" +mottagare+"\n"+"Vikt:"+vikt+"\n"+"Porto:"+porto+"\n"+"Beskrivning:"+beskrivning);
+        // Get the current text in the Resultat text box
+    String currentText = Resultat.getText();
+
+    // Append the new text to the current text
+    String newText = currentText + "Avsändare:" +avsandare+"\n"+"Mottagare:" +mottagare+"\n"+"Vikt:"+vikt+"\n"+"Porto:"+porto+"\n"+"Beskrivning:"+beskrivning + "\n";
+
+    // Set the updated text in the Resultat text box
+    Resultat.setText(newText);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         //knappen som söker på telefonnummer för att hitta alla hattar som en kund beställt, sen ska den här koden plussa ihop summorna för att få en
         //totalsumma. 
+        try {
         String nummer = Nummer.getText();
         String fraga = "Select kundID from kund where telefonNummer ="+ nummer+"";
-        String fraga2= "Select * from ordrar where kundID ="+fraga+" ";
+        String fragaResult = idb.fetchSingle(fraga);
+        //Ska hämta namnet på produkten och dess pris. 
+        String fraga2= "Select Produktnamn, pris from kop where kopID ="+fragaResult+" ";
+        ArrayList<String> fraga2Result = idb.fetchColumn(fraga2);
+        
         //ej klar
        //strängen som ja sparar totalpriset i
       String totalprisQuery = "SELECT SUM(pris) AS totalprice FROM kop WHERE kopID = " + fraga;
 double totalpris = 0;
 
-try (Statement stmt = idb.createStatement()) {
+/*try (Statement stmt = idb.createStatement()) {
     ResultSet rs = stmt.executeQuery(totalprisQuery);
 
     if (rs.next()) {
@@ -279,10 +303,22 @@ try (Statement stmt = idb.createStatement()) {
     }
 } catch (SQLException ex) {
     ex.printStackTrace();
-}
+}*/
 
 totalpris *= 1.25; // multiply by 1.25
-      
+ // Get the current text in the Resultat text box
+        String currentText = Resultat.getText();
+
+        // Append the new text to the current text
+        String newText = currentText + "Pris och produkt"+fraga2Result+"\n"+"Totalpris + 25% moms"+totalpris + "\n";
+
+        // Set the updated text in the Resultat text box
+        Resultat.setText(newText);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

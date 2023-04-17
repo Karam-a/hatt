@@ -45,6 +45,7 @@ public class ProgramStart extends javax.swing.JFrame {
         regSpecHattBtn = new javax.swing.JButton();
         btnRegKund = new javax.swing.JButton();
         foljdSedel = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ottos Hattar");
@@ -132,10 +133,19 @@ public class ProgramStart extends javax.swing.JFrame {
             }
         });
 
+        foljdSedel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         foljdSedel.setText("Skapa Frakt/Följdsedel");
         foljdSedel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 foljdSedelActionPerformed(evt);
+            }
+        });
+
+        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton2.setText("Genomför köp av lagerförd hatt");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -152,24 +162,24 @@ public class ProgramStart extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(kassaBtn)
-                                .addGap(239, 239, 239)
-                                .addComponent(loggaInBtn))
                             .addComponent(kundMenyBtn)
                             .addComponent(materialBestBtn)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jButtonBestallningar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(regOrderBtn)
                             .addComponent(orderMenyBtn)
+                            .addComponent(regSpecHattBtn)
+                            .addComponent(btnRegKund, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(regSpecHattBtn)
-                                    .addComponent(btnRegKund, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(98, 98, 98)
-                                .addComponent(foljdSedel, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(168, Short.MAX_VALUE))
+                                    .addComponent(kassaBtn)
+                                    .addComponent(regOrderBtn))
+                                .addGap(121, 121, 121)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(foljdSedel, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(loggaInBtn))))))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,7 +193,9 @@ public class ProgramStart extends javax.swing.JFrame {
                     .addComponent(kassaBtn)
                     .addComponent(loggaInBtn))
                 .addGap(19, 19, 19)
-                .addComponent(regOrderBtn)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(regOrderBtn)
+                    .addComponent(foljdSedel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(orderMenyBtn)
                 .addGap(26, 26, 26)
@@ -197,10 +209,10 @@ public class ProgramStart extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(regSpecHattBtn)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(foljdSedel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnRegKund, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(160, Short.MAX_VALUE))
+                .addComponent(btnRegKund)
+                .addGap(26, 26, 26)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(94, Short.MAX_VALUE))
         );
 
         pack();
@@ -269,6 +281,13 @@ public class ProgramStart extends javax.swing.JFrame {
          this.dispose();
     }//GEN-LAST:event_foljdSedelActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // knapp för öppna j-frame GenomförKopAvLagerfordhatt
+        GenomforKopLagerfordHatt nyRuta = new GenomforKopLagerfordHatt(idb);
+        nyRuta.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -305,6 +324,7 @@ public class ProgramStart extends javax.swing.JFrame {
     private javax.swing.JButton btnRegKund;
     private javax.swing.JButton foljdSedel;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonBestallningar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator1;
