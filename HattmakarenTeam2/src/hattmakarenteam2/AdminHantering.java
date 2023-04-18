@@ -18,14 +18,13 @@ public class AdminHantering extends javax.swing.JFrame {
     /**
      * Creates new form AdminHantering
      */
-    public AdminHantering() {
+    public AdminHantering(InfDB idb) {
         initComponents();
+        this.idb= idb;
+
     }
 
-    AdminHantering(InfDB idb) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
+  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -68,7 +67,7 @@ public class AdminHantering extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -77,9 +76,9 @@ public class AdminHantering extends javax.swing.JFrame {
                             .addComponent(anvNamnLabel))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(anvNamnTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(repLosenTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(losenTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(anvNamnTxt)
+                            .addComponent(losenTxt)
+                            .addComponent(repLosenTxt)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(105, 105, 105)
                         .addComponent(laggTillAdminLabel))
@@ -125,6 +124,7 @@ public class AdminHantering extends javax.swing.JFrame {
         idb.insert(fraga);
         
         JOptionPane.showMessageDialog(null, "Ny admin har registrerats!");
+        dispose();
         }
         else {
             JOptionPane.showMessageDialog(null, "Lösenord överensstämmer inte!");
