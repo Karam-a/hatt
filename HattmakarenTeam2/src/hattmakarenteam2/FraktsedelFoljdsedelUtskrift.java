@@ -63,7 +63,7 @@ private InfDB idb;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Skapa Fraktsedel/Följdsedel");
+        jLabel1.setText("Skapa Fraktsedel");
 
         Nummer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
