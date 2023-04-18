@@ -227,6 +227,7 @@ public class RegisteraSpecialhatt extends javax.swing.JFrame {
         String ID = idb.getAutoIncrement("specialHattar", "SpecialhattID");
         String namn = namnTxt.getText();
         String hamtaKund = getKund();
+        String orderiD = "Fan eller ;/ " ;
         String pris = prisTXT.getText();
         String tyg = tygTxt.getText();
         String storlek = storlekTxt.getText();
@@ -236,7 +237,7 @@ public class RegisteraSpecialhatt extends javax.swing.JFrame {
         String beskrivning = beskrivningTxt.getText();
         String ovrigt = ovrigtTxt.getText();
         String status = "EjPåbörjad";
-        String fraga = "insert into specialhattar values(" + ID + ",'" + namn + "','" + tyg + "','" + storlek + "','" + modell + "','" + farg + "','" + dekoration + "','" + beskrivning +"','" + ovrigt + "','" + status + "');";
+        String fraga = "insert into specialhattar values(" + ID + ",'" + namn + "','" + tyg + "','" + storlek + "','" + modell + "','" + farg + "','" + dekoration + "','" + beskrivning +"','" + ovrigt + "','" + status + "',"+orderiD+","+pris+");";
                 
        // if (ValideringKlass.finnsVarde(namnTxt) || ValideringKlass.finnsVarde(tygTxt) || ValideringKlass.finnsVarde(storlekTxt) || ValideringKlass.finnsVarde(modellTxt) || ValideringKlass.finnsVarde(fargTxt) || ValideringKlass.finnsVarde(dekorationTxt) || ValideringKlass.finnsVarde(beskrivningTxt) || ValideringKlass.finnsVarde(ovrigtTxt))
         //{}

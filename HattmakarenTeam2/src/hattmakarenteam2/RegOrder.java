@@ -109,10 +109,10 @@ public class RegOrder extends javax.swing.JFrame {
             String orderStatus = "Ej påbörjad";
             String orderDatum = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
            String kundID = idb.fetchSingle(hamtaKundId);
-            String fraga = "insert into ordrar values(" +OrderID+"," + kundID + "," + hattID + ", ('" + orderStatus + "'),'" + orderDatum + "');";
+            String fraga = "insert into ordrar values(" +OrderID+"," + kundID + ", ('" + orderStatus + "'),'" + orderDatum + "');";
      
          
-/           idb.insert(fraga);
+            idb.insert(fraga);
             
              //JOptionPane.showMessageDialog(null, fraga);
             // JOptionPane.showMessageDialog(null, OrderID);
