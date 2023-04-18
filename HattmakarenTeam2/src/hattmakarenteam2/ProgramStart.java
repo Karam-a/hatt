@@ -47,7 +47,7 @@ public class ProgramStart extends javax.swing.JFrame {
         foljdSedel = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Ottos Hattar");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -247,7 +247,7 @@ public class ProgramStart extends javax.swing.JFrame {
 
     private void loggaInBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loggaInBtnActionPerformed
         // TODO add your handling code here:
-      
+     new InloggAdmin(idb).setVisible(true);
     }//GEN-LAST:event_loggaInBtnActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
