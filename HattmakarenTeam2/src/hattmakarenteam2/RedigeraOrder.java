@@ -1,8 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package hattmakarenteam2;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import javax.swing.JOptionPane;
+import javax.swing.DefaultListModel;
+import javax.swing.ListSelectionModel;
+import oru.inf.InfDB;
+import oru.inf.InfException;
 
 /**
  *
@@ -10,13 +14,141 @@ package hattmakarenteam2;
  */
 public class RedigeraOrder extends javax.swing.JFrame {
 
+    private InfDB idb;
+    private int valdOrder;
+    private String hattensID;
+    
+    
+    
     /**
      * Creates new form RedigeraOrder
      */
-    public RedigeraOrder() {
+    public RedigeraOrder(InfDB idb, int valdOrder) {
+        this.idb = idb;
+        this.valdOrder = valdOrder;
         initComponents();
+        visaOrderID();
+        visaHattar();
+        visaKundensNamn();
+        visaOrderDatum();
+        
     }
+    
+    private void visaOrderID(){
+        String orderIDString = Integer.toString(valdOrder);
+        valdOrderlbl.setText(orderIDString);
+    }
+    
+    private void visaKundensNamn(){
+        String fraga = "SELECT kundNamn FROM kund WHERE kundID IN(SELECT kundID FROM ordrar WHERE orderID=" + valdOrder +");";
+        
+        try {
+            String kunden = idb.fetchSingle(fraga);
+            
+            kundTillOrderlbl.setText(kunden);
+            
+            } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "Databasfel!");
+            System.out.println("Internt felmeddelande" + e.getMessage());        
+        }
+    }
+    
+    private void visaOrderDatum(){
+        //SimpleDateFormat datumstring = new SimpleDateFormat("dd/MM/yyyy");
+        
+        String fraga = "SELECT orderDatum FROM ordrar WHERE orderID=" + valdOrder + ";";
+        
+        try {
+            String orderDatum = idb.fetchSingle(fraga);
+            
+            orderDatum1lbl.setText(orderDatum);
+            
+            } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "Databasfel!");
+            System.out.println("Internt felmeddelande" + e.getMessage());        
+        }
 
+    }
+    
+    
+    private void visaHattar(){
+        
+        ArrayList<String> hattarIOrder;
+        String fraga = "SELECT Namn FROM specialhattar WHERE orderID = " + valdOrder +";";
+        
+        DefaultListModel mod = new DefaultListModel();
+        hattlist.setModel(mod);
+        try {
+            hattarIOrder = idb.fetchColumn(fraga);
+            
+            for (String hatt : hattarIOrder){
+            mod.addElement(hatt);
+            }
+
+            } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "Databasfel!");
+            System.out.println("Internt felmeddelande" + e.getMessage());        
+        }
+    }
+    
+    
+    private void fyllHattInfo(String markeradHatt){
+        
+        HashMap<String, String> hatten;
+        
+        String fraga = "SELECT * FROM hattprojektet.specialhattar WHERE namn = '" + markeradHatt + "' AND specialhattar.orderID = " + valdOrder +";";
+    
+        try {
+            hatten = idb.fetchRow(fraga);
+            
+            String hattensOrderID = Integer.toString(valdOrder);
+            hattensID = hatten.get("SpecialhattID");
+            String tyg = hatten.get("Tyg");
+            String storlek = hatten.get("Storlek");
+            String modell = hatten.get("Modell");
+            String farg = hatten.get("Färg");
+            String dekoration = hatten.get("Dekoration");
+            String beskrivning = hatten.get("beskrivning");
+            String ovrigt = hatten.get("Övrigt");
+            String hattStatus = hatten.get("hattStatus");
+            String pris = hatten.get("pris");
+            
+            
+            String allHattInfo = 
+                    "HattID: " + hattensID + 
+                    "\nHattnamn: " + markeradHatt + 
+                    "\nTyg: " + tyg +
+                    "\nModell: " + modell +
+                    "\nStorlek: " + storlek +
+                    "\nFärg: " + farg +
+                    "\nDekoration: " + dekoration +
+                    "\nBeskrivning: " + beskrivning +
+                    "\nÖvrigt: " + ovrigt +
+                    "\nHattstatus: " + hattStatus +
+                    "\nPris: " + pris +
+                    "\nTillhör Order: " + hattensOrderID;
+            
+            hattInfotxtarea.setText(allHattInfo);
+        
+        
+            } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "Databasfel!");
+            System.out.println("Internt felmeddelande" + e.getMessage()); 
+    
+    
+    }
+    
+    
+    
+    }
+    
+    
+    
+    
+    
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,57 +158,200 @@ public class RedigeraOrder extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        orderlbl = new javax.swing.JLabel();
+        valdOrderlbl = new javax.swing.JLabel();
+        kundTillOrderlbl = new javax.swing.JLabel();
+        orderDatum1lbl = new javax.swing.JLabel();
+        kundlbl = new javax.swing.JLabel();
+        orderDatumlbl = new javax.swing.JLabel();
+        hattlbl = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        hattlist = new javax.swing.JList<>();
+        redigeraValdHattbtn = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        taBortValdHattbtn = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        hattInfotxtarea = new javax.swing.JTextArea();
+        prioriteraHattbtn = new javax.swing.JButton();
+        prioriteraOrder = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        orderlbl.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        orderlbl.setText("Order");
+
+        valdOrderlbl.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        valdOrderlbl.setText("12345");
+
+        kundTillOrderlbl.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        kundTillOrderlbl.setText("Otto Ottosson");
+
+        orderDatum1lbl.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        orderDatum1lbl.setText("2023-01-01");
+
+        kundlbl.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        kundlbl.setText("Kund");
+
+        orderDatumlbl.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        orderDatumlbl.setText("Orderdatum");
+
+        hattlbl.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        hattlbl.setText("Hattar");
+
+        hattlist.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        hattlist.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                hattlistMouseClicked(evt);
+            }
+        });
+        hattlist.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                hattlistValueChanged(evt);
+            }
+        });
+        jScrollPane1.setViewportView(hattlist);
+
+        redigeraValdHattbtn.setText("Redigera vald hatt");
+        redigeraValdHattbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                redigeraValdHattbtnActionPerformed(evt);
+            }
+        });
+
+        taBortValdHattbtn.setText("Ta bort vald hatt");
+        taBortValdHattbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                taBortValdHattbtnActionPerformed(evt);
+            }
+        });
+
+        hattInfotxtarea.setEditable(false);
+        hattInfotxtarea.setColumns(20);
+        hattInfotxtarea.setRows(5);
+        jScrollPane2.setViewportView(hattInfotxtarea);
+
+        prioriteraHattbtn.setText("Prioritera Hatt (skapa en ny order)");
+
+        prioriteraOrder.setText("Prioritera hela ordern");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jSeparator1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(orderlbl)
+                .addGap(18, 18, 18)
+                .addComponent(valdOrderlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(155, 155, 155))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(kundlbl)
+                            .addComponent(orderDatumlbl))
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(kundTillOrderlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(orderDatum1lbl))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(taBortValdHattbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(redigeraValdHattbtn)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(prioriteraHattbtn)
+                                .addGap(18, 18, 18)
+                                .addComponent(prioriteraOrder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(0, 105, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(91, 91, 91)
+                .addComponent(hattlbl)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(orderlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(valdOrderlbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(4, 4, 4)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(kundlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(kundTillOrderlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(orderDatumlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(orderDatum1lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(hattlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(redigeraValdHattbtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(taBortValdHattbtn)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(prioriteraHattbtn)
+                    .addComponent(prioriteraOrder))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RedigeraOrder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RedigeraOrder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RedigeraOrder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RedigeraOrder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void redigeraValdHattbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_redigeraValdHattbtnActionPerformed
+        new RedigeraSpecialhatt(idb, hattensID).setVisible(true);
+    }//GEN-LAST:event_redigeraValdHattbtnActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new RedigeraOrder().setVisible(true);
-            }
-        });
-    }
+    private void taBortValdHattbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taBortValdHattbtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_taBortValdHattbtnActionPerformed
+
+    private void hattlistValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_hattlistValueChanged
+        hattlist.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        
+        String markeradHatt = hattlist.getSelectedValue();
+        fyllHattInfo(markeradHatt);
+    }//GEN-LAST:event_hattlistValueChanged
+
+    private void hattlistMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hattlistMouseClicked
+        String valdHatt = hattlist.getSelectedValue();
+        fyllHattInfo(valdHatt);
+    }//GEN-LAST:event_hattlistMouseClicked
+
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea hattInfotxtarea;
+    private javax.swing.JLabel hattlbl;
+    private javax.swing.JList<String> hattlist;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel kundTillOrderlbl;
+    private javax.swing.JLabel kundlbl;
+    private javax.swing.JLabel orderDatum1lbl;
+    private javax.swing.JLabel orderDatumlbl;
+    private javax.swing.JLabel orderlbl;
+    private javax.swing.JButton prioriteraHattbtn;
+    private javax.swing.JButton prioriteraOrder;
+    private javax.swing.JButton redigeraValdHattbtn;
+    private javax.swing.JButton taBortValdHattbtn;
+    private javax.swing.JLabel valdOrderlbl;
     // End of variables declaration//GEN-END:variables
 }
