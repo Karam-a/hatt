@@ -47,8 +47,6 @@ public class RegOrder extends javax.swing.JFrame {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         NyOrderLabel.setFont(new java.awt.Font("Hiragino Maru Gothic ProN", 1, 24)); // NOI18N
         NyOrderLabel.setText("Ny Order");
 
@@ -114,8 +112,7 @@ public class RegOrder extends javax.swing.JFrame {
          
             idb.insert(fraga);
             
-             //JOptionPane.showMessageDialog(null, fraga);
-            // JOptionPane.showMessageDialog(null, OrderID);
+           
             
             //if (ValideringKlass.finnsVarde(KIDTxt) || ValideringKlass.finnsVarde(IDHatt1Txt) || ValideringKlass.finnsVarde(IDHatt2Txt) || ValideringKlass.finnsVarde(IDHatt3Txt) || ValideringKlass.finnsVarde(OrderDatumTxt) || ValideringKlass.finnsVarde(OStatusComboBox))
             //{}
