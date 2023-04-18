@@ -5,7 +5,7 @@ import oru.inf.InfDB;
 import oru.inf.InfException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-
+//kommentar
 public class Orderhantering extends javax.swing.JFrame {
 private DefaultTableModel ejPabHattMod;
 private DefaultTableModel pabHattMod;
