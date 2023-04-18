@@ -65,7 +65,7 @@ public class Admin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnRedigera)
                     .addComponent(btnLäggTill))
-                .addContainerGap(227, Short.MAX_VALUE))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -74,7 +74,7 @@ public class Admin extends javax.swing.JFrame {
                 .addComponent(btnLäggTill)
                 .addGap(46, 46, 46)
                 .addComponent(btnRedigera)
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         pack();
