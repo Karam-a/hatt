@@ -95,9 +95,9 @@ public class InloggAdmin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(pfLösenord, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addGap(36, 36, 36)
                 .addComponent(btnInlogg)
-                .addGap(31, 31, 31))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         pack();
@@ -115,10 +115,10 @@ public class InloggAdmin extends javax.swing.JFrame {
          
           String HämtaLösen = "SELECT Lösenord FROM admin WHERE Användarnamn = '" + anvNamn + "';";
           
-          kontroll = idb.fetchSingle(HämtaLösen);
+         String kontroll = idb.fetchSingle(HämtaLösen);
 
          if(!Lösenord.matches(kontroll)){
-            JOptionPane.showMessageDialog(null, "Inloggning misslyckades!,Fyll i Lösenordet");
+            JOptionPane.showMessageDialog(null, "Inloggning misslyckades!,Fyll i rätt uppgifter");
             
         } else {
             new Admin(idb).setVisible(true);       

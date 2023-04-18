@@ -131,7 +131,7 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Skapa Fraktsedel/F&#xf6;ljdsedel"/>
+        <Property name="text" type="java.lang.String" value="Skapa Fraktsedel"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="Nummer">
