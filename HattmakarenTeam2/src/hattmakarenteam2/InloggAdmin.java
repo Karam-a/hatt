@@ -115,10 +115,10 @@ public class InloggAdmin extends javax.swing.JFrame {
          
           String HämtaLösen = "SELECT Lösenord FROM admin WHERE Användarnamn = '" + anvNamn + "';";
           
-          kontroll = idb.fetchSingle(HämtaLösen);
+         String kontroll = idb.fetchSingle(HämtaLösen);
 
          if(!Lösenord.matches(kontroll)){
-            JOptionPane.showMessageDialog(null, "Inloggning misslyckades!,Fyll i Lösenordet");
+            JOptionPane.showMessageDialog(null, "Inloggning misslyckades!,Fyll i rätt uppgifter");
             
         } else {
             new Admin(idb).setVisible(true);       
