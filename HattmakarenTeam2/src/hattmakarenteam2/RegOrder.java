@@ -100,27 +100,21 @@ public class RegOrder extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void SkapaOrderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SkapaOrderBtnActionPerformed
-        // TODO add your handling code here:
+       
         try{
             idb=new InfDB("hattProjektet", "3306","hattProjektet","hattkey");
+            
             String OrderID = idb.getAutoIncrement("ordrar", "orderID") ;
             String kundNamn = boxKund.getSelectedItem().toString();
             String hamtaKundId = "Select kundiD from Kund where kundNamn = '" +kundNamn+"' ; " ;
             String orderStatus = "Ej påbörjad";
             String orderDatum = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-           String kundID = idb.fetchSingle(hamtaKundId);
+            String kundID = idb.fetchSingle(hamtaKundId);
             String fraga = "insert into ordrar values(" +OrderID+"," + kundID + ", ('" + orderStatus + "'),'" + orderDatum + "');";
      
          
             idb.insert(fraga);
-            
-             //JOptionPane.showMessageDialog(null, fraga);
-            // JOptionPane.showMessageDialog(null, OrderID);
-            
-            //if (ValideringKlass.finnsVarde(KIDTxt) || ValideringKlass.finnsVarde(IDHatt1Txt) || ValideringKlass.finnsVarde(IDHatt2Txt) || ValideringKlass.finnsVarde(IDHatt3Txt) || ValideringKlass.finnsVarde(OrderDatumTxt) || ValideringKlass.finnsVarde(OStatusComboBox))
-            //{}
-            
-
+           
             nyttFonster();
 
         }
@@ -131,9 +125,6 @@ public class RegOrder extends javax.swing.JFrame {
     }//GEN-LAST:event_SkapaOrderBtnActionPerformed
 
     
-
-    
-    
     
    private void hamtaKund () 
    {
@@ -143,23 +134,22 @@ public class RegOrder extends javax.swing.JFrame {
 
        try {
              
-                 Kunder = idb.fetchColumn(hamtakund);
+            Kunder = idb.fetchColumn(hamtakund);
                 
-           for (String enKund : Kunder){
+                for (String enKund : Kunder){
                                  
                      boxKund.addItem(enKund);
-                             }
-
-
+                }
+                
+                JOptionPane.showMessageDialog(null, "Ny order har skapats!");
             }
         
         
-        catch (Exception e) {
-            
+        catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "Något gick fel, ingen order skapades!");
         }
        
    }
-    
     
     
     

@@ -218,38 +218,37 @@ public class RegisteraSpecialhatt extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void hattKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hattKnappActionPerformed
-     // TODO add your handling code here:
         
         try {
             
             idb=new InfDB("hattProjektet", "3306","hattProjektet","hattkey");
             
-        String ID = idb.getAutoIncrement("specialHattar", "SpecialhattID");
-        String namn = namnTxt.getText();
-        String hamtaKund = getKund();
-        String orderiD = "Fan eller ;/ " ;
-        String pris = prisTXT.getText();
-        String tyg = tygTxt.getText();
-        String storlek = storlekTxt.getText();
-        String modell = modellTxt.getText();
-        String farg = fargTxt.getText();
-        String dekoration = dekorationTxt.getText();
-        String beskrivning = beskrivningTxt.getText();
-        String ovrigt = ovrigtTxt.getText();
-        String status = "EjPåbörjad";
-        String fraga = "insert into specialhattar values(" + ID + ",'" + namn + "','" + tyg + "','" + storlek + "','" + modell + "','" + farg + "','" + dekoration + "','" + beskrivning +"','" + ovrigt + "','" + status + "',"+orderiD+","+pris+");";
+            String ID = idb.getAutoIncrement("specialHattar", "SpecialhattID");
+            String namn = namnTxt.getText();
+            String hamtaKund = getKund();
+            String orderiD = "Fan eller ;/ " ;
+            String pris = prisTXT.getText();
+            String tyg = tygTxt.getText();
+            String storlek = storlekTxt.getText();
+            String modell = modellTxt.getText();
+            String farg = fargTxt.getText();
+            String dekoration = dekorationTxt.getText();
+            String beskrivning = beskrivningTxt.getText();
+            String ovrigt = ovrigtTxt.getText();
+            String status = "EjPåbörjad";
+            String fraga = "insert into specialhattar values(" + ID + ",'" + namn + "','" + tyg + "','" + storlek + "','" + modell + "','" + farg + "','" + dekoration + "','" + beskrivning +"','" + ovrigt + "','" + status + "',"+orderiD+","+pris+");";
                 
-       // if (ValideringKlass.finnsVarde(namnTxt) || ValideringKlass.finnsVarde(tygTxt) || ValideringKlass.finnsVarde(storlekTxt) || ValideringKlass.finnsVarde(modellTxt) || ValideringKlass.finnsVarde(fargTxt) || ValideringKlass.finnsVarde(dekorationTxt) || ValideringKlass.finnsVarde(beskrivningTxt) || ValideringKlass.finnsVarde(ovrigtTxt))
-        //{}
+        if (ValideringKlass.finnsVarde(namnTxt) || ValideringKlass.finnsVarde(prisTXT) || ValideringKlass.finnsVarde(tygTxt) || ValideringKlass.finnsVarde(storlekTxt) || ValideringKlass.finnsVarde(modellTxt) || ValideringKlass.finnsVarde(fargTxt) || ValideringKlass.finnsVarde(dekorationTxt) || ValideringKlass.finnsVarde(beskrivningTxt))
+        {}
             
-
-        // String id = idb.getAutoIncrement(specialHattar, SpecialhattID);
         idb.insert(fraga);
                 
-        JOptionPane.showMessageDialog(null, "Ny specialhatt har registrerats!");        
+        JOptionPane.showMessageDialog(null, "Ny specialhatt har registrerats!");
+        
             }
+        
         catch(InfException ettUndantag){
-               JOptionPane.showMessageDialog(null, "Något gick fel!");
+               JOptionPane.showMessageDialog(null, "Något gick fel, ingen specialhatt registrerades!");
         }
 
     }//GEN-LAST:event_hattKnappActionPerformed
