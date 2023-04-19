@@ -50,6 +50,12 @@ private InfDB idb;
 
         jLabel2.setText("Hämta beställningsinformation");
 
+        jTextFieldOrderID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldOrderIDActionPerformed(evt);
+            }
+        });
+
         jButtonOkBestallning.setText("OK");
         jButtonOkBestallning.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,6 +161,10 @@ private InfDB idb;
             JOptionPane.showMessageDialog(null, "KundID måste fyllas i");
         }
     }//GEN-LAST:event_jButtonOkBestallningActionPerformed
+
+    private void jTextFieldOrderIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldOrderIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldOrderIDActionPerformed
 
     /**
      * @param args the command line arguments
