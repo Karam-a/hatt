@@ -14,14 +14,18 @@ public class RedigeraSpecialhatt extends javax.swing.JFrame {
     
     
     private InfDB idb;
+    private RedigeraOrder redOrder;
     private String hattensID;
+    private int orderIDint;
+    
 
     /**
      * Creates new form RedigeraSpecialhatt
      */
-    public RedigeraSpecialhatt(InfDB idb, String hattensID) {
+    public RedigeraSpecialhatt(InfDB idb, RedigeraOrder redOrder, String hattensID) {
         initComponents();
         this.idb = idb;
+        this.redOrder = redOrder;
         this.hattensID = hattensID;
         fyllMedData();
     }
@@ -46,6 +50,9 @@ public class RedigeraSpecialhatt extends javax.swing.JFrame {
             String hattStatus = hatten.get("hattStatus");
             String orderID = hatten.get("orderID");
             String pris = hatten.get("pris");
+            
+            orderIDint = Integer.parseInt(orderID);
+            
             
             hattIDlbl.setText(hattensID);
             namntxt.setText(namn);
@@ -292,9 +299,57 @@ public class RedigeraSpecialhatt extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bekraftaandringarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bekraftaandringarbtnActionPerformed
-        // TODO add your handling code here:
+        
+        String nyNamn = namntxt.getText();
+        String nyTyg = tygtxt.getText();
+        String nyStorlek = storlektxt.getText();
+        String nyModell = modelltxt.getText();
+        String nyFarg = fargtxt.getText();
+        String nyDekoration = dekorationtxt.getText();
+        String nyBeskrivning = beskrivningtxt.getText();
+        String nyOvrigt = ovrigttxt.getText();
+        String nyHattStatus = hattstatuscmb.getSelectedItem().toString();
+        String nyPris = pristxt.getText();
+        
+        int hattID = Integer.parseInt(hattensID);
+        double prisDouble = Double.parseDouble(nyPris);
+        
+        String fraga = "UPDATE hattprojektet.specialhattar SET Namn = '" + nyNamn + "', "
+                + "Tyg = '" + nyTyg + "', "
+                + "Storlek = '" + nyStorlek + "', "
+                + "Modell = '" + nyModell + "', "
+                + "Färg = '" + nyFarg + "', "
+                + "Dekoration = '" + nyDekoration + "', "
+                + "beskrivning = '" + nyBeskrivning + "', "
+                + "Övrigt = '" + nyOvrigt + "', "
+                + "hattStatus = '" + nyHattStatus + "', "
+                + "pris = " + prisDouble + ", "
+                + "Tyg = '" + nyTyg + "' "
+                + "WHERE specialhattar.SpecialhattID = " + hattID + ";";
+        
+        execute(fraga);
+                
     }//GEN-LAST:event_bekraftaandringarbtnActionPerformed
 
+    private void execute(String fraga){
+        
+        try {
+            idb.update(fraga);
+            JOptionPane.showMessageDialog(null, "Informationen har uppdaterats!");
+            this.dispose();
+            redOrder.dispose();
+            RedigeraOrder redOrder = new RedigeraOrder(idb, orderIDint);
+            redOrder.setVisible(true);
+            
+            } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "Databasfel!");
+            System.out.println("Internt felmeddelande" + e.getMessage());             
+        }
+    
+    }
+    
+    
+    
     private void tygtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tygtxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tygtxtActionPerformed
