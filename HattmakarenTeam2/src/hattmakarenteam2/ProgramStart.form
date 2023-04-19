@@ -34,39 +34,42 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="kundMenyBtn" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="materialBestBtn" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="orderMenyBtn" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnRegKund" alignment="0" min="-2" pref="293" max="-2" attributes="0"/>
-                          <Component id="jButton2" alignment="0" min="-2" pref="382" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                              <Component id="jButtonBestallningar" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jButton1" alignment="0" max="32767" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="152" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="jButtonBestallningar" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jButton1" alignment="0" max="32767" attributes="0"/>
                                       </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="regSpecHattBtn" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                      </Group>
+                                      <EmptySpace min="-2" pref="152" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="testredigeraorderbtn" min="-2" pref="176" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="kassaBtn" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="regOrderBtn" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="foljdSedel" min="-2" pref="286" max="-2" attributes="0"/>
-                                      <Component id="loggaInBtn" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="regSpecHattBtn" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
+                              <Component id="testredigeraorderbtn" min="-2" pref="176" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="kundMenyBtn" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="materialBestBtn" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="orderMenyBtn" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnRegKund" alignment="0" min="-2" pref="293" max="-2" attributes="0"/>
+                                  <Component id="jButton2" alignment="0" min="-2" pref="382" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="kassaBtn" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="regOrderBtn" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="foljdSedel" min="-2" pref="286" max="-2" attributes="0"/>
+                                          <Component id="loggaInBtn" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>

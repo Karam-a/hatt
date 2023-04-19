@@ -10,18 +10,22 @@ import com.itextpdf.text.pdf.PdfWriter;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
+import oru.inf.InfDB;
 
 /**
  *
  * @author alexm
  */
 public class SkickadUthämtad extends javax.swing.JFrame {
-
+private InfDB idb;
     /**
      * Creates new form SkickadUthämtad
+     * @param idb
      */
-    public SkickadUthämtad() {
+    public SkickadUthämtad(InfDB idb) {
+        this.idb = idb;
         initComponents();
     }
 
@@ -97,32 +101,40 @@ public class SkickadUthämtad extends javax.swing.JFrame {
                  try {
         
         //Förmodligen så hämtas all info från Jframen som Andreas jobbar. OrderIdt 
+        String kundFraga = "Select kundId from ordrar where orderID="+199+"";
+        String kundFraga2 = idb.fetchSingle(kundFraga);
+        String kundFraga3 = "Select kundNamn from kund where kundID="+kundFraga2+"";
+        String namn = idb.fetchSingle(kundFraga3);
         
-        String fraga= "Select kundID, SpecialhattID,orderDatum,orderStatus,pris from ordrar where orderID =""";
-        ArrayList<String> variabel= idb.fetchColumn(variabel);
+        String produktFraga = "Select Namn, Modell, Pris from specialhattar where orderID ="+199+"";
+       ArrayList<HashMap<String, String>> produktSvar= idb.fetchRows(produktFraga);
+       
+        String fraga= "Select orderDatum,pris from ordrar where orderID ="+199+"";
+        ArrayList<String> info= idb.fetchColumn(fraga);
+        
         
         //ej klar
        //strängen som ja sparar totalpriset i
-      String totalprisQuery = "SELECT SUM(pris) AS totalprice FROM kop WHERE kopID = " + fraga;
+      int kopID = 123; // Replace with the actual ID value
+String totalprisQuery = "SELECT SUM(pris) AS totalprice FROM specialhattar WHERE orderID = " + 199+"";
+ArrayList<String> totalpris = idb.fetchColumn(totalprisQuery);
+double totalprisWithVAT = 0.0;
+if (!totalpris.isEmpty()) {
+    String totalprisStr = totalpris.get(0); // Get the first (and only) element from the list
+    double totalprisDouble = Double.parseDouble(totalprisStr); // Convert the string to a double
+     totalprisWithVAT = totalprisDouble * 1.25; // Multiply by 1.25 to include VAT
+    System.out.println("Total price with VAT: " + totalprisWithVAT);
+} else {
+    System.out.println("No results found.");
+}
+      
 
-      double totalpris = 0;
 
-/*try (Statement stmt = idb.createStatement()) {
-    ResultSet rs = stmt.executeQuery(totalprisQuery);
-
-    if (rs.next()) {
-        totalpris = rs.getDouble("totalprice");
-    }
-} catch (SQLException ex) {
-    ex.printStackTrace();
-}*/
-
-totalpris *= 1.25; // multiply by 1.25
  // Get the current text in the Resultat text box
         String currentText = Resultat.getText();
 
         // Append the new text to the current text
-        String newText = currentText +"Hej din order är skickad "+"\n"+ "Pris och produkt"+"fraga2Result"+"\n"+"Totalpris + 25% moms"+"totalpris" + "\n"+"Du kan kontakta oss via hattmakrn@yahoo.se eller 0720567";
+        String newText = currentText +"Hej din order är skickad "+namn+"\n"+produktSvar+"\n"+ info+"\n"+"Totalpris + 25% moms"+totalprisWithVAT + "\n"+"Du kan kontakta oss via hattmakrn@yahoo.se eller 0720567";
 
         // Set the updated text in the Resultat text box
         Resultat.setText(newText);

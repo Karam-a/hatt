@@ -142,10 +142,8 @@ public class RedigeraOrder extends javax.swing.JFrame {
     
     }
     
-    
-    
-    
-    
+
+
     
     
     
@@ -320,7 +318,7 @@ public class RedigeraOrder extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void redigeraValdHattbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_redigeraValdHattbtnActionPerformed
-        new RedigeraSpecialhatt(idb, hattensID).setVisible(true);
+        new RedigeraSpecialhatt(idb, this, hattensID).setVisible(true);
     }//GEN-LAST:event_redigeraValdHattbtnActionPerformed
 
     private void taBortValdHattbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taBortValdHattbtnActionPerformed
