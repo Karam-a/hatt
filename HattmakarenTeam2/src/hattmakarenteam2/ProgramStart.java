@@ -269,6 +269,7 @@ public class ProgramStart extends javax.swing.JFrame {
     private void loggaInBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loggaInBtnActionPerformed
         // TODO add your handling code here:
      new InloggAdmin(idb).setVisible(true);
+     dispose();
     }//GEN-LAST:event_loggaInBtnActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

@@ -79,11 +79,11 @@ public class Admin extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(59, 59, 59)
+                .addGap(64, 64, 64)
                 .addComponent(btnLäggTill)
-                .addGap(46, 46, 46)
+                .addGap(37, 37, 37)
                 .addComponent(btnRedigera)
-                .addGap(33, 33, 33)
+                .addGap(37, 37, 37)
                 .addComponent(btnStart)
                 .addContainerGap(59, Short.MAX_VALUE))
         );
