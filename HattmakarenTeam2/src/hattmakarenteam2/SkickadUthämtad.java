@@ -10,18 +10,22 @@ import com.itextpdf.text.pdf.PdfWriter;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
+import oru.inf.InfDB;
 
 /**
  *
  * @author alexm
  */
 public class SkickadUthämtad extends javax.swing.JFrame {
-
+private InfDB idb;
     /**
      * Creates new form SkickadUthämtad
+     * @param idb
      */
-    public SkickadUthämtad() {
+    public SkickadUthämtad(InfDB idb) {
+        this.idb = idb;
         initComponents();
     }
 
@@ -37,10 +41,11 @@ public class SkickadUthämtad extends javax.swing.JFrame {
         Skickad = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Resultat = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Skickad.setText("Markera som skickad");
+        Skickad.setText("Skapa Följdsedel");
         Skickad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SkickadActionPerformed(evt);
@@ -50,6 +55,8 @@ public class SkickadUthämtad extends javax.swing.JFrame {
         Resultat.setColumns(20);
         Resultat.setRows(5);
         jScrollPane1.setViewportView(Resultat);
+
+        jLabel1.setText("Order");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -63,12 +70,17 @@ public class SkickadUthämtad extends javax.swing.JFrame {
                         .addGap(30, 30, 30))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(Skickad)
-                        .addGap(67, 67, 67))))
+                        .addGap(67, 67, 67))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(128, 128, 128))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(43, Short.MAX_VALUE)
+                .addContainerGap(21, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(Skickad)
@@ -88,32 +100,41 @@ public class SkickadUthämtad extends javax.swing.JFrame {
        
                  try {
         
-        //Ska hämta namnet på produkten och dess pris. 
-        String fraga2= "Select Produktnamn, pris from kop where kopID ="+fragaResult+" ";
-        ArrayList<String> fraga2Result = idb.fetchColumn(fraga2);
+        //Förmodligen så hämtas all info från Jframen som Andreas jobbar. OrderIdt 
+        String kundFraga = "Select kundId from ordrar where orderID="+199+"";
+        String kundFraga2 = idb.fetchSingle(kundFraga);
+        String kundFraga3 = "Select kundNamn from kund where kundID="+kundFraga2+"";
+        String namn = idb.fetchSingle(kundFraga3);
+        
+        String produktFraga = "Select Namn, Modell, Pris from specialhattar where orderID ="+199+"";
+       ArrayList<HashMap<String, String>> produktSvar= idb.fetchRows(produktFraga);
+       
+        String fraga= "Select orderDatum,pris from ordrar where orderID ="+199+"";
+        ArrayList<String> info= idb.fetchColumn(fraga);
+        
         
         //ej klar
        //strängen som ja sparar totalpriset i
-      String totalprisQuery = "SELECT SUM(pris) AS totalprice FROM kop WHERE kopID = " + fraga;
+      int kopID = 123; // Replace with the actual ID value
+String totalprisQuery = "SELECT SUM(pris) AS totalprice FROM specialhattar WHERE orderID = " + 199+"";
+ArrayList<String> totalpris = idb.fetchColumn(totalprisQuery);
+double totalprisWithVAT = 0.0;
+if (!totalpris.isEmpty()) {
+    String totalprisStr = totalpris.get(0); // Get the first (and only) element from the list
+    double totalprisDouble = Double.parseDouble(totalprisStr); // Convert the string to a double
+     totalprisWithVAT = totalprisDouble * 1.25; // Multiply by 1.25 to include VAT
+    System.out.println("Total price with VAT: " + totalprisWithVAT);
+} else {
+    System.out.println("No results found.");
+}
+      
 
-      double totalpris = 0;
 
-/*try (Statement stmt = idb.createStatement()) {
-    ResultSet rs = stmt.executeQuery(totalprisQuery);
-
-    if (rs.next()) {
-        totalpris = rs.getDouble("totalprice");
-    }
-} catch (SQLException ex) {
-    ex.printStackTrace();
-}*/
-
-totalpris *= 1.25; // multiply by 1.25
  // Get the current text in the Resultat text box
         String currentText = Resultat.getText();
 
         // Append the new text to the current text
-        String newText = currentText +"Hej din order är skickad "+"\n"+ "Pris och produkt"+"fraga2Result"+"\n"+"Totalpris + 25% moms"+"totalpris" + "\n";
+        String newText = currentText +"Hej din order är skickad "+namn+"\n"+produktSvar+"\n"+ info+"\n"+"Totalpris + 25% moms"+totalprisWithVAT + "\n"+"Du kan kontakta oss via hattmakrn@yahoo.se eller 0720567";
 
         // Set the updated text in the Resultat text box
         Resultat.setText(newText);
@@ -187,6 +208,7 @@ e.printStackTrace();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea Resultat;
     private javax.swing.JButton Skickad;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

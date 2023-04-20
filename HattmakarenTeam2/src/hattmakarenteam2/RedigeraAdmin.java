@@ -149,17 +149,17 @@ public class RedigeraAdmin extends javax.swing.JFrame {
 
       private void hamtaAdmin () 
    {
-      String hamtakund = "Select Namn from admin"; 
+      String hamtaAdmin = "Select Namn from admin"; 
       
-                  ArrayList<String> Kunder;
+                  ArrayList<String> admin;
 
        try {
              
-                 Kunder = idb.fetchColumn(hamtakund);
+                 admin = idb.fetchColumn(hamtaAdmin);
                 
-           for (String enKund : Kunder){
+           for (String enAdmin : admin){
                                  
-                     cbAdmin.addItem(enKund);
+                     cbAdmin.addItem(enAdmin);
                              }
             }
         

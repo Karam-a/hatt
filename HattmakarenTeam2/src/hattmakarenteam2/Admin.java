@@ -37,6 +37,7 @@ public class Admin extends javax.swing.JFrame {
         jPasswordField1 = new javax.swing.JPasswordField();
         btnLäggTill = new javax.swing.JButton();
         btnRedigera = new javax.swing.JButton();
+        btnStart = new javax.swing.JButton();
 
         jPasswordField1.setText("jPasswordField1");
 
@@ -56,25 +57,35 @@ public class Admin extends javax.swing.JFrame {
             }
         });
 
+        btnStart.setText("StartSidan ");
+        btnStart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStartActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(58, 58, 58)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnRedigera)
-                    .addComponent(btnLäggTill))
-                .addContainerGap(227, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnRedigera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnLäggTill)
+                    .addComponent(btnStart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(99, 99, 99)
+                .addGap(64, 64, 64)
                 .addComponent(btnLäggTill)
-                .addGap(46, 46, 46)
+                .addGap(37, 37, 37)
                 .addComponent(btnRedigera)
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addGap(37, 37, 37)
+                .addComponent(btnStart)
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         pack();
@@ -87,6 +98,12 @@ public class Admin extends javax.swing.JFrame {
     private void btnRedigeraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRedigeraActionPerformed
         new RedigeraAdmin(idb).setVisible(true);
     }//GEN-LAST:event_btnRedigeraActionPerformed
+
+    private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
+        // TODO add your handling code here:
+      new ProgramStart().setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_btnStartActionPerformed
 
     /**
      * @param args the command line arguments
@@ -125,6 +142,7 @@ public class Admin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLäggTill;
     private javax.swing.JButton btnRedigera;
+    private javax.swing.JButton btnStart;
     private javax.swing.JPasswordField jPasswordField1;
     // End of variables declaration//GEN-END:variables
 }
