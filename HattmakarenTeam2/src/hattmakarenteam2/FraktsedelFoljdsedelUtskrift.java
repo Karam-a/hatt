@@ -60,6 +60,7 @@ private InfDB idb;
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Resultat = new javax.swing.JTextArea();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -114,6 +115,13 @@ private InfDB idb;
         Resultat.setRows(5);
         jScrollPane1.setViewportView(Resultat);
 
+        jButton4.setText("Öppna FöljdsedelMeny");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -153,7 +161,10 @@ private InfDB idb;
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel2))))
+                            .addComponent(jLabel2)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton4)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -161,7 +172,16 @@ private InfDB idb;
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jButton4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -186,20 +206,12 @@ private InfDB idb;
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Porto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 6, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Beskrivning, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
                     .addComponent(jLabel7))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
         );
 
         pack();
@@ -286,31 +298,31 @@ e.printStackTrace();
         String nummer = Nummer.getText();
         String fraga = "Select kundID from kund where telefonNummer ="+ nummer+"";
         String fragaResult = idb.fetchSingle(fraga);
-        //Ska hämta namnet på produkten och dess pris. 
-        String fraga2= "Select Produktnamn, pris from kop where kopID ="+fragaResult+" ";
-        ArrayList<String> fraga2Result = idb.fetchColumn(fraga2);
+        String order = "Select orderID from ordrar where kundID ="+fragaResult+"";
+        String orderResult = idb.fetchSingle(order);
         
-        //ej klar
+        //Ska hämta namnet på produkten och dess pris. 
+        String fraga2= "Select Namn, pris from specialhattar where orderID ="+orderResult+" ";
+        ArrayList<String> fraga2Result = idb.fetchColumn(fraga2);
+     
        //strängen som ja sparar totalpriset i
-      String totalprisQuery = "SELECT SUM(pris) AS totalprice FROM kop WHERE kopID = " + fraga;
-double totalpris = 0;
-
-/*try (Statement stmt = idb.createStatement()) {
-    ResultSet rs = stmt.executeQuery(totalprisQuery);
-
-    if (rs.next()) {
-        totalpris = rs.getDouble("totalprice");
-    }
-} catch (SQLException ex) {
-    ex.printStackTrace();
-}*/
-
-totalpris *= 1.25; // multiply by 1.25
+     //int orderID = orderResult; 
+String totalprisQuery = "SELECT SUM(pris) AS totalprice FROM specialhattar WHERE orderID = " + orderResult+"";
+ArrayList<String> totalpris = idb.fetchColumn(totalprisQuery);
+double totalprisWithVAT = 0.0;
+if (!totalpris.isEmpty()) {
+    String totalprisStr = totalpris.get(0); // Get the first (and only) element from the list
+    double totalprisDouble = Double.parseDouble(totalprisStr); // Convert the string to a double
+     totalprisWithVAT = totalprisDouble * 1.25; // Multiply by 1.25 to include VAT
+    System.out.println("Total price with VAT: " + totalprisWithVAT);
+} else {
+    System.out.println("No results found.");
+}
  // Get the current text in the Resultat text box
         String currentText = Resultat.getText();
 
         // Append the new text to the current text
-        String newText = currentText + "Pris och produkt"+fraga2Result+"\n"+"Totalpris + 25% moms"+totalpris + "\n";
+        String newText = currentText + "Pris och produkt"+fraga2Result+"\n"+"Totalpris + 25% moms"+totalprisWithVAT + "\n";
 
         // Set the updated text in the Resultat text box
         Resultat.setText(newText);
@@ -320,6 +332,12 @@ totalpris *= 1.25; // multiply by 1.25
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // öppnar följdsedelmenyn
+        new SkickadUthämtad(idb).setVisible(true);
+         this.dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -368,6 +386,7 @@ totalpris *= 1.25; // multiply by 1.25
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

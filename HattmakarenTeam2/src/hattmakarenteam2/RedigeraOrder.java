@@ -142,10 +142,8 @@ public class RedigeraOrder extends javax.swing.JFrame {
     
     }
     
-    
-    
-    
-    
+
+
     
     
     
@@ -231,6 +229,11 @@ public class RedigeraOrder extends javax.swing.JFrame {
         jScrollPane2.setViewportView(hattInfotxtarea);
 
         prioriteraHattbtn.setText("Prioritera Hatt (skapa en ny order)");
+        prioriteraHattbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                prioriteraHattbtnActionPerformed(evt);
+            }
+        });
 
         prioriteraOrder.setText("Prioritera hela ordern");
 
@@ -315,7 +318,7 @@ public class RedigeraOrder extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void redigeraValdHattbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_redigeraValdHattbtnActionPerformed
-        new RedigeraSpecialhatt(idb, hattensID).setVisible(true);
+        new RedigeraSpecialhatt(idb, this, hattensID).setVisible(true);
     }//GEN-LAST:event_redigeraValdHattbtnActionPerformed
 
     private void taBortValdHattbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taBortValdHattbtnActionPerformed
@@ -333,6 +336,13 @@ public class RedigeraOrder extends javax.swing.JFrame {
         String valdHatt = hattlist.getSelectedValue();
         fyllHattInfo(valdHatt);
     }//GEN-LAST:event_hattlistMouseClicked
+
+    private void prioriteraHattbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prioriteraHattbtnActionPerformed
+        // gör prioritering av hatt tillgänglig
+        BradskandeHatt nyRuta = new BradskandeHatt(idb);
+        nyRuta.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_prioriteraHattbtnActionPerformed
 
 
 
