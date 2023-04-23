@@ -236,6 +236,11 @@ public class RedigeraOrder extends javax.swing.JFrame {
         });
 
         prioriteraOrder.setText("Prioritera hela ordern");
+        prioriteraOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                prioriteraOrderActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -343,6 +348,14 @@ public class RedigeraOrder extends javax.swing.JFrame {
         nyRuta.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_prioriteraHattbtnActionPerformed
+
+    private void prioriteraOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prioriteraOrderActionPerformed
+        // TODO add your handling code here:
+        
+         BradskandeOrder nyRuta = new BradskandeOrder(idb);
+        nyRuta.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_prioriteraOrderActionPerformed
 
 
 
