@@ -108,10 +108,11 @@ public class RegOrder extends javax.swing.JFrame {
             String orderStatus = "Ej påbörjad";
             String orderDatum = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
             String kundID = idb.fetchSingle(hamtaKundId);
-            String fraga = "insert into ordrar values(" +OrderID+"," + kundID + ", ('" + orderStatus + "'),'" + orderDatum + "');";
+            String fraga = "insert into ordrar values(" +OrderID+"," + kundID + ",'" + orderDatum + "', ('" + orderStatus + "'), null );";
      
          
             idb.insert(fraga);
+            
            
             nyttFonster();
 
@@ -139,7 +140,7 @@ public class RegOrder extends javax.swing.JFrame {
                      boxKund.addItem(enKund);
                 }
                 
-                JOptionPane.showMessageDialog(null, "Ny order har skapats!");
+                
             }
         
         
