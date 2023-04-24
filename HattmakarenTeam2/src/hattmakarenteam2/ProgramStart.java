@@ -265,7 +265,7 @@ public class ProgramStart extends javax.swing.JFrame {
     }//GEN-LAST:event_regOrderBtnActionPerformed
 
     private void orderMenyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderMenyBtnActionPerformed
-        new Orderhantering1(idb).setVisible(true);
+        new Orderplanyta(idb).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_orderMenyBtnActionPerformed
 
