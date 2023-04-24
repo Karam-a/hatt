@@ -151,7 +151,8 @@ public class ProgramStart extends javax.swing.JFrame {
             }
         });
 
-        testredigeraorderbtn.setText("TEST REDIGERA ORDER");
+        testredigeraorderbtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        testredigeraorderbtn.setText("Redigera Order");
         testredigeraorderbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 testredigeraorderbtnActionPerformed(evt);
