@@ -25,8 +25,7 @@ private InfDB idb;
         initComponents();
         fyllTabeller();
     }
-
-   
+  
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -218,42 +217,41 @@ private InfDB idb;
         //anger valtObjekt som [Tabellnamn] och hämtar värdet på den valda positionen. column är angivet som 0 då vi enbart har en kolumn i varje tabell.
         valtObjekt = ejPabTable.getValueAt(radIndex,0);
         //anger valdTable till namnet på den valda tabellen
-<<<<<<< Updated upstream
+
         valdTable = ejPabTable;
-=======
+
             valdTable = ejPabTable;
             hamtaOrderID();
          //   korFonster();
->>>>>>> Stashed changes
+
      }
+     
      else if(pabTable.isFocusOwner()){
          radIndex = pabTable.getSelectedRow();
          valtObjekt = pabTable.getValueAt(radIndex,0);
          valdTable = pabTable;
-<<<<<<< Updated upstream
-=======
+
           hamtaOrderID();
           //korFonster();
->>>>>>> Stashed changes
      }
+     
      else if(avslutTable.isFocusOwner()){
          radIndex = avslutTable.getSelectedRow();
          valtObjekt = pabTable.getValueAt(radIndex, 0);
          valdTable = avslutTable;
-<<<<<<< Updated upstream
+
      }
-=======
             hamtaOrderID();
            // korFonster();
      }
+    
         new HanteraEnskildOrder(idb, valdOrderID).setVisible(true);
-    }
+    
     
     else{
         JOptionPane.showMessageDialog(null, "Välj en order för att fortsätta.");
     }
->>>>>>> Stashed changes
-     
+
      try{
          //hämtar ut ID på det kundnamn som är valt. Sätter även det valda objektets värde till en sträng för att kunna hitta i databasen.
         valdOrderID = Integer.parseInt(idb.fetchSingle("SELECT orderID FROM ordrar WHERE kundID IN(SELECT kundID WHERE kundNamn=" +"'"+ valtObjekt.toString() + "'"+ ")" ));
@@ -264,11 +262,6 @@ private InfDB idb;
      JOptionPane.showMessageDialog(null, "Gick ej att hämta innehållet i databasen. Vänligen försök igen!");
      }
        
-        
-    }//GEN-LAST:event_hanteraOrderBtnActionPerformed
-
-<<<<<<< Updated upstream
-=======
     private void hamtaOrderID(){
         try{
          //hämtar ut ID på det kundnamn som är valt. Sätter även det valda objektets värde till en sträng för att kunna hitta i databasen.
@@ -283,7 +276,7 @@ private InfDB idb;
         new HanteraEnskildOrder(idb, valdOrderID).setVisible(true);
     }
     
->>>>>>> Stashed changes
+
   private void hamtaData(){
       try{
   ejPabHatt = idb.fetchColumn("Select kundNamn from kund where kundID in(Select kundID from ordrar where orderStatus='Ej Påbörjad')");
@@ -312,10 +305,18 @@ private InfDB idb;
         }
     }
 
+     
+     
+     
     
     
+    
+    
+    
+    }//GEN-LAST:event_hanteraOrderBtnActionPerformed
 
 
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable avslutTable;
     private javax.swing.JLabel avslutadLabel;
@@ -330,4 +331,5 @@ private InfDB idb;
     private javax.swing.JTable pabTable;
     private javax.swing.JLabel paborjadLabel;
     // End of variables declaration//GEN-END:variables
-}
+
+

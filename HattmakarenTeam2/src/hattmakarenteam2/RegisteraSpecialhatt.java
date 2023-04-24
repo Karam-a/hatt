@@ -4,7 +4,6 @@
  */
 package hattmakarenteam2;
 
-import static hattmakarenteam2.RegOrder.getKund;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
@@ -66,7 +65,7 @@ public class RegisteraSpecialhatt extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         SpecialhattLabel.setFont(new java.awt.Font("Hiragino Maru Gothic ProN", 1, 24)); // NOI18N
         SpecialhattLabel.setText("Specialhatt");
@@ -221,8 +220,9 @@ public class RegisteraSpecialhatt extends javax.swing.JFrame {
             
             String ID = idb.getAutoIncrement("specialHattar", "SpecialhattID");
             String namn = namnTxt.getText();
-            String hamtaKund = getKund();
-            String orderiD = "Fan eller ;/ " ;
+            // String hamtaKund = getKund();
+            String hamtaID = "select max(orderID) from ordrar;";
+            String OrderID = idb.fetchSingle(hamtaID);
             String pris = prisTXT.getText();
             String tyg = tygTxt.getText();
             String storlek = storlekTxt.getText();
@@ -231,10 +231,8 @@ public class RegisteraSpecialhatt extends javax.swing.JFrame {
             String dekoration = dekorationTxt.getText();
             String beskrivning = beskrivningTxt.getText();
             String ovrigt = ovrigtTxt.getText();
-            String status = "EjPåbörjad";
-            String fraga = "insert into specialhattar values(" + ID + ",'" + namn + "','" + tyg + "','" + storlek + "','" + modell + "','" + farg + "','" + dekoration + "','" + beskrivning +"','" + ovrigt + "','" + status + "',"+orderiD+","+pris+");";
-            String hamtaID = "select max(orderID) from ordrar;";
-            String OrderID = idb.fetchSingle(hamtaID);
+            String status = "Ej Påbörjad";
+            String fraga = "insert into specialhattar values(" + ID + ",'" + namn + "','" + tyg + "','" + storlek + "','" + modell + "','" + farg + "','" + dekoration + "','" + beskrivning +"','" + ovrigt + "','" + status + "',"+OrderID+","+pris+");";
             
            
         if (ValideringKlass.finnsVarde(namnTxt) || ValideringKlass.finnsVarde(prisTXT) || ValideringKlass.finnsVarde(tygTxt) || ValideringKlass.finnsVarde(storlekTxt) || ValideringKlass.finnsVarde(modellTxt) || ValideringKlass.finnsVarde(fargTxt) || ValideringKlass.finnsVarde(dekorationTxt) || ValideringKlass.finnsVarde(beskrivningTxt))

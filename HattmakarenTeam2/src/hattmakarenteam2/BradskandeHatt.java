@@ -9,8 +9,7 @@ import javax.swing.table.DefaultTableModel;
 import oru.inf.InfDB;
 import oru.inf.InfException; 
 import javax.swing.JOptionPane;
-import java.sql.*;
-import java.sql.PreparedStatement;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -115,17 +114,20 @@ private InfDB idb;
   String sHattID = jTextFieldShID.getText();
     int intID = Integer.parseInt(sHattID);
     
-    String sql = "update speciallhattar set ";
-    String sqlpris = "select pris from specialhattar where SpecialhattID = " + intID + "";
+   // String sql = "update speciallhattar set ";
+  //  String sqlpris = "select pris from specialhattar where SpecialhattID = " + intID + "";
     
-    String db = idb.fetchSingle(sqlpris);
+    //String db = idb.fetchSingle(sqlpris);
     
-    double d = Double.parseDouble(db);
+    //double d = Double.parseDouble(db);
     
     if(!(jTextFieldShID.getText().isEmpty())){
-String query = "UPDATE specialhattar SET pris = pris * 1.2 WHERE specialhattID = " + intID + "";        
+String query = "UPDATE specialhattar SET pris = pris * 1.2 WHERE specialhattID = " + intID + ""; 
+String bradskande = "Update specialhattar set bradskandehatt = 'ja' where specialhattID =  " + intID + "";
+
 //sql +=  " pris = '" + d * 1.20  + "'";
         idb.update(query);
+        idb.update(bradskande);
         JOptionPane.showMessageDialog(null, "Priset har ändrats");
     }
   }catch(InfException ex){

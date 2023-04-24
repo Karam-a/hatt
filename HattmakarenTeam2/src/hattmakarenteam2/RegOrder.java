@@ -47,8 +47,6 @@ public class RegOrder extends javax.swing.JFrame {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         NyOrderLabel.setFont(new java.awt.Font("Hiragino Maru Gothic ProN", 1, 24)); // NOI18N
         NyOrderLabel.setText("Ny Order");
 
@@ -110,10 +108,11 @@ public class RegOrder extends javax.swing.JFrame {
             String orderStatus = "Ej påbörjad";
             String orderDatum = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
             String kundID = idb.fetchSingle(hamtaKundId);
-            String fraga = "insert into ordrar values(" +OrderID+"," + kundID + ", ('" + orderStatus + "'),'" + orderDatum + "');";
+            String fraga = "insert into ordrar values(" +OrderID+"," + kundID + ",'" + orderDatum + "', ('" + orderStatus + "'), null );";
      
          
             idb.insert(fraga);
+            
            
             nyttFonster();
 
@@ -141,7 +140,7 @@ public class RegOrder extends javax.swing.JFrame {
                      boxKund.addItem(enKund);
                 }
                 
-                JOptionPane.showMessageDialog(null, "Ny order har skapats!");
+                
             }
         
         
@@ -170,8 +169,6 @@ public class RegOrder extends javax.swing.JFrame {
     
     
     
-    
-    
     /**
      * @param args the command line arguments
      */
@@ -181,7 +178,7 @@ public class RegOrder extends javax.swing.JFrame {
     private javax.swing.JLabel KIDLabel;
     private javax.swing.JLabel NyOrderLabel;
     public static javax.swing.JButton SkapaOrderBtn;
-    private static javax.swing.JComboBox<String> boxKund;
+    public static javax.swing.JComboBox<String> boxKund;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;

@@ -1,20 +1,32 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package hattmakarenteam2;
 
-/**
- *
- * @author Karam Al-Akhras
- */
-public class Orderhantering1 extends javax.swing.JFrame {
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import oru.inf.InfDB;
+import oru.inf.InfException;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
-    /**
-     * Creates new form Orderhantering1
-     */
-    public Orderhantering1() {
+public class Orderhantering1 extends javax.swing.JFrame {
+    
+private DefaultTableModel ejPabHattMod;
+private DefaultTableModel pabHattMod;
+private DefaultTableModel avslutadHattMod;
+private ArrayList<String> ejPabHatt;
+private ArrayList<String> pabHatt;
+private ArrayList<String> avslutadHatt;
+private int valdOrderID;
+private Object valtObjekt;
+private InfDB idb;
+
+    public Orderhantering1(InfDB idb) {
+        this.idb=idb;
+        ejPabHatt = new ArrayList<>();
+        pabHatt = new ArrayList<>();
+        avslutadHatt = new ArrayList<>();
         initComponents();
+        fyllTabeller();
+
     }
 
     /**
@@ -26,57 +38,278 @@ public class Orderhantering1 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        ejPaborjadLabel = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        ejPabTable = new javax.swing.JTable();
+        orderhanteringLabel = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        ejPaborjadLabel1 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        ejPabTable1 = new javax.swing.JTable();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        pabTable = new javax.swing.JTable();
+        paborjadLabel = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        avslutTable = new javax.swing.JTable();
+        avslutadLabel = new javax.swing.JLabel();
+        hanteraOrderBtn = new javax.swing.JButton();
+
+        ejPaborjadLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        ejPaborjadLabel.setText("Ej Påbörjad");
+
+        ejPabTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Ej påbörjade ordrar"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        ejPabTable.setColumnSelectionAllowed(true);
+        ejPabTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(ejPabTable);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        orderhanteringLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        orderhanteringLabel.setText("Orderhantering");
+
+        ejPaborjadLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        ejPaborjadLabel1.setText("Ej Påbörjad");
+
+        ejPabTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Ej påbörjade ordrar"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        ejPabTable1.setColumnSelectionAllowed(true);
+        ejPabTable1.getTableHeader().setReorderingAllowed(false);
+        jScrollPane3.setViewportView(ejPabTable1);
+
+        pabTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Påbörjade ordrar"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        pabTable.setColumnSelectionAllowed(true);
+        pabTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane4.setViewportView(pabTable);
+
+        paborjadLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        paborjadLabel.setText("Påbörjad");
+
+        avslutTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Avslutade ordrar"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        avslutTable.setColumnSelectionAllowed(true);
+        avslutTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(avslutTable);
+
+        avslutadLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        avslutadLabel.setText("Avslutad");
+
+        hanteraOrderBtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        hanteraOrderBtn.setText("Hantera vald order");
+        hanteraOrderBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hanteraOrderBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jSeparator1)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(354, 354, 354)
+                .addComponent(orderhanteringLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(hanteraOrderBtn))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(83, 83, 83)
+                                .addComponent(ejPaborjadLabel1)))
+                        .addGap(38, 38, 38)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(77, 77, 77)
+                                .addComponent(paborjadLabel)
+                                .addGap(82, 82, 82))
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(78, 78, 78)
+                                .addComponent(avslutadLabel)
+                                .addGap(83, 83, 83))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(107, 107, 107))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(orderhanteringLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(paborjadLabel)
+                            .addComponent(ejPaborjadLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(avslutadLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
+                .addComponent(hanteraOrderBtn)
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Orderhantering1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Orderhantering1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Orderhantering1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Orderhantering1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void hanteraOrderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hanteraOrderBtnActionPerformed
+        //instansiering av valdTable samt RadIndex (Position på ett objekt i en table)
+        JTable valdTable;
+        int radIndex;
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Orderhantering1().setVisible(true);
+        //om ett objekt i en table är valt
+        if(ejPabTable.isFocusOwner()){
+            //ange radIndex som värdet på objektets position i tabellen
+            radIndex = ejPabTable.getSelectedRow();
+            //anger valtObjekt som [Tabellnamn] och hämtar värdet på den valda positionen. column är angivet som 0 då vi enbart har en kolumn i varje tabell.
+            valtObjekt = ejPabTable.getValueAt(radIndex,0);
+            //anger valdTable till namnet på den valda tabellen
+            valdTable = ejPabTable;
+            hamtaOrderID();
+            //   korFonster();
+           
             }
-        });
-    }
+        else if(pabTable.isFocusOwner()){
+            radIndex = pabTable.getSelectedRow();
+            valtObjekt = pabTable.getValueAt(radIndex,0);
+            valdTable = pabTable;
+
+            hamtaOrderID();
+            //korFonster();
+
+            }
+        else if(avslutTable.isFocusOwner()){
+            radIndex = avslutTable.getSelectedRow();
+            valtObjekt = pabTable.getValueAt(radIndex, 0);
+            valdTable = avslutTable;
+    
+        }
+        hamtaOrderID();
+        // korFonster();
+        }
+        new HanteraEnskildOrder(idb, valdOrderID).setVisible(true);
+        }
+
+        else{
+            JOptionPane.showMessageDialog(null, "Välj en order för att fortsätta.");
+        }
+       
+        try{
+            //hämtar ut ID på det kundnamn som är valt. Sätter även det valda objektets värde till en sträng för att kunna hitta i databasen.
+            valdOrderID = Integer.parseInt(idb.fetchSingle("SELECT orderID FROM ordrar WHERE kundID IN(SELECT kundID WHERE kundNamn=" +"'"+ valtObjekt.toString() + "'"+ ")" ));
+            //öppnar orderhanteringsfönstret för den valda ordern. obs att det är långt ifrån klart dock.
+            new HanteraEnskildOrder(idb,valdOrderID).setVisible(true);
+        }
+        catch(InfException e){
+            JOptionPane.showMessageDialog(null, "Gick ej att hämta innehållet i databasen. Vänligen försök igen!");
+        }
+
+    }//GEN-LAST:event_hanteraOrderBtnActionPerformed
+
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable avslutTable;
+    private javax.swing.JLabel avslutadLabel;
+    private javax.swing.JTable ejPabTable;
+    private javax.swing.JTable ejPabTable1;
+    private javax.swing.JLabel ejPaborjadLabel;
+    private javax.swing.JLabel ejPaborjadLabel1;
+    private javax.swing.JButton hanteraOrderBtn;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel orderhanteringLabel;
+    private javax.swing.JTable pabTable;
+    private javax.swing.JLabel paborjadLabel;
     // End of variables declaration//GEN-END:variables
 }
