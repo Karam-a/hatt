@@ -16,7 +16,7 @@ public class ProgramStart extends javax.swing.JFrame {
           } 
         catch (InfException e){
                 Logger.getLogger(ProgramStart.class.getName()).log(Level.SEVERE, null, e);
-                System.out.println("Anslutningen gick åt helvete, forsok igen!");
+                System.out.println("Anslutningen misslyckades, forsok igen!");
           }
      }
         
@@ -265,7 +265,7 @@ public class ProgramStart extends javax.swing.JFrame {
     }//GEN-LAST:event_regOrderBtnActionPerformed
 
     private void orderMenyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderMenyBtnActionPerformed
-        new Orderhantering(idb).setVisible(true);
+        new Orderhantering1(idb).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_orderMenyBtnActionPerformed
 
