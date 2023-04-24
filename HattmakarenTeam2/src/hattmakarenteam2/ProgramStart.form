@@ -53,43 +53,29 @@
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="kundMenyBtn" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="materialBestBtn" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="orderMenyBtn" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnRegKund" alignment="0" min="-2" pref="293" max="-2" attributes="0"/>
-<<<<<<< HEAD
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="kassaBtn" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="regOrderBtn" alignment="0" min="-2" max="-2" attributes="0"/>
-=======
-                                  <Component id="jButton2" alignment="0" min="-2" pref="382" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="materialBestBtn" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="kundbestallningKnapp" min="-2" max="-2" attributes="0"/>
->>>>>>> ac60658f81503cf41480a7de0e2c0afdd0666584
                                       </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="kassaBtn" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="regOrderBtn" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="foljdSedel" min="-2" pref="286" max="-2" attributes="0"/>
-                                              <Component id="loggaInBtn" min="-2" max="-2" attributes="0"/>
-                                          </Group>
+                                      <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="foljdSedel" min="-2" pref="286" max="-2" attributes="0"/>
+                                          <Component id="loggaInBtn" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Component id="jButton2" alignment="0" min="-2" pref="382" max="-2" attributes="0"/>
                                   <Component id="jButton3" alignment="0" min="-2" pref="263" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="0" pref="36" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="86" max="32767" attributes="0"/>
+              <EmptySpace pref="114" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -115,10 +101,7 @@
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               <Component id="kundMenyBtn" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="materialBestBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="kundbestallningKnapp" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-              </Group>
+              <Component id="materialBestBtn" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jButton1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -137,13 +120,9 @@
               <Component id="btnRegKund" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               <Component id="jButton2" min="-2" pref="40" max="-2" attributes="0"/>
-<<<<<<< HEAD
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jButton3" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="35" max="32767" attributes="0"/>
-=======
-              <EmptySpace pref="88" max="32767" attributes="0"/>
->>>>>>> ac60658f81503cf41480a7de0e2c0afdd0666584
           </Group>
       </Group>
     </DimensionLayout>
@@ -299,7 +278,6 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="testredigeraorderbtnActionPerformed"/>
       </Events>
     </Component>
-<<<<<<< HEAD
     <Component class="javax.swing.JButton" name="jButton3">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -309,14 +287,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
-=======
-    <Component class="javax.swing.JButton" name="kundbestallningKnapp">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Visa kunds best&#xe4;llninghistorik"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="kundbestallningKnappActionPerformed"/>
->>>>>>> ac60658f81503cf41480a7de0e2c0afdd0666584
       </Events>
     </Component>
   </SubComponents>
