@@ -47,6 +47,7 @@ public class ProgramStart extends javax.swing.JFrame {
         foljdSedel = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         testredigeraorderbtn = new javax.swing.JButton();
+        kundbestallningKnapp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Ottos Hattar");
@@ -157,6 +158,13 @@ public class ProgramStart extends javax.swing.JFrame {
             }
         });
 
+        kundbestallningKnapp.setText("Visa kunds beställninghistorik");
+        kundbestallningKnapp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kundbestallningKnappActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -184,20 +192,24 @@ public class ProgramStart extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(kundMenyBtn)
-                                    .addComponent(materialBestBtn)
                                     .addComponent(orderMenyBtn)
                                     .addComponent(btnRegKund, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(kassaBtn)
-                                            .addComponent(regOrderBtn))
-                                        .addGap(121, 121, 121)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(foljdSedel, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(loggaInBtn))))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap(114, Short.MAX_VALUE))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addComponent(materialBestBtn)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(kundbestallningKnapp))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(kassaBtn)
+                                                .addComponent(regOrderBtn))
+                                            .addGap(121, 121, 121)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(foljdSedel, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(loggaInBtn)))))
+                                .addGap(0, 36, Short.MAX_VALUE)))))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -219,7 +231,9 @@ public class ProgramStart extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addComponent(kundMenyBtn)
                 .addGap(18, 18, 18)
-                .addComponent(materialBestBtn)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(materialBestBtn)
+                    .addComponent(kundbestallningKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
@@ -235,7 +249,7 @@ public class ProgramStart extends javax.swing.JFrame {
                 .addComponent(btnRegKund)
                 .addGap(26, 26, 26)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
 
         pack();
@@ -316,6 +330,15 @@ public class ProgramStart extends javax.swing.JFrame {
         new RedigeraOrder(idb, 1).setVisible(true);
     }//GEN-LAST:event_testredigeraorderbtnActionPerformed
 
+    private void kundbestallningKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kundbestallningKnappActionPerformed
+  VisaKundsBeställningsHistorik nyRuta = new VisaKundsBeställningsHistorik(idb);
+        nyRuta.setVisible(true);
+        this.dispose();
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kundbestallningKnappActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -358,6 +381,7 @@ public class ProgramStart extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton kassaBtn;
     private javax.swing.JButton kundMenyBtn;
+    private javax.swing.JButton kundbestallningKnapp;
     private javax.swing.JButton loggaInBtn;
     private javax.swing.JButton materialBestBtn;
     private javax.swing.JButton orderMenyBtn;
