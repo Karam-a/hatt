@@ -169,8 +169,6 @@ public class RegOrder extends javax.swing.JFrame {
     
     
     
-    
-    
     /**
      * @param args the command line arguments
      */

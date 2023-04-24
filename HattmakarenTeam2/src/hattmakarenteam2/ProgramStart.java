@@ -16,7 +16,7 @@ public class ProgramStart extends javax.swing.JFrame {
           } 
         catch (InfException e){
                 Logger.getLogger(ProgramStart.class.getName()).log(Level.SEVERE, null, e);
-                System.out.println("Anslutningen misslyckades, forsok igen!");
+                System.out.println("Anslutningen gick åt helvete, forsok igen!");
           }
      }
         
@@ -47,7 +47,7 @@ public class ProgramStart extends javax.swing.JFrame {
         foljdSedel = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         testredigeraorderbtn = new javax.swing.JButton();
-        kundbestallningKnapp = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Ottos Hattar");
@@ -158,10 +158,11 @@ public class ProgramStart extends javax.swing.JFrame {
             }
         });
 
-        kundbestallningKnapp.setText("Visa kunds beställninghistorik");
-        kundbestallningKnapp.addActionListener(new java.awt.event.ActionListener() {
+        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton3.setText("Försäljningsstatistik");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kundbestallningKnappActionPerformed(evt);
+                jButton3ActionPerformed(evt);
             }
         });
 
@@ -192,24 +193,21 @@ public class ProgramStart extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(kundMenyBtn)
+                                    .addComponent(materialBestBtn)
                                     .addComponent(orderMenyBtn)
                                     .addComponent(btnRegKund, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(kassaBtn)
+                                            .addComponent(regOrderBtn))
+                                        .addGap(121, 121, 121)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(foljdSedel, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(loggaInBtn)))
                                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                            .addComponent(materialBestBtn)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(kundbestallningKnapp))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(kassaBtn)
-                                                .addComponent(regOrderBtn))
-                                            .addGap(121, 121, 121)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(foljdSedel, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(loggaInBtn)))))
-                                .addGap(0, 36, Short.MAX_VALUE)))))
-                .addContainerGap(86, Short.MAX_VALUE))
+                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -231,9 +229,7 @@ public class ProgramStart extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addComponent(kundMenyBtn)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(materialBestBtn)
-                    .addComponent(kundbestallningKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(materialBestBtn)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
@@ -249,7 +245,9 @@ public class ProgramStart extends javax.swing.JFrame {
                 .addComponent(btnRegKund)
                 .addGap(26, 26, 26)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton3)
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();
@@ -265,7 +263,7 @@ public class ProgramStart extends javax.swing.JFrame {
     }//GEN-LAST:event_regOrderBtnActionPerformed
 
     private void orderMenyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderMenyBtnActionPerformed
-        new Orderplanyta(idb).setVisible(true);
+        new Orderhantering(idb).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_orderMenyBtnActionPerformed
 
@@ -330,14 +328,10 @@ public class ProgramStart extends javax.swing.JFrame {
         new RedigeraOrder(idb, 1).setVisible(true);
     }//GEN-LAST:event_testredigeraorderbtnActionPerformed
 
-    private void kundbestallningKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kundbestallningKnappActionPerformed
-  VisaKundsBeställningsHistorik nyRuta = new VisaKundsBeställningsHistorik(idb);
-        nyRuta.setVisible(true);
-        this.dispose();
-
-
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_kundbestallningKnappActionPerformed
+        new Försäljningsstatistik(idb).setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -376,12 +370,12 @@ public class ProgramStart extends javax.swing.JFrame {
     private javax.swing.JButton foljdSedel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButtonBestallningar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton kassaBtn;
     private javax.swing.JButton kundMenyBtn;
-    private javax.swing.JButton kundbestallningKnapp;
     private javax.swing.JButton loggaInBtn;
     private javax.swing.JButton materialBestBtn;
     private javax.swing.JButton orderMenyBtn;
