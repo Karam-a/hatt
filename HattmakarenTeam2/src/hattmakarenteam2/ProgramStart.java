@@ -47,6 +47,7 @@ public class ProgramStart extends javax.swing.JFrame {
         foljdSedel = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         testredigeraorderbtn = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Ottos Hattar");
@@ -157,6 +158,14 @@ public class ProgramStart extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton3.setText("Försäljningsstatistik");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -187,7 +196,6 @@ public class ProgramStart extends javax.swing.JFrame {
                                     .addComponent(materialBestBtn)
                                     .addComponent(orderMenyBtn)
                                     .addComponent(btnRegKund, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(kassaBtn)
@@ -195,7 +203,9 @@ public class ProgramStart extends javax.swing.JFrame {
                                         .addGap(121, 121, 121)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(foljdSedel, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(loggaInBtn))))
+                                            .addComponent(loggaInBtn)))
+                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap(114, Short.MAX_VALUE))
         );
@@ -235,7 +245,9 @@ public class ProgramStart extends javax.swing.JFrame {
                 .addComponent(btnRegKund)
                 .addGap(26, 26, 26)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton3)
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();
@@ -316,6 +328,11 @@ public class ProgramStart extends javax.swing.JFrame {
         new RedigeraOrder(idb, 1).setVisible(true);
     }//GEN-LAST:event_testredigeraorderbtnActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        new Försäljningsstatistik(idb).setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -353,6 +370,7 @@ public class ProgramStart extends javax.swing.JFrame {
     private javax.swing.JButton foljdSedel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButtonBestallningar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator1;
