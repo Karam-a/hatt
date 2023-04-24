@@ -51,6 +51,17 @@ public class Försäljningsstatistik extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         AntalOrdrar = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        nummerBx = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        sokResult = new javax.swing.JTextArea();
+        sok = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        visa = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        visaResult = new javax.swing.JTextArea();
+        senast = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -142,15 +153,94 @@ public class Försäljningsstatistik extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Datum", jPanel1);
 
+        jLabel6.setText("Sök fram statistik för alla kund ordrar eller för en specifik ");
+
+        nummerBx.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nummerBxActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setText("Sök via telefon");
+
+        sokResult.setColumns(20);
+        sokResult.setRows(5);
+        jScrollPane2.setViewportView(sokResult);
+
+        sok.setText("Sök");
+        sok.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sokActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setText("Visa allt");
+
+        visa.setText("Visa");
+        visa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                visaActionPerformed(evt);
+            }
+        });
+
+        visaResult.setColumns(20);
+        visaResult.setRows(5);
+        jScrollPane3.setViewportView(visaResult);
+
+        senast.setText("Senast");
+        senast.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                senastActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 707, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(nummerBx, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(sok))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(visa)
+                                .addGap(18, 18, 18)
+                                .addComponent(senast))
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 509, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8))
+                .addGap(4, 4, 4)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nummerBx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sok)
+                    .addComponent(visa)
+                    .addComponent(senast))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2))
+                .addContainerGap(182, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Kund", jPanel2);
@@ -237,6 +327,123 @@ public class Försäljningsstatistik extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnSökActionPerformed
 
+    private void sokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sokActionPerformed
+        // söker fram efter telefonnummer
+   try {
+    String telefonVariable = nummerBx.getText();
+    String telefonFraga = "SELECT kundID, kundNamn, adress, telefonNummer, epost, beskrivning FROM kund WHERE telefonNummer = '" + telefonVariable + "'";
+    ArrayList<HashMap<String, String>> telefonResult = idb.fetchRows(telefonFraga);
+
+    String kundIDFraga = "SELECT kundID FROM kund WHERE telefonNummer = '" + telefonVariable + "'";
+    String kundIDResult = idb.fetchSingle(kundIDFraga);
+
+    String orderFraga = "SELECT orderID, kundID, orderDatum, orderStatus, pris FROM ordrar WHERE kundID =" + kundIDResult + "";
+    ArrayList<HashMap<String, String>> orderResult = idb.fetchRows(orderFraga);
+
+    // Display the results in a formatted way
+    StringBuilder sb = new StringBuilder();
+
+    sb.append(String.format("%-10s %-15s %-15s %-15s %-25s %-15s\n", "kundID", "kundNamn", "adress", "telefonNummer", "epost", "beskrivning"));
+    for (HashMap<String, String> row : telefonResult) {
+        sb.append(String.format("%-10s %-15s %-15s %-15s %-25s %-15s\n", row.get("kundID"), row.get("kundNamn"), row.get("adress"), row.get("telefonNummer"), row.get("epost"), row.get("beskrivning")));
+    }
+
+    sb.append("\n");
+
+    sb.append(String.format("%-10s %-10s %-15s %-15s %-10s\n", "orderID", "kundID", "orderDatum", "orderStatus", "pris"));
+    for (HashMap<String, String> row : orderResult) {
+        sb.append(String.format("%-10s %-10s %-15s %-15s %-10s\n", row.get("orderID"), row.get("kundID"), row.get("orderDatum"), row.get("orderStatus"), row.get("pris")));
+    }
+
+    String currentText = sokResult.getText();
+    sokResult.setText(sb.toString());
+
+} catch (Exception e) {
+    e.printStackTrace();
+    JOptionPane.showMessageDialog(null, e);
+}
+    }//GEN-LAST:event_sokActionPerformed
+
+    private void visaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visaActionPerformed
+        // TODO add your handling code here:
+    try {
+    String kundFraga = "SELECT kundID, kundNamn, adress, telefonNummer, epost, beskrivning FROM kund";
+    ArrayList<HashMap<String, String>> kundResult = idb.fetchRows(kundFraga);
+
+    StringBuilder sb = new StringBuilder();
+    int count = 1;
+
+    for (HashMap<String, String> row : kundResult) {
+        sb.append(count + ". ");
+        sb.append("Kund:\n");
+        sb.append(String.format("%-6s %-6s %-12s %-12s %-30s %-20s\n", "kundID", "kundNamn", "adress", "telefonNummer", "epost", "beskrivning"));
+        sb.append(String.format("%-6s %-6s %-12s %-12s %-30s %-20s\n", row.get("kundID"), row.get("kundNamn"), row.get("adress"), row.get("telefonNummer"), row.get("epost"), row.get("beskrivning")));
+
+        String orderFraga = "SELECT orderID, kundID, orderDatum, orderStatus, pris FROM ordrar WHERE kundID =" + row.get("kundID");
+        ArrayList<HashMap<String, String>> orderResult = idb.fetchRows(orderFraga);
+
+        sb.append("Order:\n");
+        sb.append(String.format("%-8s %-8s %-15s %-12s %-6s\n", "orderID", "kundID", "orderDatum", "orderStatus", "pris"));
+        for (HashMap<String, String> orderRow : orderResult) {
+            sb.append(String.format("%-8s %-8s %-15s %-12s %-6s\n", orderRow.get("orderID"), orderRow.get("kundID"), orderRow.get("orderDatum"), orderRow.get("orderStatus"), orderRow.get("pris")));
+        }
+        sb.append("\n");
+        count++;
+    }
+
+    //String currentText = visaResult.getText();
+    visaResult.setText( sb.toString());
+
+} catch(Exception e) {
+    e.printStackTrace();
+    JOptionPane.showMessageDialog(null, e);
+}
+    }//GEN-LAST:event_visaActionPerformed
+
+    private void nummerBxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nummerBxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nummerBxActionPerformed
+
+    private void senastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senastActionPerformed
+        // TODO add your handling code here:
+        try {
+    String kundFraga = "SELECT k.kundID, k.kundNamn, k.adress, k.telefonNummer, k.epost, k.beskrivning " +
+                       "FROM kund k " +
+                       "JOIN ordrar o ON k.kundID = o.kundID " +
+                       "ORDER BY o.orderDatum DESC";
+
+    ArrayList<HashMap<String, String>> kundResult = idb.fetchRows(kundFraga);
+
+    StringBuilder sb = new StringBuilder();
+    int count = 1;
+
+    for (HashMap<String, String> row : kundResult) {
+        sb.append(count + ". ");
+        sb.append("Kund:\n");
+        sb.append(String.format("%-6s %-6s %-12s %-12s %-30s %-20s\n", "kundID", "kundNamn", "adress", "telefonNummer", "epost", "beskrivning"));
+        sb.append(String.format("%-6s %-6s %-12s %-12s %-30s %-20s\n", row.get("kundID"), row.get("kundNamn"), row.get("adress"), row.get("telefonNummer"), row.get("epost"), row.get("beskrivning")));
+
+        String orderFraga = "SELECT orderID, kundID, orderDatum, orderStatus, pris FROM ordrar WHERE kundID =" + row.get("kundID");
+        ArrayList<HashMap<String, String>> orderResult = idb.fetchRows(orderFraga);
+
+        sb.append("Order:\n");
+        sb.append(String.format("%-8s %-8s %-15s %-12s %-6s\n", "orderID", "kundID", "orderDatum", "orderStatus", "pris"));
+        for (HashMap<String, String> orderRow : orderResult) {
+            sb.append(String.format("%-8s %-8s %-15s %-12s %-6s\n", orderRow.get("orderID"), orderRow.get("kundID"), orderRow.get("orderDatum"), orderRow.get("orderStatus"), orderRow.get("pris")));
+        }
+        sb.append("\n");
+        count++;
+    }
+
+    //String currentText = visaResult.getText();
+    visaResult.setText( sb.toString());
+
+} catch(Exception e) {
+    e.printStackTrace();
+    JOptionPane.showMessageDialog(null, e);
+}
+    }//GEN-LAST:event_senastActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -279,13 +486,24 @@ public class Försäljningsstatistik extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTableBestallning;
+    private javax.swing.JTextField nummerBx;
+    private javax.swing.JButton senast;
+    private javax.swing.JButton sok;
+    private javax.swing.JTextArea sokResult;
     private javax.swing.JTextField txtDatumFrån;
     private javax.swing.JTextField txtDatumTill;
+    private javax.swing.JButton visa;
+    private javax.swing.JTextArea visaResult;
     // End of variables declaration//GEN-END:variables
 }
