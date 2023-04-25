@@ -42,6 +42,7 @@ private InfDB idb;
         jLabel2 = new javax.swing.JLabel();
         jTextFieldShID = new javax.swing.JTextField();
         jButtonOKPrio = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,6 +63,13 @@ private InfDB idb;
             }
         });
 
+        jButton1.setText("Tillbaka");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -70,7 +78,9 @@ private InfDB idb;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(201, 201, 201)
-                        .addComponent(jButtonOKPrio))
+                        .addComponent(jButtonOKPrio)
+                        .addGap(26, 26, 26)
+                        .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -91,7 +101,9 @@ private InfDB idb;
                     .addComponent(jTextFieldShID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
-                .addComponent(jButtonOKPrio)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonOKPrio)
+                    .addComponent(jButton1))
                 .addGap(35, 35, 35))
         );
 
@@ -139,6 +151,12 @@ String bradskande = "Update specialhattar set bradskandehatt = 'ja' where specia
         
     }//GEN-LAST:event_jButtonOKPrioActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // Tillbaka 
+        //this.dispose();
+        //new RedigeraOrder().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -175,6 +193,7 @@ String bradskande = "Update specialhattar set bradskandehatt = 'ja' where specia
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonOKPrio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
