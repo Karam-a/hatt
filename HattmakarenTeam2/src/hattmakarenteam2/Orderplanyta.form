@@ -68,9 +68,9 @@
                   <Component id="jScrollPane1" min="-2" pref="243" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="hantOrdBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="tillbakaBtn" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="hantOrdBtn" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="14" max="32767" attributes="0"/>
           </Group>
