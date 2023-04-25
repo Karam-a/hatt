@@ -66,6 +66,18 @@ public class Försäljningsstatistik extends javax.swing.JFrame {
         datum2 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        txtDf = new javax.swing.JTextField();
+        txtDt = new javax.swing.JTextField();
+        jComboBoxHattar = new javax.swing.JComboBox<>();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        AntalOrdrar1 = new javax.swing.JTextField();
+        btnSök1 = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTableLagerHattar = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -100,6 +112,12 @@ public class Försäljningsstatistik extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTableBestallning);
 
         jLabel2.setText("Antal Ordrar:");
+
+        AntalOrdrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AntalOrdrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -259,15 +277,108 @@ public class Försäljningsstatistik extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Kund", jPanel2);
 
+        jLabel10.setText("Sök fram alla försäljning av lagerförda hattar mellan två datum!");
+
+        jLabel11.setText("Från:");
+
+        jLabel12.setText("Till:");
+
+        txtDf.setText("ÅÅÅÅ-MM-DD");
+        txtDf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDfActionPerformed(evt);
+            }
+        });
+
+        txtDt.setText("ÅÅÅÅ-MM-DD");
+        txtDt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDtActionPerformed(evt);
+            }
+        });
+
+        jComboBoxHattar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Filthatt", "Panamahatt", "Stråhatt", "Tyghatt", "Läderhatt" }));
+
+        jLabel13.setText("Hatt:");
+
+        jLabel14.setText("Antal Ordrar:");
+
+        btnSök1.setText("Sök");
+        btnSök1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSök1ActionPerformed(evt);
+            }
+        });
+
+        jTableLagerHattar.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "KopID", "Produktnamn", "Pris", "Datum", "Lagerhatt"
+            }
+        ));
+        jScrollPane4.setViewportView(jTableLagerHattar);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 707, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(jLabel14)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(AntalOrdrar1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(jLabel11)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtDf, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52)
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtDt, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnSök1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBoxHattar, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(29, 29, 29))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(jLabel10))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 612, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 509, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jLabel10)
+                .addGap(23, 23, 23)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel12)
+                    .addComponent(txtDf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxHattar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13))
+                .addGap(30, 30, 30)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(AntalOrdrar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSök1))
+                .addGap(26, 26, 26))
         );
 
         jTabbedPane1.addTab("Hatt typ", jPanel3);
@@ -327,9 +438,9 @@ public class Försäljningsstatistik extends javax.swing.JFrame {
                 dTM.addRow(nyLista);
                 }
                
-                String sqlFraga2 ="SELECT SUM(orderID) FROM Ordrar;";
+                String sqlFraga2 ="SELECT COUNT(orderID) FROM Ordrar;";
                 String antal = idb.fetchSingle(sqlFraga2);
-                AntalOrdrar.setText(antal);
+                AntalOrdrar.setText((antal) + "\n");
                 
             } catch(InfException ex){
                 JOptionPane.showMessageDialog(null, "Sökningen misslyckades, försök igen.");
@@ -469,6 +580,66 @@ public class Försäljningsstatistik extends javax.swing.JFrame {
 }
     }//GEN-LAST:event_senastActionPerformed
 
+    private void txtDfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDfActionPerformed
+
+    private void btnSök1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSök1ActionPerformed
+        // TODO add your handling code here:
+         String Datumfrån = txtDf.getText();
+         String Datumtill = txtDt.getText();
+        
+        if(ValideringKlass.finnsVarde(txtDf)){
+         try {
+
+            String hattTypen = jComboBoxHattar.getSelectedItem().toString();
+            String hämtaID = "Select lagerhattID from lagerfordahattar where typ = '" + hattTypen + "'";
+            String ID = idb.fetchSingle(hämtaID);
+
+            
+            DefaultTableModel dTM = (DefaultTableModel) jTableLagerHattar.getModel();
+            dTM.setRowCount(0);
+        
+            String sqlFraga = "Select kopID, Produktnamn, Pris, Datum, lagerhatt from kop where lagerhatt = '" + ID + "' and Datum between '" + Datumfrån + "' and '" + Datumtill + "'";
+        
+        
+        ArrayList<HashMap<String, String>> hattLista;
+        hattLista = idb.fetchRows(sqlFraga);
+        
+        for(HashMap enHatt : hattLista){
+                Vector nyLista = new Vector(); 
+                nyLista.add(enHatt.get("kopID"));
+                nyLista.add(enHatt.get("Produktnamn"));
+                nyLista.add(enHatt.get("Pris"));
+                nyLista.add(enHatt.get("Datum"));
+                nyLista.add(enHatt.get("lagerhatt"));
+
+                dTM.addRow(nyLista);
+                    
+        } 
+                String sqlFraga2 ="SELECT Count(kopID)FROM kop where lagerhatt = '" + ID + "' and Datum between '" + Datumfrån + "' and '" + Datumtill + "'"; 
+                String antal = idb.fetchSingle(sqlFraga2);
+                AntalOrdrar1.setText((antal) + "\n");
+                
+            } catch(InfException ex){
+                JOptionPane.showMessageDialog(null, "Sökningen misslyckades, försök igen.");
+                System.out.println("Internt felmeddeland" + ex.getMessage());
+            }
+         
+         } else {
+            JOptionPane.showMessageDialog(null, "Datum måste fyllas i");
+        }
+        
+    }//GEN-LAST:event_btnSök1ActionPerformed
+
+    private void txtDtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDtActionPerformed
+
+    private void AntalOrdrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AntalOrdrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AntalOrdrarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -505,10 +676,18 @@ public class Försäljningsstatistik extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField AntalOrdrar;
+    private javax.swing.JTextField AntalOrdrar1;
     private javax.swing.JButton btnSök;
+    private javax.swing.JButton btnSök1;
     private javax.swing.JTextField datum1;
     private javax.swing.JTextField datum2;
+    private javax.swing.JComboBox<String> jComboBoxHattar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -523,14 +702,18 @@ public class Försäljningsstatistik extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTableBestallning;
+    private javax.swing.JTable jTableLagerHattar;
     private javax.swing.JTextField nummerBx;
     private javax.swing.JButton senast;
     private javax.swing.JButton sok;
     private javax.swing.JTextArea sokResult;
     private javax.swing.JTextField txtDatumFrån;
     private javax.swing.JTextField txtDatumTill;
+    private javax.swing.JTextField txtDf;
+    private javax.swing.JTextField txtDt;
     private javax.swing.JButton visa;
     private javax.swing.JTextArea visaResult;
     // End of variables declaration//GEN-END:variables
