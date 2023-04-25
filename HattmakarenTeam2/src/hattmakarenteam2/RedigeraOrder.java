@@ -172,6 +172,7 @@ public class RedigeraOrder extends javax.swing.JFrame {
         hattInfotxtarea = new javax.swing.JTextArea();
         prioriteraHattbtn = new javax.swing.JButton();
         prioriteraOrder = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -228,7 +229,7 @@ public class RedigeraOrder extends javax.swing.JFrame {
         hattInfotxtarea.setRows(5);
         jScrollPane2.setViewportView(hattInfotxtarea);
 
-        prioriteraHattbtn.setText("Prioritera Hatt (skapa en ny order)");
+        prioriteraHattbtn.setText("Prioritera Hatt (brådskande)");
         prioriteraHattbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 prioriteraHattbtnActionPerformed(evt);
@@ -239,6 +240,13 @@ public class RedigeraOrder extends javax.swing.JFrame {
         prioriteraOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 prioriteraOrderActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Tillbaka");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -266,7 +274,7 @@ public class RedigeraOrder extends javax.swing.JFrame {
                             .addComponent(orderDatum1lbl))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -277,8 +285,10 @@ public class RedigeraOrder extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(prioriteraHattbtn)
                                 .addGap(18, 18, 18)
-                                .addComponent(prioriteraOrder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(0, 105, Short.MAX_VALUE))))
+                                .addComponent(prioriteraOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 91, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(91, 91, 91)
                 .addComponent(hattlbl)
@@ -315,7 +325,8 @@ public class RedigeraOrder extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(prioriteraHattbtn)
-                    .addComponent(prioriteraOrder))
+                    .addComponent(prioriteraOrder)
+                    .addComponent(jButton1))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
@@ -357,12 +368,19 @@ public class RedigeraOrder extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_prioriteraOrderActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // tillbaka knapp 
+        this.dispose();
+        new ProgramStart().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea hattInfotxtarea;
     private javax.swing.JLabel hattlbl;
     private javax.swing.JList<String> hattlist;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
