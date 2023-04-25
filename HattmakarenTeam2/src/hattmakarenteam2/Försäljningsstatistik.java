@@ -62,6 +62,9 @@ public class Försäljningsstatistik extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         visaResult = new javax.swing.JTextArea();
         senast = new javax.swing.JButton();
+        datum1 = new javax.swing.JTextField();
+        datum2 = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -187,12 +190,14 @@ public class Försäljningsstatistik extends javax.swing.JFrame {
         visaResult.setRows(5);
         jScrollPane3.setViewportView(visaResult);
 
-        senast.setText("Senast");
+        senast.setText("OrderByLatest");
         senast.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 senastActionPerformed(evt);
             }
         });
+
+        jLabel9.setText("Datum");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -201,9 +206,7 @@ public class Försäljningsstatistik extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -211,21 +214,32 @@ public class Försäljningsstatistik extends javax.swing.JFrame {
                                 .addComponent(nummerBx, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(sok))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(visa)
-                                .addGap(18, 18, 18)
-                                .addComponent(senast))
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(datum1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(datum2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(visa)
+                        .addGap(18, 18, 18)
+                        .addComponent(senast))
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel6)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(datum1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(datum2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -240,7 +254,7 @@ public class Försäljningsstatistik extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
                     .addComponent(jScrollPane2))
-                .addContainerGap(182, Short.MAX_VALUE))
+                .addContainerGap(176, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Kund", jPanel2);
@@ -366,8 +380,15 @@ public class Försäljningsstatistik extends javax.swing.JFrame {
 
     private void visaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visaActionPerformed
         // TODO add your handling code here:
-    try {
-    String kundFraga = "SELECT kundID, kundNamn, adress, telefonNummer, epost, beskrivning FROM kund";
+   try {
+    String kundFraga;
+    String datum1Text = datum1.getText();
+    String datum2Text = datum2.getText();
+    if (!datum1Text.isEmpty() && !datum2Text.isEmpty()) {
+        kundFraga = "SELECT kundID, kundNamn, adress, telefonNummer, epost, beskrivning FROM kund WHERE kundID IN (SELECT kundID FROM ordrar WHERE orderDatum BETWEEN '" + datum1Text + "' AND '" + datum2Text + "')";
+    } else {
+        kundFraga = "SELECT kundID, kundNamn, adress, telefonNummer, epost, beskrivning FROM kund";
+    }
     ArrayList<HashMap<String, String>> kundResult = idb.fetchRows(kundFraga);
 
     StringBuilder sb = new StringBuilder();
@@ -379,7 +400,12 @@ public class Försäljningsstatistik extends javax.swing.JFrame {
         sb.append(String.format("%-6s %-6s %-12s %-12s %-30s %-20s\n", "kundID", "kundNamn", "adress", "telefonNummer", "epost", "beskrivning"));
         sb.append(String.format("%-6s %-6s %-12s %-12s %-30s %-20s\n", row.get("kundID"), row.get("kundNamn"), row.get("adress"), row.get("telefonNummer"), row.get("epost"), row.get("beskrivning")));
 
-        String orderFraga = "SELECT orderID, kundID, orderDatum, orderStatus, pris FROM ordrar WHERE kundID =" + row.get("kundID");
+        String orderFraga;
+        if (!datum1Text.isEmpty() && !datum2Text.isEmpty()) {
+            orderFraga = "SELECT orderID, kundID, orderDatum, orderStatus, pris FROM ordrar WHERE kundID =" + row.get("kundID") + " AND orderDatum BETWEEN '" + datum1Text + "' AND '" + datum2Text + "'";
+        } else {
+            orderFraga = "SELECT orderID, kundID, orderDatum, orderStatus, pris FROM ordrar WHERE kundID =" + row.get("kundID");
+        }
         ArrayList<HashMap<String, String>> orderResult = idb.fetchRows(orderFraga);
 
         sb.append("Order:\n");
@@ -391,8 +417,7 @@ public class Försäljningsstatistik extends javax.swing.JFrame {
         count++;
     }
 
-    //String currentText = visaResult.getText();
-    visaResult.setText( sb.toString());
+    visaResult.setText(sb.toString());
 
 } catch(Exception e) {
     e.printStackTrace();
@@ -481,6 +506,8 @@ public class Försäljningsstatistik extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField AntalOrdrar;
     private javax.swing.JButton btnSök;
+    private javax.swing.JTextField datum1;
+    private javax.swing.JTextField datum2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -489,6 +516,7 @@ public class Försäljningsstatistik extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

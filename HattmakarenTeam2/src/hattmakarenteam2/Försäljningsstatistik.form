@@ -216,11 +216,8 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel6" min="-2" pref="314" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
+                          <Component id="jScrollPane2" alignment="0" pref="368" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel7" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
@@ -228,19 +225,27 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="sok" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jScrollPane2" alignment="0" pref="368" max="32767" attributes="0"/>
+                                  <Component id="jLabel6" alignment="0" min="-2" pref="314" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="visa" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="senast" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="jLabel8" min="-2" pref="53" max="-2" attributes="0"/>
-                                  <Component id="jScrollPane3" min="-2" pref="327" max="-2" attributes="0"/>
-                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="datum1" min="-2" pref="71" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="datum2" min="-2" pref="71" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jLabel9" min="-2" pref="60" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="visa" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="senast" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jLabel8" min="-2" pref="53" max="-2" attributes="0"/>
+                          <Component id="jScrollPane3" min="-2" pref="327" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -249,7 +254,12 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="datum1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="datum2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -267,7 +277,7 @@
                           <Component id="jScrollPane3" pref="238" max="32767" attributes="0"/>
                           <Component id="jScrollPane2" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="182" max="32767" attributes="0"/>
+                      <EmptySpace pref="176" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -341,11 +351,20 @@
             </Container>
             <Component class="javax.swing.JButton" name="senast">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Senast"/>
+                <Property name="text" type="java.lang.String" value="OrderByLatest"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="senastActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="datum1">
+            </Component>
+            <Component class="javax.swing.JTextField" name="datum2">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel9">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Datum"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
