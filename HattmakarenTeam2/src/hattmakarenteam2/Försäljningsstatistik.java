@@ -65,6 +65,7 @@ public class Försäljningsstatistik extends javax.swing.JFrame {
         datum1 = new javax.swing.JTextField();
         datum2 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
+        backBtnKund = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -215,7 +216,18 @@ public class Försäljningsstatistik extends javax.swing.JFrame {
             }
         });
 
+        datum1.setText("ÅÅÅÅ-MM-DD");
+
+        datum2.setText("ÅÅÅÅ-MM-DD");
+
         jLabel9.setText("Datum");
+
+        backBtnKund.setText("Back");
+        backBtnKund.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backBtnKundActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -248,6 +260,10 @@ public class Försäljningsstatistik extends javax.swing.JFrame {
                         .addComponent(senast))
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(backBtnKund)
+                .addGap(17, 17, 17))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,7 +288,9 @@ public class Försäljningsstatistik extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
                     .addComponent(jScrollPane2))
-                .addContainerGap(176, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(backBtnKund)
+                .addContainerGap(141, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Kund", jPanel2);
@@ -388,23 +406,22 @@ public class Försäljningsstatistik extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(265, 265, 265)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 707, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(265, 265, 265)
+                .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 707, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jLabel1)
-                .addGap(31, 31, 31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -640,6 +657,12 @@ public class Försäljningsstatistik extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_AntalOrdrarActionPerformed
 
+    private void backBtnKundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnKundActionPerformed
+        // TODO add your handling code here:
+         this.dispose();
+        new ProgramStart().setVisible(true);
+    }//GEN-LAST:event_backBtnKundActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -677,6 +700,7 @@ public class Försäljningsstatistik extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField AntalOrdrar;
     private javax.swing.JTextField AntalOrdrar1;
+    private javax.swing.JButton backBtnKund;
     private javax.swing.JButton btnSök;
     private javax.swing.JButton btnSök1;
     private javax.swing.JTextField datum1;
