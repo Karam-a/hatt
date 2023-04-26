@@ -1,5 +1,5 @@
 package hattmakarenteam2;
-/**a*/
+import javax.swing.JOptionPane;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import oru.inf.InfDB;
@@ -12,14 +12,12 @@ public class ProgramStart extends javax.swing.JFrame {
     public ProgramStart() {
          {   
         try { idb=new InfDB("hattProjektet", "3306","hattProjektet","hattkey");
-
           } 
         catch (InfException e){
                 Logger.getLogger(ProgramStart.class.getName()).log(Level.SEVERE, null, e);
-                System.out.println("Anslutningen gick åt helvete, forsok igen!");
-          }
-     }
-        
+                JOptionPane.showMessageDialog(null,"Anslutningen misslyckades! Vänligen försök igen!");
+                }
+            }
         initComponents();
     }
 
@@ -252,7 +250,6 @@ public class ProgramStart extends javax.swing.JFrame {
 
     private void kassaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kassaBtnActionPerformed
         new KassajFrame(idb).setVisible(true);
-        
     }//GEN-LAST:event_kassaBtnActionPerformed
 
     private void regOrderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regOrderBtnActionPerformed
@@ -267,8 +264,6 @@ public class ProgramStart extends javax.swing.JFrame {
     private void kundMenyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kundMenyBtnActionPerformed
         // TODO add your handling code here:
          new RegistreraNyKund(idb).setVisible(true);
-        this.dispose();
-        
     }//GEN-LAST:event_kundMenyBtnActionPerformed
 
     private void materialBestBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_materialBestBtnActionPerformed

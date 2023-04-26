@@ -148,8 +148,6 @@ public class KassajFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_genomforKopBtnActionPerformed
 
     private void tillbakaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tillbakaBtnActionPerformed
-
-        new ProgramStart().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_tillbakaBtnActionPerformed
 
