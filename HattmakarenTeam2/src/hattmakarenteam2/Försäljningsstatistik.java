@@ -173,7 +173,7 @@ public class Försäljningsstatistik extends javax.swing.JFrame {
                 .addGap(350, 350, 350))
         );
 
-        jTabbedPane1.addTab("Datum", jPanel1);
+        jTabbedPane1.addTab("Specialhattar", jPanel1);
 
         jLabel6.setText("Sök fram statistik för alla kund ordrar eller för en specifik ");
 
@@ -399,7 +399,7 @@ public class Försäljningsstatistik extends javax.swing.JFrame {
                 .addGap(26, 26, 26))
         );
 
-        jTabbedPane1.addTab("Hatt typ", jPanel3);
+        jTabbedPane1.addTab("Lagerfördahattar", jPanel3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

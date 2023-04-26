@@ -53,7 +53,7 @@ public class AdminHantering extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        laggTillAdminLabel.setFont(new java.awt.Font("Hiragino Maru Gothic ProN", 0, 24)); // NOI18N
+        laggTillAdminLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         laggTillAdminLabel.setText("Lägg till Admin");
 
         anvNamnLabel.setText("Användarnamn:");
