@@ -31,6 +31,7 @@ public class RedigeraOrder extends javax.swing.JFrame {
         visaHattar();
         visaKundensNamn();
         visaOrderDatum();
+        visaOrderStatus();
         
     }
     
@@ -54,7 +55,6 @@ public class RedigeraOrder extends javax.swing.JFrame {
     }
     
     private void visaOrderDatum(){
-        //SimpleDateFormat datumstring = new SimpleDateFormat("dd/MM/yyyy");
         
         String fraga = "SELECT orderDatum FROM ordrar WHERE orderID=" + valdOrder + ";";
         
@@ -68,6 +68,21 @@ public class RedigeraOrder extends javax.swing.JFrame {
             System.out.println("Internt felmeddelande" + e.getMessage());        
         }
 
+    }
+    
+    private void visaOrderStatus(){
+        
+        String fraga = "SELECT orderStatus FROM ordrar WHERE orderID =" + valdOrder + ";";
+        
+        try {
+            String orderStatus = idb.fetchSingle(fraga);
+            
+            orderStatuscmb.setSelectedItem(orderStatus);
+            
+            } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "Databasfel!");
+            System.out.println("Internt felmeddelande" + e.getMessage());        
+        }
     }
     
     
@@ -178,6 +193,8 @@ public class RedigeraOrder extends javax.swing.JFrame {
         prioriteraOrder = new javax.swing.JButton();
         tillbakabtn = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        orderStatuslbl = new javax.swing.JLabel();
+        orderStatuscmb = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -234,7 +251,7 @@ public class RedigeraOrder extends javax.swing.JFrame {
         hattInfotxtarea.setRows(5);
         jScrollPane2.setViewportView(hattInfotxtarea);
 
-        prioriteraHattbtn.setText("Prioritera Hatt (skapa en ny order)");
+        prioriteraHattbtn.setText("Prioritera Hatt");
         prioriteraHattbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 prioriteraHattbtnActionPerformed(evt);
@@ -262,6 +279,17 @@ public class RedigeraOrder extends javax.swing.JFrame {
             }
         });
 
+        orderStatuslbl.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        orderStatuslbl.setText("ORDERSTATUS");
+
+        orderStatuscmb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        orderStatuscmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ej Påbörjad", "Påbörjad", "Avslutad" }));
+        orderStatuscmb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                orderStatuscmbActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -282,12 +310,6 @@ public class RedigeraOrder extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(tillbakabtn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
-                                .addComponent(prioriteraHattbtn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(prioriteraOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(kundlbl)
                                     .addComponent(orderDatumlbl))
@@ -295,23 +317,34 @@ public class RedigeraOrder extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(kundTillOrderlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(orderDatum1lbl))
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addGap(27, 27, 27)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(orderStatuslbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(orderStatuscmb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(taBortValdHattbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(redigeraValdHattbtn))
+                                    .addComponent(redigeraValdHattbtn)
+                                    .addComponent(tillbakabtn))
                                 .addGap(18, 18, 18)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1)
-                                .addGap(13, 13, 13)))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(prioriteraHattbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(prioriteraOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                                        .addComponent(jButton1)
+                                        .addGap(13, 13, 13)))))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(orderlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(valdOrderlbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -320,11 +353,13 @@ public class RedigeraOrder extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(kundlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(kundTillOrderlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(kundTillOrderlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(orderStatuslbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(orderDatumlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(orderDatum1lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(orderDatum1lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(orderStatuscmb, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(hattlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -345,7 +380,7 @@ public class RedigeraOrder extends javax.swing.JFrame {
                             .addComponent(prioriteraHattbtn)
                             .addComponent(prioriteraOrder)
                             .addComponent(tillbakabtn))
-                        .addContainerGap(12, Short.MAX_VALUE))))
+                        .addContainerGap(8, Short.MAX_VALUE))))
         );
 
         pack();
@@ -402,6 +437,20 @@ public class RedigeraOrder extends javax.swing.JFrame {
          this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void orderStatuscmbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderStatuscmbActionPerformed
+        String orderStatus = orderStatuscmb.getSelectedItem().toString();
+        
+        String fraga = "UPDATE ordrar SET orderStatus = '" + orderStatus + "' WHERE orderID = " + valdOrder + ";";
+        
+        try {
+            idb.update(fraga);
+
+            } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "Databasfel!");
+            System.out.println("Internt felmeddelande" + e.getMessage());        
+        }
+    }//GEN-LAST:event_orderStatuscmbActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -416,6 +465,8 @@ public class RedigeraOrder extends javax.swing.JFrame {
     private javax.swing.JLabel kundlbl;
     private javax.swing.JLabel orderDatum1lbl;
     private javax.swing.JLabel orderDatumlbl;
+    private javax.swing.JComboBox<String> orderStatuscmb;
+    private javax.swing.JLabel orderStatuslbl;
     private javax.swing.JLabel orderlbl;
     private javax.swing.JButton prioriteraHattbtn;
     private javax.swing.JButton prioriteraOrder;
