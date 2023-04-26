@@ -20,11 +20,13 @@ import oru.inf.InfDB;
  */
 public class SkickadUthämtad extends javax.swing.JFrame {
 private InfDB idb;
+private int valdOrder;
     /**
      * Creates new form SkickadUthämtad
      * @param idb
      */
-    public SkickadUthämtad(InfDB idb) {
+    public SkickadUthämtad(InfDB idb, int valdOrder) {
+       this.valdOrder = valdOrder;
         this.idb = idb;
         initComponents();
     }
@@ -42,6 +44,7 @@ private InfDB idb;
         jScrollPane1 = new javax.swing.JScrollPane();
         Resultat = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,33 +61,47 @@ private InfDB idb;
 
         jLabel1.setText("Order");
 
+        jButton1.setText("Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(156, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(Skickad)
-                        .addGap(67, 67, 67))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(128, 128, 128))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(85, 85, 85)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(191, 191, 191)
+                        .addComponent(jLabel1)))
+                .addGap(0, 101, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(143, 143, 143)
+                .addComponent(Skickad)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
+                .addContainerGap(37, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(Skickad)
-                .addGap(65, 65, 65))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -101,22 +118,22 @@ private InfDB idb;
                  try {
         
         //Förmodligen så hämtas all info från Jframen som Andreas jobbar. OrderIdt 
-        String kundFraga = "Select kundId from ordrar where orderID="+199+"";
+        String kundFraga = "Select kundId from ordrar where orderID="+valdOrder+"";
         String kundFraga2 = idb.fetchSingle(kundFraga);
         String kundFraga3 = "Select kundNamn from kund where kundID="+kundFraga2+"";
         String namn = idb.fetchSingle(kundFraga3);
         
-        String produktFraga = "Select Namn, Modell, Pris from specialhattar where orderID ="+199+"";
+        String produktFraga = "Select Namn, Modell, Pris from specialhattar where orderID ="+valdOrder+"";
        ArrayList<HashMap<String, String>> produktSvar= idb.fetchRows(produktFraga);
        
-        String fraga= "Select orderDatum,pris from ordrar where orderID ="+199+"";
+        String fraga= "Select orderDatum,pris from ordrar where orderID ="+valdOrder+"";
         ArrayList<String> info= idb.fetchColumn(fraga);
         
         
         //ej klar
        //strängen som ja sparar totalpriset i
       int kopID = 123; // Replace with the actual ID value
-String totalprisQuery = "SELECT SUM(pris) AS totalprice FROM specialhattar WHERE orderID = " + 199+"";
+String totalprisQuery = "SELECT SUM(pris) AS totalprice FROM specialhattar WHERE orderID = " + valdOrder+"";
 ArrayList<String> totalpris = idb.fetchColumn(totalprisQuery);
 double totalprisWithVAT = 0.0;
 if (!totalpris.isEmpty()) {
@@ -131,10 +148,10 @@ if (!totalpris.isEmpty()) {
 
 
  // Get the current text in the Resultat text box
-        String currentText = Resultat.getText();
+        //String currentText = Resultat.getText();
 
         // Append the new text to the current text
-        String newText = currentText +"Hej din order är skickad "+namn+"\n"+produktSvar+"\n"+ info+"\n"+"Totalpris + 25% moms"+totalprisWithVAT + "\n"+"Du kan kontakta oss via hattmakrn@yahoo.se eller 0720567";
+        String newText = "Hej din order är skickad "+namn+"\n"+produktSvar+"\n"+ info+"\n"+"Totalpris + 25% moms"+totalprisWithVAT + "\n"+"Du kan kontakta oss via hattmakrn@yahoo.se eller 0720567";
 
         // Set the updated text in the Resultat text box
         Resultat.setText(newText);
@@ -170,6 +187,12 @@ e.printStackTrace();
 }  
     }//GEN-LAST:event_SkickadActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+         this.dispose();
+        new RedigeraOrder( idb,  valdOrder).setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -200,7 +223,6 @@ e.printStackTrace();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SkickadUthämtad().setVisible(true);
             }
         });
     }
@@ -208,6 +230,7 @@ e.printStackTrace();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea Resultat;
     private javax.swing.JButton Skickad;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

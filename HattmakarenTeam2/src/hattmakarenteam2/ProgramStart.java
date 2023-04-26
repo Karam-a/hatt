@@ -38,19 +38,16 @@ public class ProgramStart extends javax.swing.JFrame {
         kundMenyBtn = new javax.swing.JButton();
         materialBestBtn = new javax.swing.JButton();
         loggaInBtn = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         jButtonBestallningar = new javax.swing.JButton();
         regSpecHattBtn = new javax.swing.JButton();
-        btnRegKund = new javax.swing.JButton();
         foljdSedel = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        testredigeraorderbtn = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Ottos Hattar");
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Ottos Hattar");
 
         kassaBtn.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -101,14 +98,6 @@ public class ProgramStart extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton1.setText("Hämta kundinformation");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         jButtonBestallningar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButtonBestallningar.setText("Hämta beställningsinfo");
         jButtonBestallningar.addActionListener(new java.awt.event.ActionListener() {
@@ -125,14 +114,6 @@ public class ProgramStart extends javax.swing.JFrame {
             }
         });
 
-        btnRegKund.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnRegKund.setText("Redigera Kunduppgifter");
-        btnRegKund.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegKundActionPerformed(evt);
-            }
-        });
-
         foljdSedel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         foljdSedel.setText("Skapa Frakt/Följdsedel");
         foljdSedel.addActionListener(new java.awt.event.ActionListener() {
@@ -146,14 +127,6 @@ public class ProgramStart extends javax.swing.JFrame {
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
-            }
-        });
-
-        testredigeraorderbtn.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        testredigeraorderbtn.setText("Redigera Order");
-        testredigeraorderbtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                testredigeraorderbtnActionPerformed(evt);
             }
         });
 
@@ -176,33 +149,29 @@ public class ProgramStart extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(kundMenyBtn)
+                            .addComponent(regSpecHattBtn)
                             .addComponent(materialBestBtn)
-                            .addComponent(orderMenyBtn)
-                            .addComponent(btnRegKund, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(kassaBtn)
-                                    .addComponent(regOrderBtn))
-                                .addGap(121, 121, 121)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(foljdSedel, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(loggaInBtn)))
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(117, Short.MAX_VALUE))
+                            .addComponent(regOrderBtn))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(loggaInBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(kassaBtn)
+                        .addGap(236, 236, 236))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jButtonBestallningar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(regSpecHattBtn))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(testredigeraorderbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(orderMenyBtn)
+                                .addGap(215, 215, 215)
+                                .addComponent(foljdSedel, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButtonBestallningar, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(79, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
-                .addGap(155, 155, 155)
+                .addGap(286, 286, 286)
                 .addComponent(jLabel1)
-                .addContainerGap(458, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -211,38 +180,33 @@ public class ProgramStart extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(kassaBtn)
-                    .addComponent(loggaInBtn))
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(regOrderBtn)
-                    .addComponent(foljdSedel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(kassaBtn)
+                        .addGap(18, 18, 18)
+                        .addComponent(foljdSedel, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                        .addGap(140, 140, 140))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(loggaInBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(orderMenyBtn)
+                        .addGap(18, 18, 18)
+                        .addComponent(regOrderBtn)
+                        .addGap(18, 18, 18)
+                        .addComponent(regSpecHattBtn)
+                        .addGap(18, 18, 18)))
+                .addComponent(jButtonBestallningar)
                 .addGap(18, 18, 18)
-                .addComponent(orderMenyBtn)
-                .addGap(26, 26, 26)
                 .addComponent(kundMenyBtn)
                 .addGap(18, 18, 18)
                 .addComponent(materialBestBtn)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonBestallningar)
-                        .addGap(20, 20, 20)
-                        .addComponent(regSpecHattBtn)
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(testredigeraorderbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)))
-                .addComponent(btnRegKund)
-                .addGap(26, 26, 26)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton3)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
 
         pack();
@@ -263,7 +227,9 @@ public class ProgramStart extends javax.swing.JFrame {
 
     private void kundMenyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kundMenyBtnActionPerformed
         // TODO add your handling code here:
-         new RegistreraNyKund(idb).setVisible(true);
+         new Kundmeny(idb).setVisible(true);
+           this.dispose();
+
     }//GEN-LAST:event_kundMenyBtnActionPerformed
 
     private void materialBestBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_materialBestBtnActionPerformed
@@ -278,13 +244,6 @@ public class ProgramStart extends javax.swing.JFrame {
      dispose();
     }//GEN-LAST:event_loggaInBtnActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // hämta kundinfo
-        HamtaKundInfo nyRuta= new HamtaKundInfo(idb);
-        nyRuta.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButtonBestallningarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBestallningarActionPerformed
         // öppna upp hamtaBestallningar
         HamtaBestallningsInfo nyRuta = new HamtaBestallningsInfo(idb);
@@ -296,13 +255,6 @@ public class ProgramStart extends javax.swing.JFrame {
         new RegisteraSpecialhatt(idb).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_regSpecHattBtnActionPerformed
-
-    private void btnRegKundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegKundActionPerformed
-        // TODO add your handling code here:
-         new RedigeraKunduppgifter(idb).setVisible(true);
-         this.dispose();
-        
-    }//GEN-LAST:event_btnRegKundActionPerformed
 
     private void foljdSedelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foljdSedelActionPerformed
         // TODO add your handling code here:
@@ -316,11 +268,6 @@ public class ProgramStart extends javax.swing.JFrame {
         nyRuta.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void testredigeraorderbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_testredigeraorderbtnActionPerformed
-        new RedigeraOrder(idb, 1).setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_testredigeraorderbtnActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -361,9 +308,7 @@ public class ProgramStart extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnRegKund;
     private javax.swing.JButton foljdSedel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButtonBestallningar;
@@ -376,6 +321,5 @@ public class ProgramStart extends javax.swing.JFrame {
     private javax.swing.JButton orderMenyBtn;
     private javax.swing.JButton regOrderBtn;
     private javax.swing.JButton regSpecHattBtn;
-    private javax.swing.JButton testredigeraorderbtn;
     // End of variables declaration//GEN-END:variables
 }

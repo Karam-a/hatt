@@ -389,17 +389,18 @@ public class RedigeraSpecialhatt extends javax.swing.JFrame {
                 + "ansvar = '" + nyAnsvar + "' "
                 + "WHERE specialhattar.SpecialhattID = " + hattID + ";";
         
-        execute(fraga);
+        execute(fraga, nyHattStatus);
+        
                 
     }//GEN-LAST:event_bekraftaandringarbtnActionPerformed
 
-    private void execute(String fraga){
+    private void execute(String fraga, String hattStatus){
         
         try {
             idb.update(fraga);
             JOptionPane.showMessageDialog(null, "Informationen har uppdaterats!");
+            uppdateraOrderStatus(hattStatus);
             this.dispose();
-            redOrder.dispose();
             RedigeraOrder redOrder = new RedigeraOrder(idb, orderIDint);
             redOrder.setVisible(true);
             
@@ -409,6 +410,22 @@ public class RedigeraSpecialhatt extends javax.swing.JFrame {
         }
     
     }
+    
+    private void uppdateraOrderStatus(String hattStatus){
+        
+        String fragaOmPaborjad = "UPDATE ordrar SET orderStatus = 'Påbörjad' WHERE orderID = " + orderIDint + ";";
+        
+        if (hattStatus == "Påbörjad"){
+            try {
+                idb.update(fragaOmPaborjad);
+                
+                } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "Databasfel!");
+            System.out.println("Internt felmeddelande" + e.getMessage());             
+            }
+        }
+    }
+    
     
     private void uppdateraAnsvarCMB(){
         String ansvarig = ansvarcmb.getSelectedItem().toString();
@@ -436,11 +453,15 @@ public class RedigeraSpecialhatt extends javax.swing.JFrame {
     
     
     
+    
+    
     private void tygtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tygtxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tygtxtActionPerformed
 
     private void avbrytbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avbrytbtnActionPerformed
+        RedigeraOrder nyRedOrder = new RedigeraOrder(idb, orderIDint);
+        nyRedOrder.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_avbrytbtnActionPerformed
 

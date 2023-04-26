@@ -176,6 +176,7 @@ public class RedigeraOrder extends javax.swing.JFrame {
         hattInfotxtarea = new javax.swing.JTextArea();
         prioriteraHattbtn = new javax.swing.JButton();
         prioriteraOrder = new javax.swing.JButton();
+        tillbakabtn = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -247,7 +248,14 @@ public class RedigeraOrder extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Tillbaka");
+        tillbakabtn.setText("Tillbaka");
+        tillbakabtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tillbakabtnActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Följdsedel");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -274,29 +282,30 @@ public class RedigeraOrder extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
+                                .addComponent(tillbakabtn)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
                                 .addComponent(prioriteraHattbtn)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(prioriteraOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(kundlbl)
-                                            .addComponent(orderDatumlbl))
-                                        .addGap(28, 28, 28)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(kundTillOrderlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(orderDatum1lbl)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(taBortValdHattbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(redigeraValdHattbtn))
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                    .addComponent(kundlbl)
+                                    .addComponent(orderDatumlbl))
+                                .addGap(28, 28, 28)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(kundTillOrderlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(orderDatum1lbl))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(taBortValdHattbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(redigeraValdHattbtn))
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton1)
+                                .addGap(13, 13, 13)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -328,12 +337,14 @@ public class RedigeraOrder extends javax.swing.JFrame {
                         .addComponent(taBortValdHattbtn)
                         .addGap(58, 58, 58))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(prioriteraHattbtn)
                             .addComponent(prioriteraOrder)
-                            .addComponent(jButton1))
+                            .addComponent(tillbakabtn))
                         .addContainerGap(12, Short.MAX_VALUE))))
         );
 
@@ -342,10 +353,13 @@ public class RedigeraOrder extends javax.swing.JFrame {
 
     private void redigeraValdHattbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_redigeraValdHattbtnActionPerformed
         new RedigeraSpecialhatt(idb, this, hattensID).setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_redigeraValdHattbtnActionPerformed
 
     private void taBortValdHattbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taBortValdHattbtnActionPerformed
-        // TODO add your handling code here:
+        TaBortHattBekrafta nyTaBortHatt = new TaBortHattBekrafta(idb, hattensID, valdOrder);
+        nyTaBortHatt.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_taBortValdHattbtnActionPerformed
 
     private void hattlistValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_hattlistValueChanged
@@ -375,10 +389,17 @@ public class RedigeraOrder extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_prioriteraOrderActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void tillbakabtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tillbakabtnActionPerformed
         ProgramStart nyStartruta = new ProgramStart();
         nyStartruta.setVisible(true);
         this.dispose();
+    }//GEN-LAST:event_tillbakabtnActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+         new SkickadUthämtad(idb,  valdOrder).setVisible(true);
+         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
@@ -400,6 +421,7 @@ public class RedigeraOrder extends javax.swing.JFrame {
     private javax.swing.JButton prioriteraOrder;
     private javax.swing.JButton redigeraValdHattbtn;
     private javax.swing.JButton taBortValdHattbtn;
+    private javax.swing.JButton tillbakabtn;
     private javax.swing.JLabel valdOrderlbl;
     // End of variables declaration//GEN-END:variables
 }
