@@ -390,6 +390,10 @@ public class RedigeraSpecialhatt extends javax.swing.JFrame {
                 + "WHERE specialhattar.SpecialhattID = " + hattID + ";";
         
         execute(fraga);
+        
+        RedigeraOrder nyRedOrder = new RedigeraOrder(idb, orderIDint);
+        nyRedOrder.setVisible(true);
+        this.dispose();
                 
     }//GEN-LAST:event_bekraftaandringarbtnActionPerformed
 
@@ -441,6 +445,8 @@ public class RedigeraSpecialhatt extends javax.swing.JFrame {
     }//GEN-LAST:event_tygtxtActionPerformed
 
     private void avbrytbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avbrytbtnActionPerformed
+        RedigeraOrder nyRedOrder = new RedigeraOrder(idb, orderIDint);
+        nyRedOrder.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_avbrytbtnActionPerformed
 
