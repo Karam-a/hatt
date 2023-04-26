@@ -116,8 +116,8 @@ public class VisaKundsBeställningsHistorik extends javax.swing.JFrame {
                         .addComponent(jScrollPane1)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(kundBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                        .addComponent(kundBox, 0, 158, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(beställningBtn)
                         .addGap(121, 121, 121))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -173,8 +173,7 @@ public class VisaKundsBeställningsHistorik extends javax.swing.JFrame {
 
     private void tillbakaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tillbakaButtonActionPerformed
  
-   //   new ProgramStart(idb).setVisible(true);
-   //   this.dispose();
+       this.dispose();
         
     }//GEN-LAST:event_tillbakaButtonActionPerformed
 
