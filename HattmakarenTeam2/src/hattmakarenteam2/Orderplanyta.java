@@ -233,7 +233,7 @@ private InfDB idb;
             valdTable = avslutOrdTable;
         }
         else{
-        JOptionPane.showMessageDialog(null,"Vänligen välj en order att hantera!");
+            JOptionPane.showMessageDialog(null,"Vänligen välj en order att hantera!");
         }
          //anger den valda ordern som det valda värdet i den valda tabellen.
         Object valdOrder = valdTable.getValueAt(valdTable.getSelectedRow(),0);
