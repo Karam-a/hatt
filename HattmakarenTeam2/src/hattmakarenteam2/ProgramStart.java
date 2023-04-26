@@ -42,7 +42,6 @@ public class ProgramStart extends javax.swing.JFrame {
         regSpecHattBtn = new javax.swing.JButton();
         foljdSedel = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        testredigeraorderbtn = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -131,14 +130,6 @@ public class ProgramStart extends javax.swing.JFrame {
             }
         });
 
-        testredigeraorderbtn.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        testredigeraorderbtn.setText("Redigera Order");
-        testredigeraorderbtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                testredigeraorderbtnActionPerformed(evt);
-            }
-        });
-
         jButton3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton3.setText("Försäljningsstatistik");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -175,7 +166,6 @@ public class ProgramStart extends javax.swing.JFrame {
                                 .addComponent(orderMenyBtn)
                                 .addGap(215, 215, 215)
                                 .addComponent(foljdSedel, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(testredigeraorderbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButtonBestallningar, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(79, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
@@ -209,8 +199,6 @@ public class ProgramStart extends javax.swing.JFrame {
                         .addGap(18, 18, 18)))
                 .addComponent(jButtonBestallningar)
                 .addGap(18, 18, 18)
-                .addComponent(testredigeraorderbtn)
-                .addGap(18, 18, 18)
                 .addComponent(kundMenyBtn)
                 .addGap(18, 18, 18)
                 .addComponent(materialBestBtn)
@@ -218,7 +206,7 @@ public class ProgramStart extends javax.swing.JFrame {
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton3)
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
 
         pack();
@@ -279,11 +267,6 @@ public class ProgramStart extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void testredigeraorderbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_testredigeraorderbtnActionPerformed
-        new RedigeraOrder(idb, 1).setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_testredigeraorderbtnActionPerformed
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         new Försäljningsstatistik(idb).setVisible(true);
@@ -336,6 +319,5 @@ public class ProgramStart extends javax.swing.JFrame {
     private javax.swing.JButton orderMenyBtn;
     private javax.swing.JButton regOrderBtn;
     private javax.swing.JButton regSpecHattBtn;
-    private javax.swing.JButton testredigeraorderbtn;
     // End of variables declaration//GEN-END:variables
 }
