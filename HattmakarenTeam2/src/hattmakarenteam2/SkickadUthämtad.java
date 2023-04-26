@@ -20,11 +20,13 @@ import oru.inf.InfDB;
  */
 public class SkickadUthämtad extends javax.swing.JFrame {
 private InfDB idb;
+private int valdOrder;
     /**
      * Creates new form SkickadUthämtad
      * @param idb
      */
-    public SkickadUthämtad(InfDB idb) {
+    public SkickadUthämtad(InfDB idb, int valdOrder) {
+       this.valdOrder = valdOrder;
         this.idb = idb;
         initComponents();
     }
@@ -101,22 +103,22 @@ private InfDB idb;
                  try {
         
         //Förmodligen så hämtas all info från Jframen som Andreas jobbar. OrderIdt 
-        String kundFraga = "Select kundId from ordrar where orderID="+199+"";
+        String kundFraga = "Select kundId from ordrar where orderID="+valdOrder+"";
         String kundFraga2 = idb.fetchSingle(kundFraga);
         String kundFraga3 = "Select kundNamn from kund where kundID="+kundFraga2+"";
         String namn = idb.fetchSingle(kundFraga3);
         
-        String produktFraga = "Select Namn, Modell, Pris from specialhattar where orderID ="+199+"";
+        String produktFraga = "Select Namn, Modell, Pris from specialhattar where orderID ="+valdOrder+"";
        ArrayList<HashMap<String, String>> produktSvar= idb.fetchRows(produktFraga);
        
-        String fraga= "Select orderDatum,pris from ordrar where orderID ="+199+"";
+        String fraga= "Select orderDatum,pris from ordrar where orderID ="+valdOrder+"";
         ArrayList<String> info= idb.fetchColumn(fraga);
         
         
         //ej klar
        //strängen som ja sparar totalpriset i
       int kopID = 123; // Replace with the actual ID value
-String totalprisQuery = "SELECT SUM(pris) AS totalprice FROM specialhattar WHERE orderID = " + 199+"";
+String totalprisQuery = "SELECT SUM(pris) AS totalprice FROM specialhattar WHERE orderID = " + valdOrder+"";
 ArrayList<String> totalpris = idb.fetchColumn(totalprisQuery);
 double totalprisWithVAT = 0.0;
 if (!totalpris.isEmpty()) {
@@ -131,10 +133,10 @@ if (!totalpris.isEmpty()) {
 
 
  // Get the current text in the Resultat text box
-        String currentText = Resultat.getText();
+        //String currentText = Resultat.getText();
 
         // Append the new text to the current text
-        String newText = currentText +"Hej din order är skickad "+namn+"\n"+produktSvar+"\n"+ info+"\n"+"Totalpris + 25% moms"+totalprisWithVAT + "\n"+"Du kan kontakta oss via hattmakrn@yahoo.se eller 0720567";
+        String newText = "Hej din order är skickad "+namn+"\n"+produktSvar+"\n"+ info+"\n"+"Totalpris + 25% moms"+totalprisWithVAT + "\n"+"Du kan kontakta oss via hattmakrn@yahoo.se eller 0720567";
 
         // Set the updated text in the Resultat text box
         Resultat.setText(newText);
