@@ -38,11 +38,13 @@ public class Admin extends javax.swing.JFrame {
         btnLäggTill = new javax.swing.JButton();
         btnRedigera = new javax.swing.JButton();
         btnStart = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         jPasswordField1.setText("jPasswordField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        btnLäggTill.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnLäggTill.setText("Lägg till Admin");
         btnLäggTill.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -50,6 +52,7 @@ public class Admin extends javax.swing.JFrame {
             }
         });
 
+        btnRedigera.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnRedigera.setText("Redigera Admin");
         btnRedigera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,35 +60,43 @@ public class Admin extends javax.swing.JFrame {
             }
         });
 
-        btnStart.setText("StartSidan ");
+        btnStart.setText("Tillbaka till StartSidan ");
         btnStart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnStartActionPerformed(evt);
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setText(" Hantera Admin!");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnRedigera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnLäggTill)
-                    .addComponent(btnStart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addGap(78, 78, 78)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btnRedigera)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnLäggTill, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(64, 64, 64)
+                .addGap(33, 33, 33)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addComponent(btnLäggTill)
-                .addGap(37, 37, 37)
+                .addGap(33, 33, 33)
                 .addComponent(btnRedigera)
-                .addGap(37, 37, 37)
+                .addGap(51, 51, 51)
                 .addComponent(btnStart)
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addGap(26, 26, 26))
         );
 
         pack();
@@ -101,8 +112,9 @@ public class Admin extends javax.swing.JFrame {
 
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
         // TODO add your handling code here:
-      new ProgramStart().setVisible(true);
        this.dispose();
+       new ProgramStart().setVisible(true);
+
     }//GEN-LAST:event_btnStartActionPerformed
 
     /**
@@ -143,6 +155,7 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JButton btnLäggTill;
     private javax.swing.JButton btnRedigera;
     private javax.swing.JButton btnStart;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPasswordField jPasswordField1;
     // End of variables declaration//GEN-END:variables
 }
