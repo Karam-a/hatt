@@ -133,10 +133,10 @@ if (!totalpris.isEmpty()) {
 
 
  // Get the current text in the Resultat text box
-        String currentText = Resultat.getText();
+        //String currentText = Resultat.getText();
 
         // Append the new text to the current text
-        String newText = currentText +"Hej din order är skickad "+namn+"\n"+produktSvar+"\n"+ info+"\n"+"Totalpris + 25% moms"+totalprisWithVAT + "\n"+"Du kan kontakta oss via hattmakrn@yahoo.se eller 0720567";
+        String newText = "Hej din order är skickad "+namn+"\n"+produktSvar+"\n"+ info+"\n"+"Totalpris + 25% moms"+totalprisWithVAT + "\n"+"Du kan kontakta oss via hattmakrn@yahoo.se eller 0720567";
 
         // Set the updated text in the Resultat text box
         Resultat.setText(newText);
