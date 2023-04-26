@@ -90,7 +90,7 @@ public class RedigeraKunduppgifter extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Tillbaka till Startsidan");
+        jButton1.setText("Tillbaka");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -142,7 +142,7 @@ public class RedigeraKunduppgifter extends javax.swing.JFrame {
                         .addComponent(btnSpara, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(125, 125, 125)
+                .addGap(155, 155, 155)
                 .addComponent(jButton1)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -178,9 +178,9 @@ public class RedigeraKunduppgifter extends javax.swing.JFrame {
                         .addComponent(txtBeskrivning, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32)
                         .addComponent(btnSpara, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addGap(48, 48, 48)
                 .addComponent(jButton1)
-                .addGap(60, 60, 60))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         pack();
@@ -280,7 +280,6 @@ public class RedigeraKunduppgifter extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        new ProgramStart().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
