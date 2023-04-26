@@ -233,7 +233,7 @@ public class RegisteraSpecialhatt extends javax.swing.JFrame {
             String ovrigt = ovrigtTxt.getText();
             String status = "Ej Påbörjad";
             String bradskande = "Nej";
-            String ansvar = null;
+            String ansvar = "Ej tilldelad";
             String fraga = "insert into specialhattar values(" + ID + ",'" + namn + "','" + tyg + "','" + storlek + "','" + modell + "','" + farg + "','" + dekoration + "','" + beskrivning +"','" + ovrigt + "','" + status + "',"+OrderID+","+pris+",'"+bradskande+"', '"+ansvar+"');";
             
            
