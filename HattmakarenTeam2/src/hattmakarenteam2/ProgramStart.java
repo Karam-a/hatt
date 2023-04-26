@@ -225,7 +225,6 @@ public class ProgramStart extends javax.swing.JFrame {
         // TODO add your handling code here:
          new Kundmeny(idb).setVisible(true);
            this.dispose();
-
     }//GEN-LAST:event_kundMenyBtnActionPerformed
 
     private void materialBestBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_materialBestBtnActionPerformed
@@ -237,7 +236,7 @@ public class ProgramStart extends javax.swing.JFrame {
     private void loggaInBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loggaInBtnActionPerformed
         // TODO add your handling code here:
      new InloggAdmin(idb).setVisible(true);
-     dispose();
+     this.dispose();
     }//GEN-LAST:event_loggaInBtnActionPerformed
 
     private void jButtonBestallningarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBestallningarActionPerformed
