@@ -59,10 +59,7 @@ private InfDB idb;
         }
     }
     
-    private void kor(){
-    new RedigeraOrder(idb,valdOrderID).setVisible(true);
-    
-    }
+
     
  
     @SuppressWarnings("unchecked")
@@ -241,7 +238,7 @@ private InfDB idb;
         //Hämtar sedan ut orderID för vald order.
         try{
             valdOrderID = Integer.parseInt(idb.fetchSingle("SELECT orderID FROM ordrar WHERE kundID IN(SELECT kundID FROM kund WHERE kundNamn=" +"'"+ valdOrder.toString() + "'"+ ")" ));
-            kor();
+            new RedigeraOrder(idb,valdOrderID).setVisible(true);
         }
         catch(InfException e){
             JOptionPane.showMessageDialog(null, "Misslyckades med att hämta ut OrderID för vald order.");
