@@ -229,7 +229,7 @@ public class RedigeraKunduppgifter extends javax.swing.JFrame {
             }
             if (!(txtTelefonnummer.getText().isEmpty())) {
              String telefon = txtTelefonnummer.getText();
-                sql = sql + ", Telefon= '" + telefon + "'";
+                sql = sql + ", Telefonnummer= '" + telefon + "'";
                 
             }
             

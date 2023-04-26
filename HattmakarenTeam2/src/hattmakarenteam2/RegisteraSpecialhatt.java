@@ -232,7 +232,9 @@ public class RegisteraSpecialhatt extends javax.swing.JFrame {
             String beskrivning = beskrivningTxt.getText();
             String ovrigt = ovrigtTxt.getText();
             String status = "Ej Påbörjad";
-            String fraga = "insert into specialhattar values(" + ID + ",'" + namn + "','" + tyg + "','" + storlek + "','" + modell + "','" + farg + "','" + dekoration + "','" + beskrivning +"','" + ovrigt + "','" + status + "',"+OrderID+","+pris+");";
+            String bradskande = "Nej";
+            String ansvar = null;
+            String fraga = "insert into specialhattar values(" + ID + ",'" + namn + "','" + tyg + "','" + storlek + "','" + modell + "','" + farg + "','" + dekoration + "','" + beskrivning +"','" + ovrigt + "','" + status + "',"+OrderID+","+pris+",'"+bradskande+"', '"+ansvar+"');";
             
            
         if (ValideringKlass.finnsVarde(namnTxt) || ValideringKlass.finnsVarde(prisTXT) || ValideringKlass.finnsVarde(tygTxt) || ValideringKlass.finnsVarde(storlekTxt) || ValideringKlass.finnsVarde(modellTxt) || ValideringKlass.finnsVarde(fargTxt) || ValideringKlass.finnsVarde(dekorationTxt) || ValideringKlass.finnsVarde(beskrivningTxt))

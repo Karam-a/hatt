@@ -112,6 +112,8 @@ public class RedigeraOrder extends javax.swing.JFrame {
             String ovrigt = hatten.get("Övrigt");
             String hattStatus = hatten.get("hattStatus");
             String pris = hatten.get("pris");
+            String bradskandeHatt = hatten.get("bradskandeHatt");
+            String ansvar = hatten.get("ansvar");
             
             
             String allHattInfo = 
@@ -126,6 +128,8 @@ public class RedigeraOrder extends javax.swing.JFrame {
                     "\nÖvrigt: " + ovrigt +
                     "\nHattstatus: " + hattStatus +
                     "\nPris: " + pris +
+                    "\nBrådskande hatt: " + bradskandeHatt +
+                    "\nHattansvar: " + ansvar +
                     "\nTillhör Order: " + hattensOrderID;
             
             hattInfotxtarea.setText(allHattInfo);
@@ -229,7 +233,7 @@ public class RedigeraOrder extends javax.swing.JFrame {
         hattInfotxtarea.setRows(5);
         jScrollPane2.setViewportView(hattInfotxtarea);
 
-        prioriteraHattbtn.setText("Prioritera Hatt (brådskande)");
+        prioriteraHattbtn.setText("Prioritera Hatt (skapa en ny order)");
         prioriteraHattbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 prioriteraHattbtnActionPerformed(evt);
@@ -260,39 +264,40 @@ public class RedigeraOrder extends javax.swing.JFrame {
                 .addComponent(orderlbl)
                 .addGap(18, 18, 18)
                 .addComponent(valdOrderlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(155, 155, 155))
+                .addGap(248, 248, 248))
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(kundlbl)
-                            .addComponent(orderDatumlbl))
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(kundTillOrderlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(orderDatum1lbl))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(91, 91, 91)
+                        .addComponent(hattlbl))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
+                                .addComponent(prioriteraHattbtn)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(prioriteraOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(taBortValdHattbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(redigeraValdHattbtn)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(prioriteraHattbtn)
-                                .addGap(18, 18, 18)
-                                .addComponent(prioriteraOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 91, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(91, 91, 91)
-                .addComponent(hattlbl)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(kundlbl)
+                                            .addComponent(orderDatumlbl))
+                                        .addGap(28, 28, 28)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(kundTillOrderlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(orderDatum1lbl)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(taBortValdHattbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(redigeraValdHattbtn))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -315,19 +320,21 @@ public class RedigeraOrder extends javax.swing.JFrame {
                 .addComponent(hattlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1)
+                        .addGap(18, 18, 18)
                         .addComponent(redigeraValdHattbtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(taBortValdHattbtn)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(prioriteraHattbtn)
-                    .addComponent(prioriteraOrder)
-                    .addComponent(jButton1))
-                .addContainerGap(27, Short.MAX_VALUE))
+                        .addComponent(taBortValdHattbtn)
+                        .addGap(58, 58, 58))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(prioriteraHattbtn)
+                            .addComponent(prioriteraOrder)
+                            .addComponent(jButton1))
+                        .addContainerGap(12, Short.MAX_VALUE))))
         );
 
         pack();
@@ -369,9 +376,9 @@ public class RedigeraOrder extends javax.swing.JFrame {
     }//GEN-LAST:event_prioriteraOrderActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // tillbaka knapp 
+        ProgramStart nyStartruta = new ProgramStart();
+        nyStartruta.setVisible(true);
         this.dispose();
-        new ProgramStart().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
