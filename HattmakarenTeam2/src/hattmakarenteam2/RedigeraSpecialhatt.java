@@ -1,6 +1,7 @@
 package hattmakarenteam2;
 
 
+import java.awt.Color;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
@@ -50,6 +51,8 @@ public class RedigeraSpecialhatt extends javax.swing.JFrame {
             String hattStatus = hatten.get("hattStatus");
             String orderID = hatten.get("orderID");
             String pris = hatten.get("pris");
+            String bradskandeHatt = hatten.get("bradskandeHatt");
+            String ansvar = hatten.get("ansvar");
             
             orderIDint = Integer.parseInt(orderID);
             
@@ -66,6 +69,8 @@ public class RedigeraSpecialhatt extends javax.swing.JFrame {
             hattstatuscmb.setSelectedItem(hattStatus);
             orderIDlbl.setText(orderID);
             pristxt.setText(pris);
+            bradskandecmb.setSelectedItem(bradskandeHatt);
+            ansvarcmb.setSelectedItem(ansvar);
                     
             
             
@@ -118,6 +123,11 @@ public class RedigeraSpecialhatt extends javax.swing.JFrame {
         hattstatuscmb = new javax.swing.JComboBox<>();
         tillhorOrderlbl = new javax.swing.JLabel();
         orderIDlbl = new javax.swing.JLabel();
+        prislbl1 = new javax.swing.JLabel();
+        prislbl2 = new javax.swing.JLabel();
+        avbrytbtn = new javax.swing.JButton();
+        bradskandecmb = new javax.swing.JComboBox<>();
+        ansvarcmb = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -179,12 +189,44 @@ public class RedigeraSpecialhatt extends javax.swing.JFrame {
         });
 
         hattstatuscmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ej Påbörjad", "Påbörjad", "Avslutad" }));
+        hattstatuscmb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hattstatuscmbActionPerformed(evt);
+            }
+        });
 
         tillhorOrderlbl.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tillhorOrderlbl.setText("Tillhör order: ");
 
         orderIDlbl.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         orderIDlbl.setText("12345");
+
+        prislbl1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        prislbl1.setText("Brådskande? ");
+
+        prislbl2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        prislbl2.setText("Ansvar:");
+
+        avbrytbtn.setText("Avbryt");
+        avbrytbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                avbrytbtnActionPerformed(evt);
+            }
+        });
+
+        bradskandecmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NEJ", "JA" }));
+        bradskandecmb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bradskandecmbActionPerformed(evt);
+            }
+        });
+
+        ansvarcmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ej tilldelad", "Otto", "Judith", "Andreas" }));
+        ansvarcmb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ansvarcmbActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -193,9 +235,6 @@ public class RedigeraSpecialhatt extends javax.swing.JFrame {
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(bekraftaandringarbtn))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -205,32 +244,42 @@ public class RedigeraSpecialhatt extends javax.swing.JFrame {
                                 .addComponent(hattIDlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(tillhorOrderlbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
-                                    .addComponent(prislbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(ovrigtlbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(farglbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(modelllbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(storleklbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(dekorationlbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(beskrivninglbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(hattstatuslbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(namnlbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(tyglbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(tillhorOrderlbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
+                                        .addComponent(prislbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(ovrigtlbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(farglbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(modelllbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(storleklbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(dekorationlbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(beskrivninglbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(hattstatuslbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(namnlbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(tyglbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(prislbl1, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                                    .addComponent(prislbl2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(namntxt)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
-                                    .addComponent(jScrollPane2)
                                     .addComponent(tygtxt)
                                     .addComponent(storlektxt)
                                     .addComponent(modelltxt)
                                     .addComponent(fargtxt)
-                                    .addComponent(dekorationtxt)
                                     .addComponent(pristxt)
                                     .addComponent(hattstatuscmb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(orderIDlbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(0, 36, Short.MAX_VALUE)))
+                                    .addComponent(orderIDlbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(bradskandecmb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(ansvarcmb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane1)
+                                    .addComponent(dekorationtxt))))
+                        .addGap(22, 22, 22))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(avbrytbtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bekraftaandringarbtn)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -270,29 +319,39 @@ public class RedigeraSpecialhatt extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(beskrivninglbl, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ovrigtlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ovrigtlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(hattstatuscmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hattstatuslbl, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(hattstatuslbl, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(hattstatuscmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(bekraftaandringarbtn)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(prislbl, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pristxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tillhorOrderlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(orderIDlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(45, Short.MAX_VALUE))))
+                    .addComponent(pristxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(prislbl, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bradskandecmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(prislbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ansvarcmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(prislbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tillhorOrderlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(orderIDlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bekraftaandringarbtn)
+                    .addComponent(avbrytbtn))
+                .addContainerGap())
         );
 
         pack();
@@ -310,6 +369,8 @@ public class RedigeraSpecialhatt extends javax.swing.JFrame {
         String nyOvrigt = ovrigttxt.getText();
         String nyHattStatus = hattstatuscmb.getSelectedItem().toString();
         String nyPris = pristxt.getText();
+        String nyBradskande = bradskandecmb.getSelectedItem().toString();
+        String nyAnsvar = ansvarcmb.getSelectedItem().toString();
         
         int hattID = Integer.parseInt(hattensID);
         double prisDouble = Double.parseDouble(nyPris);
@@ -324,7 +385,8 @@ public class RedigeraSpecialhatt extends javax.swing.JFrame {
                 + "Övrigt = '" + nyOvrigt + "', "
                 + "hattStatus = '" + nyHattStatus + "', "
                 + "pris = " + prisDouble + ", "
-                + "Tyg = '" + nyTyg + "' "
+                + "bradskandeHatt = '" + nyBradskande + "', "
+                + "ansvar = '" + nyAnsvar + "' "
                 + "WHERE specialhattar.SpecialhattID = " + hattID + ";";
         
         execute(fraga);
@@ -348,18 +410,61 @@ public class RedigeraSpecialhatt extends javax.swing.JFrame {
     
     }
     
+    private void uppdateraAnsvarCMB(){
+        String ansvarig = ansvarcmb.getSelectedItem().toString();
+        
+        if (ansvarig == "Otto"){
+            ansvarcmb.setBackground(Color.yellow);
+            uppdateraHattStatus();
+        } 
+        else if (ansvarig == "Judith") {
+            ansvarcmb.setBackground(Color.green);
+            uppdateraHattStatus();
+        }
+        else if (ansvarig == "Andreas") {
+            ansvarcmb.setBackground(Color.blue);
+            uppdateraHattStatus();
+        }
+        else if (ansvarig == "Ej Tilldelad") {
+            ansvarcmb.setBackground(Color.white);
+        }
+    }
+    
+    private void uppdateraHattStatus(){
+        hattstatuscmb.setSelectedItem("Påbörjad");
+    }
+    
     
     
     private void tygtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tygtxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tygtxtActionPerformed
 
+    private void avbrytbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avbrytbtnActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_avbrytbtnActionPerformed
+
+    private void bradskandecmbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bradskandecmbActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bradskandecmbActionPerformed
+
+    private void ansvarcmbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ansvarcmbActionPerformed
+        uppdateraAnsvarCMB();
+    }//GEN-LAST:event_ansvarcmbActionPerformed
+
+    private void hattstatuscmbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hattstatuscmbActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_hattstatuscmbActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> ansvarcmb;
+    private javax.swing.JButton avbrytbtn;
     private javax.swing.JButton bekraftaandringarbtn;
     private javax.swing.JLabel beskrivninglbl;
     private javax.swing.JTextArea beskrivningtxt;
+    private javax.swing.JComboBox<String> bradskandecmb;
     private javax.swing.JLabel dekorationlbl;
     private javax.swing.JTextField dekorationtxt;
     private javax.swing.JLabel farglbl;
@@ -378,6 +483,8 @@ public class RedigeraSpecialhatt extends javax.swing.JFrame {
     private javax.swing.JLabel ovrigtlbl;
     private javax.swing.JTextArea ovrigttxt;
     private javax.swing.JLabel prislbl;
+    private javax.swing.JLabel prislbl1;
+    private javax.swing.JLabel prislbl2;
     private javax.swing.JTextField pristxt;
     private javax.swing.JLabel redigeraHattlbl;
     private javax.swing.JLabel storleklbl;
