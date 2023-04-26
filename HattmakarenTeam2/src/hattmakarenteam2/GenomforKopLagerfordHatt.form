@@ -40,7 +40,7 @@
                       <Component id="jButton1" min="-2" pref="111" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="277" max="32767" attributes="0"/>
+              <EmptySpace pref="306" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -84,13 +84,7 @@
     <Component class="javax.swing.JComboBox" name="jComboBoxHattar">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="5">
-            <StringItem index="0" value="Filthatt"/>
-            <StringItem index="1" value="Panamahatt"/>
-            <StringItem index="2" value="Str&#xe5;hatt"/>
-            <StringItem index="3" value="Tyghatt"/>
-            <StringItem index="4" value="L&#xe4;derhatt"/>
-          </StringArray>
+          <StringArray count="0"/>
         </Property>
       </Properties>
       <AuxValues>
@@ -127,11 +121,39 @@
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="4" rowCount="4">
-                <Column editable="true" title="Lagerhatt ID" type="java.lang.Object"/>
-                <Column editable="true" title="Tyg" type="java.lang.Object"/>
-                <Column editable="true" title="Beskrivning" type="java.lang.Object"/>
-                <Column editable="true" title="Pris" type="java.lang.Object"/>
+                <Column editable="false" title="Lagerhatt ID" type="java.lang.Object"/>
+                <Column editable="false" title="Tyg" type="java.lang.Object"/>
+                <Column editable="false" title="Beskrivning" type="java.lang.Object"/>
+                <Column editable="false" title="Pris" type="java.lang.Object"/>
               </Table>
+            </Property>
+            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+              <TableColumnModel selectionModel="1">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+              </TableColumnModel>
+            </Property>
+            <Property name="columnSelectionAllowed" type="boolean" value="true"/>
+            <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+              <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
             </Property>
           </Properties>
         </Component>

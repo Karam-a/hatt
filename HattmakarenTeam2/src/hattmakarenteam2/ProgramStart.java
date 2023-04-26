@@ -167,7 +167,7 @@ public class ProgramStart extends javax.swing.JFrame {
                                 .addGap(215, 215, 215)
                                 .addComponent(foljdSedel, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jButtonBestallningar, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(79, Short.MAX_VALUE))))
+                        .addContainerGap(35, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(286, 286, 286)
                 .addComponent(jLabel1)
@@ -185,7 +185,7 @@ public class ProgramStart extends javax.swing.JFrame {
                         .addGap(7, 7, 7)
                         .addComponent(kassaBtn)
                         .addGap(18, 18, 18)
-                        .addComponent(foljdSedel, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                        .addComponent(foljdSedel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(140, 140, 140))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -206,7 +206,7 @@ public class ProgramStart extends javax.swing.JFrame {
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton3)
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         pack();
@@ -228,6 +228,8 @@ public class ProgramStart extends javax.swing.JFrame {
     private void kundMenyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kundMenyBtnActionPerformed
         // TODO add your handling code here:
          new Kundmeny(idb).setVisible(true);
+           this.dispose();
+
     }//GEN-LAST:event_kundMenyBtnActionPerformed
 
     private void materialBestBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_materialBestBtnActionPerformed
