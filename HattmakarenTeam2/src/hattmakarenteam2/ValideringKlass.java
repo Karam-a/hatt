@@ -30,6 +30,18 @@ public class ValideringKlass {
         return finns; 
     }  
     
+    public static boolean kontrolleraFlera(JTextField[] falt){
+    
+        boolean finns = true;
+        for (JTextField falten : falt) {
+            if(falten.getText().isEmpty()){
+            finns = false;
+           
+            break; 
+            }
+        } 
+        return finns;
+    }
     
     
     

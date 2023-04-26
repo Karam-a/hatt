@@ -236,11 +236,25 @@ public class RegisteraSpecialhatt extends javax.swing.JFrame {
             String ansvar = "Ej tilldelad";
             String fraga = "insert into specialhattar values(" + ID + ",'" + namn + "','" + tyg + "','" + storlek + "','" + modell + "','" + farg + "','" + dekoration + "','" + beskrivning +"','" + ovrigt + "','" + status + "',"+OrderID+","+pris+",'"+bradskande+"', '"+ansvar+"');";
             
-           
-        if (ValideringKlass.finnsVarde(namnTxt) || ValideringKlass.finnsVarde(prisTXT) || ValideringKlass.finnsVarde(tygTxt) || ValideringKlass.finnsVarde(storlekTxt) || ValideringKlass.finnsVarde(modellTxt) || ValideringKlass.finnsVarde(fargTxt) || ValideringKlass.finnsVarde(dekorationTxt) || ValideringKlass.finnsVarde(beskrivningTxt))
-        {}
-            
-        idb.insert(fraga);
+           //Ett felmeddelande från valideringsklassen per tom ruta
+       // if (ValideringKlass.finnsVarde(namnTxt) || ValideringKlass.finnsVarde(prisTXT) || ValideringKlass.finnsVarde(tygTxt) || ValideringKlass.finnsVarde(storlekTxt) || ValideringKlass.finnsVarde(modellTxt) || ValideringKlass.finnsVarde(fargTxt) || ValideringKlass.finnsVarde(dekorationTxt) || ValideringKlass.finnsVarde(beskrivningTxt))
+       // {}
+       
+       
+      /* ValideringKlass validering = new validering();
+       
+       JTextField[] fältAttValidera = { namnTxt, prisTXT, tygTxt, storlekTxt, modellTxt, fargTxt, dekorationTxt, beskrivningTxt};
+       
+       boolean allaFaltIfyllda = validering.kontrolleraFlera(fältAttValidera);
+        
+       if (allaFaltIfyllda) {
+       }
+       else{
+           JOptionPane.showMessageDialog(null, "Fyll i nödvändiga fält som saknar värde");
+       }
+       */
+       
+       idb.insert(fraga);
                 
         JOptionPane.showMessageDialog(null, "Ny specialhatt har registrerats!");
         
