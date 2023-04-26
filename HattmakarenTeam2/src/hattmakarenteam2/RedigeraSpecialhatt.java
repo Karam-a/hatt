@@ -389,21 +389,18 @@ public class RedigeraSpecialhatt extends javax.swing.JFrame {
                 + "ansvar = '" + nyAnsvar + "' "
                 + "WHERE specialhattar.SpecialhattID = " + hattID + ";";
         
-        execute(fraga);
+        execute(fraga, nyHattStatus);
         
-        RedigeraOrder nyRedOrder = new RedigeraOrder(idb, orderIDint);
-        nyRedOrder.setVisible(true);
-        this.dispose();
                 
     }//GEN-LAST:event_bekraftaandringarbtnActionPerformed
 
-    private void execute(String fraga){
+    private void execute(String fraga, String hattStatus){
         
         try {
             idb.update(fraga);
             JOptionPane.showMessageDialog(null, "Informationen har uppdaterats!");
+            uppdateraOrderStatus(hattStatus);
             this.dispose();
-            redOrder.dispose();
             RedigeraOrder redOrder = new RedigeraOrder(idb, orderIDint);
             redOrder.setVisible(true);
             
@@ -413,6 +410,22 @@ public class RedigeraSpecialhatt extends javax.swing.JFrame {
         }
     
     }
+    
+    private void uppdateraOrderStatus(String hattStatus){
+        
+        String fragaOmPaborjad = "UPDATE ordrar SET orderStatus = 'Påbörjad' WHERE orderID = " + orderIDint + ";";
+        
+        if (hattStatus == "Påbörjad"){
+            try {
+                idb.update(fragaOmPaborjad);
+                
+                } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "Databasfel!");
+            System.out.println("Internt felmeddelande" + e.getMessage());             
+            }
+        }
+    }
+    
     
     private void uppdateraAnsvarCMB(){
         String ansvarig = ansvarcmb.getSelectedItem().toString();
@@ -437,6 +450,8 @@ public class RedigeraSpecialhatt extends javax.swing.JFrame {
     private void uppdateraHattStatus(){
         hattstatuscmb.setSelectedItem("Påbörjad");
     }
+    
+    
     
     
     
