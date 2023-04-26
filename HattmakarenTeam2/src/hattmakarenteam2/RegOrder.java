@@ -47,6 +47,10 @@ public class RegOrder extends javax.swing.JFrame {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        setBackground(new java.awt.Color(153, 153, 255));
+        setFont(new java.awt.Font("American Typewriter", 0, 10)); // NOI18N
+        setForeground(new java.awt.Color(153, 153, 255));
+
         NyOrderLabel.setFont(new java.awt.Font("Hiragino Maru Gothic ProN", 1, 24)); // NOI18N
         NyOrderLabel.setText("Ny Order");
 
