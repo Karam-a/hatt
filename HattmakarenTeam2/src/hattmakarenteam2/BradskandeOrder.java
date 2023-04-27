@@ -111,10 +111,10 @@ public class BradskandeOrder extends javax.swing.JFrame {
          
           if(!(jTextFieldOrderID.getText().isEmpty())){
               String query = "UPDATE ordrar SET pris = pris * 1.2 WHERE orderID = " + intID + ""; 
-              
+              String bradskande = "Update ordrar set bradskande = 'ja' where orderID =  " + intID + "";
              
               idb.update(query);
-              
+              idb.update(bradskande);
                JOptionPane.showMessageDialog(null,"priset har ändrats" );
           
           }
