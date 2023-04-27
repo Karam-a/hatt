@@ -109,7 +109,7 @@ public class Försäljningsstatistik extends javax.swing.JFrame {
 
             },
             new String [] {
-                "OrderID", "KundID", "SpecialhattID", "Orderdatum", "OrderStatus"
+                "OrderID", "KundID", "SpecialhattID", "Orderdatum", "OrderStatus", "Pris"
             }
         ));
         jScrollPane1.setViewportView(jTableBestallning);
@@ -453,7 +453,7 @@ public class Försäljningsstatistik extends javax.swing.JFrame {
             
             try {
                 
-                String sqlFraga = "Select orderID, kundID, SpecialhattID, orderDatum, orderStatus from Ordrar  where orderDatum between '" + Datumfrån + "' and '" + Datumtill + "'";
+                String sqlFraga = "Select orderID, kundID, SpecialhattID, orderDatum, orderStatus, pris from Ordrar  where orderDatum between '" + Datumfrån + "' and '" + Datumtill + "'";
                 
                 DefaultTableModel dTM = (DefaultTableModel) jTableBestallning.getModel();
                 dTM.setRowCount(0);
@@ -468,6 +468,8 @@ public class Försäljningsstatistik extends javax.swing.JFrame {
                 nyLista.add(enOrder.get("SpecialhattID"));
                 nyLista.add(enOrder.get("orderDatum"));
                 nyLista.add(enOrder.get("orderStatus"));
+                nyLista.add(enOrder.get("pris"));
+
                 dTM.addRow(nyLista);
                 }
                
