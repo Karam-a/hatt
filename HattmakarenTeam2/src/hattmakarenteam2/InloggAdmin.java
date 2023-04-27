@@ -41,8 +41,10 @@ public class InloggAdmin extends javax.swing.JFrame {
         txtAnvändarnamn = new javax.swing.JTextField();
         pfLösenord = new javax.swing.JPasswordField();
         btnInlogg = new javax.swing.JButton();
+        TillbakaBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Admininloggning");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         jLabel1.setText("LOGGA IN");
@@ -59,6 +61,14 @@ public class InloggAdmin extends javax.swing.JFrame {
             }
         });
 
+        TillbakaBtn.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        TillbakaBtn.setText("Tillbaka");
+        TillbakaBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TillbakaBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -66,20 +76,23 @@ public class InloggAdmin extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2))
-                        .addGap(80, 80, 80)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtAnvändarnamn)
-                            .addComponent(pfLösenord, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(143, 143, 143)
-                        .addComponent(btnInlogg))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(151, 151, 151)
-                        .addComponent(jLabel1)))
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(143, 143, 143)
+                            .addComponent(btnInlogg)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                            .addComponent(TillbakaBtn))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(54, 54, 54)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel2))
+                            .addGap(80, 80, 80)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtAnvändarnamn)
+                                .addComponent(pfLösenord, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)))))
                 .addContainerGap(49, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -96,7 +109,9 @@ public class InloggAdmin extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(pfLösenord, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
-                .addComponent(btnInlogg)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnInlogg)
+                    .addComponent(TillbakaBtn))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
 
@@ -134,6 +149,11 @@ public class InloggAdmin extends javax.swing.JFrame {
     
     }//GEN-LAST:event_btnInloggActionPerformed
 
+    private void TillbakaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TillbakaBtnActionPerformed
+      this.dispose();
+      new ProgramStart().setVisible(true);
+    }//GEN-LAST:event_TillbakaBtnActionPerformed
+
     
     /**
      * @param args the command line arguments
@@ -170,6 +190,7 @@ public class InloggAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton TillbakaBtn;
     private javax.swing.JButton btnInlogg;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

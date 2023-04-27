@@ -37,6 +37,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
+    <Property name="title" type="java.lang.String" value="Registrera Specialhatt"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -57,97 +58,121 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <Component id="SpecialhattLabel" min="-2" pref="153" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+          </Group>
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
-                      <Component id="hattKnapp" min="-2" max="-2" attributes="0"/>
+                  <Component id="jSeparator1" alignment="0" min="-2" pref="306" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="beskrivningLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                      <Component id="beskrivningTxt" min="-2" pref="103" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="hattKnapp" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="TillbakaBtn" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="FargLabel" min="-2" max="-2" attributes="0"/>
-                                      <Component id="DekorationLabel" min="-2" max="-2" attributes="0"/>
-                                      <Component id="ModellLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="TygLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="NamnLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="1" attributes="0">
+                                                  <Component id="FargLabel" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="DekorationLabel" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="ModellLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="NamnLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="OvrigtLabel" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
                                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="StorlekLabel" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Component id="beskrivningLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="TygLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="StorlekLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="dekorationTxt" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
+                                  <Component id="fargTxt" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
+                                  <Component id="modellTxt" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="tygTxt" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
+                                          <Component id="namnTxt" alignment="1" min="-2" pref="101" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Component id="prisTXT" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
+                                  <Component id="ovrigtTxt" alignment="0" min="-2" pref="184" max="-2" attributes="0"/>
+                                  <Component id="storlekTxt" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="OvrigtLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="beskrivningTxt" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
-                          <Component id="dekorationTxt" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
-                          <Component id="fargTxt" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
-                          <Component id="modellTxt" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                              <Component id="tygTxt" min="-2" pref="101" max="-2" attributes="0"/>
-                              <Component id="storlekTxt" min="-2" pref="103" max="-2" attributes="0"/>
-                              <Component id="namnTxt" alignment="1" min="-2" pref="101" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="ovrigtTxt" alignment="0" min="-2" pref="219" max="-2" attributes="0"/>
-                          <Component id="prisTXT" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="SpecialhattLabel" min="-2" pref="153" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="71" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="SpecialhattLabel" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="SpecialhattLabel" min="-2" pref="40" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
+              <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="namnTxt" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="NamnLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="TygLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="tygTxt" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="prisTXT" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="19" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="storlekTxt" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="StorlekLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="modellTxt" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="ModellLabel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -162,18 +187,22 @@
                   <Component id="dekorationTxt" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="DekorationLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="beskrivningTxt" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="beskrivningLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="ovrigtTxt" min="-2" pref="113" max="-2" attributes="0"/>
                   <Component id="OvrigtLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="ovrigtTxt" min="-2" pref="43" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="hattKnapp" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="hattKnapp" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="TillbakaBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -293,13 +322,26 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="V&#xe4;nligen f&#xf6;r in information om hatten"/>
+        <Property name="text" type="java.lang.String" value="Ange information om hatten"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Varje hatt som registrerar kopplas automatisk till ordern"/>
+        <Property name="text" type="java.lang.String" value="Varje hatt som registreras kopplas automatisk till ordern"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="TillbakaBtn">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Hiragino Maru Gothic ProN" size="18" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Tillbaka"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TillbakaBtnActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JSeparator" name="jSeparator1">
     </Component>
   </SubComponents>
 </Form>

@@ -52,6 +52,7 @@ public class AdminHantering extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Registrera Admin");
 
         laggTillAdminLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         laggTillAdminLabel.setText("Lägg till Admin");

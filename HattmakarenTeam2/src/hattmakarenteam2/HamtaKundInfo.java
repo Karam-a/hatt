@@ -46,6 +46,7 @@ private InfDB idb;
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Kunduppsökning");
 
         jLabel1.setText("Hämta kunddata");
 

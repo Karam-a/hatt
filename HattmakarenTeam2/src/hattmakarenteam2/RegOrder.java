@@ -44,9 +44,11 @@ public class RegOrder extends javax.swing.JFrame {
         NyOrderLabel = new javax.swing.JLabel();
         KIDLabel = new javax.swing.JLabel();
         SkapaOrderBtn = new javax.swing.JButton();
+        TillbakaBtn = new javax.swing.JButton();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        setTitle("Registrera Order");
         setBackground(new java.awt.Color(153, 153, 255));
         setFont(new java.awt.Font("American Typewriter", 0, 18)); // NOI18N
         setForeground(new java.awt.Color(153, 153, 255));
@@ -62,6 +64,14 @@ public class RegOrder extends javax.swing.JFrame {
         SkapaOrderBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SkapaOrderBtnActionPerformed(evt);
+            }
+        });
+
+        TillbakaBtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        TillbakaBtn.setText("Tillbaka");
+        TillbakaBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TillbakaBtnActionPerformed(evt);
             }
         });
 
@@ -83,6 +93,10 @@ public class RegOrder extends javax.swing.JFrame {
                         .addGap(123, 123, 123)
                         .addComponent(NyOrderLabel)))
                 .addContainerGap(70, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(TillbakaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -95,7 +109,9 @@ public class RegOrder extends javax.swing.JFrame {
                     .addComponent(boxKund, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(66, 66, 66)
                 .addComponent(SkapaOrderBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addComponent(TillbakaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
         );
 
         pack();
@@ -126,6 +142,10 @@ public class RegOrder extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_SkapaOrderBtnActionPerformed
+
+    private void TillbakaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TillbakaBtnActionPerformed
+       this.dispose();
+    }//GEN-LAST:event_TillbakaBtnActionPerformed
 
     
     
@@ -182,6 +202,7 @@ public class RegOrder extends javax.swing.JFrame {
     private javax.swing.JLabel KIDLabel;
     private javax.swing.JLabel NyOrderLabel;
     public static javax.swing.JButton SkapaOrderBtn;
+    private javax.swing.JButton TillbakaBtn;
     public static javax.swing.JComboBox<String> boxKund;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;

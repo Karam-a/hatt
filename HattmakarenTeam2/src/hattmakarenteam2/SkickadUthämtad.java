@@ -48,6 +48,7 @@ private int valdOrder;
         jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Skapa följesedel");
 
         Skickad.setText("Skapa Följdsedel");
         Skickad.addActionListener(new java.awt.event.ActionListener() {

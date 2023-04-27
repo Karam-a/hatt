@@ -45,6 +45,7 @@ private InfDB idb;
         jTableBestallning = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Beställningsinfo");
 
         jLabel1.setText("Order ID:");
 

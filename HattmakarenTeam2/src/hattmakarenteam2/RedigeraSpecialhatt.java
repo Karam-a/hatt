@@ -130,6 +130,7 @@ public class RedigeraSpecialhatt extends javax.swing.JFrame {
         ansvarcmb = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Redigera Specialhatt");
 
         redigeraHattlbl.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         redigeraHattlbl.setText("Redigera hatt med ID");
