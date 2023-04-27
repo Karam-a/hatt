@@ -54,6 +54,7 @@ public class RegisteraSpecialhatt extends javax.swing.JFrame {
         prisTXT = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         jTextField5.setText("jTextField1");
 
@@ -111,6 +112,13 @@ public class RegisteraSpecialhatt extends javax.swing.JFrame {
 
         jLabel3.setText("Varje hatt som registrerar kopplas automatisk till ordern");
 
+        jButton1.setText("Tillbaka till Startsidan");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -119,7 +127,9 @@ public class RegisteraSpecialhatt extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(122, 122, 122)
-                        .addComponent(hattKnapp))
+                        .addComponent(hattKnapp)
+                        .addGap(83, 83, 83)
+                        .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -205,7 +215,9 @@ public class RegisteraSpecialhatt extends javax.swing.JFrame {
                     .addComponent(ovrigtTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(OvrigtLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(hattKnapp)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(hattKnapp)
+                    .addComponent(jButton1))
                 .addGap(14, 14, 14))
         );
 
@@ -266,6 +278,12 @@ public class RegisteraSpecialhatt extends javax.swing.JFrame {
 
     }//GEN-LAST:event_hattKnappActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+          this.dispose();
+        new ProgramStart().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     
     
     
@@ -287,6 +305,7 @@ public class RegisteraSpecialhatt extends javax.swing.JFrame {
     private javax.swing.JTextField dekorationTxt;
     private javax.swing.JTextField fargTxt;
     private javax.swing.JButton hattKnapp;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
