@@ -98,7 +98,7 @@ public class ProgramStart extends javax.swing.JFrame {
         });
 
         foljdSedel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        foljdSedel.setText("Skapa Frakt/Följdsedel");
+        foljdSedel.setText("Skapa Följdsedel");
         foljdSedel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 foljdSedelActionPerformed(evt);
@@ -313,7 +313,6 @@ public class ProgramStart extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton TillbakaBtn;
     private javax.swing.JButton avslutaBtn;
     private javax.swing.JButton foljdSedel;
     private javax.swing.JButton jButton2;

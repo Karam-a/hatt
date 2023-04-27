@@ -208,7 +208,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="24" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Skapa Frakt/F&#xf6;ljdsedel"/>
+        <Property name="text" type="java.lang.String" value="Skapa F&#xf6;ljdsedel"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="foljdSedelActionPerformed"/>
