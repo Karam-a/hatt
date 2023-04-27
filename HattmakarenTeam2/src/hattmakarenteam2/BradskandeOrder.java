@@ -28,10 +28,13 @@ import javax.swing.JOptionPane;
 public class BradskandeOrder extends javax.swing.JFrame {
 
     private InfDB idb;
+    private int valdOrder;
     
-    public BradskandeOrder(InfDB idb) {
+    public BradskandeOrder(InfDB idb, int valdOrder) {
         this.idb = idb;
+        this.valdOrder = valdOrder;
         initComponents();
+       
        
     }
 
@@ -54,8 +57,15 @@ public class BradskandeOrder extends javax.swing.JFrame {
 
         jLabel1.setText("OrderID:");
 
+        jTextFieldOrderID.setText(getValdOrderID());
+        jTextFieldOrderID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldOrderIDActionPerformed(evt);
+            }
+        });
+
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setText("Skriv in den Ordern som du vill prioritera");
+        jLabel2.setText("Godkänn prioritering av order med ID: "+ getValdOrderID());
 
         jButtonOKOrder.setText("OK");
         jButtonOKOrder.addActionListener(new java.awt.event.ActionListener() {
@@ -68,39 +78,39 @@ public class BradskandeOrder extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(101, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(96, 96, 96))
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
+                        .addGap(43, 43, 43)
                         .addComponent(jLabel1)
-                        .addGap(38, 38, 38)
-                        .addComponent(jTextFieldOrderID, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(231, 231, 231)
-                        .addComponent(jButtonOKOrder)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextFieldOrderID, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonOKOrder))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(23, 23, 23)
                 .addComponent(jLabel2)
-                .addGap(51, 51, 51)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldOrderID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextFieldOrderID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonOKOrder)
-                .addGap(49, 49, 49))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+private String getValdOrderID(){
+    return Integer.toString(valdOrder);
+}
     private void jButtonOKOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOKOrderActionPerformed
         // Skriv koden som ska köras när man trycker på OK
         
@@ -108,14 +118,13 @@ public class BradskandeOrder extends javax.swing.JFrame {
         String orderID = jTextFieldOrderID.getText();
          int intID = Integer.parseInt(orderID);
          
-         
           if(!(jTextFieldOrderID.getText().isEmpty())){
               String query = "UPDATE ordrar SET pris = pris * 1.2 WHERE orderID = " + intID + ""; 
               String bradskande = "Update ordrar set bradskande = 'ja' where orderID =  " + intID + "";
              
               idb.update(query);
               idb.update(bradskande);
-               JOptionPane.showMessageDialog(null,"priset har ändrats" );
+               JOptionPane.showMessageDialog(null,"Priset har ändrats och ordern är nu prioriterad!" );
           
           }
          }catch (InfException ex){
@@ -125,6 +134,10 @@ public class BradskandeOrder extends javax.swing.JFrame {
          
           
     }//GEN-LAST:event_jButtonOKOrderActionPerformed
+
+    private void jTextFieldOrderIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldOrderIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldOrderIDActionPerformed
 
     /**
      * @param args the command line arguments

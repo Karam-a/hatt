@@ -52,7 +52,7 @@ public class RedigeraSpecialhatt extends javax.swing.JFrame {
             String orderID = hatten.get("orderID");
             String pris = hatten.get("pris");
             String bradskandeHatt = hatten.get("bradskandeHatt");
-            String ansvar = hatten.get("ansvar");
+            String ansvar = hatten.get("Ansvar");
             
             orderIDint = Integer.parseInt(orderID);
             
@@ -443,7 +443,7 @@ public class RedigeraSpecialhatt extends javax.swing.JFrame {
             ansvarcmb.setBackground(Color.blue);
             uppdateraHattStatus();
         }
-        else if (ansvarig == "Ej Tilldelad") {
+        else if (ansvarig == "Ej tilldelad") {
             ansvarcmb.setBackground(Color.white);
         }
     }
