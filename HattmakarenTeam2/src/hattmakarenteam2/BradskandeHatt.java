@@ -45,6 +45,7 @@ private InfDB idb;
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Brådskande Hatt");
 
         jLabel1.setText("Mata in SpecialHattID som du vill prioritera");
 

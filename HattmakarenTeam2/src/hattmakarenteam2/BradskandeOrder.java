@@ -50,6 +50,7 @@ public class BradskandeOrder extends javax.swing.JFrame {
         jButtonOKOrder = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Brådskande Order");
 
         jLabel1.setText("OrderID:");
 

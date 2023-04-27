@@ -62,6 +62,7 @@ public class TaBortHattBekrafta extends javax.swing.JFrame {
         bekraftabtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Bekräfta borttagning av hatt");
 
         fragalbl.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         fragalbl.setText("Är du säker på att du vill ta bort hatt med ID");
